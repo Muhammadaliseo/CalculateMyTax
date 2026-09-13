@@ -1,45 +1,103 @@
 <!--page
 {
   "title": "Contact Us About Landlord Tax Questions | CalculateMyTax",
-  "description": "Email CalculateMyTax with a question about the rental income tax calculator, to report an error in our figures or to ask about our Self Assessment service.",
+  "description": "Contact CalculateMyTax with our form or by email about the landlord tax calculators, an error in our figures, or our Self Assessment service.",
   "crumb": "Contact",
-  "schema": []
+  "schema": [],
+  "scripts": ["contact-form"]
 }
 -->
 <section class="intro" data-section="Intro">
   <div class="intro__wrap">
     {{breadcrumb}}
     <h1 class="intro__title">Contact CalculateMyTax</h1>
-    <p class="intro__lede">Email us if you have a question about the rental income tax calculator, think you have found an error in our figures, or want to ask about our Self Assessment service.</p>
-    <p class="intro__meta">We handle all enquiries by email.</p>
+    <p class="intro__lede">Send us a message if you have a question about our calculators, think you have found an error in our figures, or want to ask about our Self Assessment service.</p>
+    <p class="intro__meta">We reply to messages by email.</p>
   </div>
 </section>
 
-<section class="contact" data-section="Email us">
-  <div class="contact__wrap">
-    <h2>Email us</h2>
-    <a class="contact__email" href="mailto:{{site:contact.email}}">{{site:contact.email}}</a>
-    <p>Give your email a clear subject line and tell us which page or tool it is about. The notes below explain what else helps us give you a useful answer.</p>
+<section class="contact-form" data-section="Contact form">
+  <div class="contact-form__wrap">
+    <form class="contact-form__form" action="{{site:contact.formAction}}" method="POST" data-contact-form data-endpoint="{{site:contact.formAjax}}" data-message-check="Check the highlighted fields and try again." data-message-sending="Sending your message..." data-message-sent="Thank you. Your message has been sent, and we will reply by email." data-message-failed="Sorry, your message could not be sent. Please try again in a few minutes.">
+      <h2 class="contact-form__title">Send us a message</h2>
+      <input type="hidden" name="_subject" value="New message from the CalculateMyTax contact form">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="{{site:brand.url}}/contact/thank-you/">
+      <p class="visually-hidden" aria-hidden="true"><label>Leave this field empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></p>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-name">Your name</label>
+        <input class="contact-form__input" id="contact-name" type="text" name="name" autocomplete="name" maxlength="100" required aria-describedby="contact-name-error" data-missing="Enter your name.">
+        <p class="contact-form__error" id="contact-name-error" hidden></p>
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-email">Email address</label>
+        <input class="contact-form__input" id="contact-email" type="email" name="email" autocomplete="email" maxlength="200" required aria-describedby="contact-email-error" data-missing="Enter your email address, so we can reply." data-mismatch="Enter an email address like name@example.com.">
+        <p class="contact-form__error" id="contact-email-error" hidden></p>
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-phone">Phone number (optional)</label>
+        <input class="contact-form__input" id="contact-phone" type="tel" name="phone" autocomplete="tel" maxlength="30">
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-topic">What is it about?</label>
+        <select class="contact-form__select" id="contact-topic" name="topic" required aria-describedby="contact-topic-error" data-missing="Choose what your message is about.">
+          <option value="">Choose a topic</option>
+          <option>A question about a calculator</option>
+          <option>An error in our figures</option>
+          <option>Self Assessment tax return service</option>
+          <option>General question</option>
+          <option>Something else</option>
+        </select>
+        <p class="contact-form__error" id="contact-topic-error" hidden></p>
+      </div>
+
+      <div class="contact-form__field" data-width="full">
+        <label class="contact-form__label" for="contact-message">Your message</label>
+        <textarea class="contact-form__textarea" id="contact-message" name="message" rows="6" maxlength="5000" required aria-describedby="contact-message-hint contact-message-error" data-missing="Enter your message."></textarea>
+        <p class="contact-form__hint" id="contact-message-hint">Tell us which page or calculator it is about. Please leave out bank details, your National Insurance number and your tax reference.</p>
+        <p class="contact-form__error" id="contact-message-error" hidden></p>
+      </div>
+
+      <p class="contact-form__consent">We use your details only to reply to your message. Our <a href="{{root}}privacy-policy/">privacy policy</a> explains how we handle them.</p>
+
+      <div class="contact-form__actions">
+        <button class="button" type="submit" data-submit>Send message</button>
+        <p class="contact-form__status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="contact-form__aside">
+      <h2 class="contact-form__aside-title">Other ways to reach us</h2>
+      <dl class="contact-form__details">
+        <div class="contact-form__detail"><dt class="contact-form__term">Email</dt><dd class="contact-form__value"><a href="mailto:{{site:contact.email}}">{{site:contact.email}}</a></dd></div>
+        <div class="contact-form__detail"><dt class="contact-form__term">Location</dt><dd class="contact-form__value">{{site:contact.location}}</dd></div>
+      </dl>
+      <p class="contact-form__note">We handle all enquiries online and reply by email.</p>
+    </div>
   </div>
 </section>
 
 <section class="prose" data-section="What to include">
   <div class="prose__wrap">
-    <h2>What to include in your email</h2>
-    <h3>Questions about the calculator</h3>
-    <p>Tell us the tax year and region you chose, and what you expected to see. To show us your figures, use "Copy shareable link" in the calculator and paste the link into your email. Your figures are written into that link, so only send it if you are happy for us to see them.</p>
+    <h2>What to include in your message</h2>
+    <h3>Questions about a calculator</h3>
+    <p>Tell us which calculator you used, the tax year and where you live, and what you expected to see. To show us your figures, use "Copy shareable link" in the calculator and paste the link into your message. Your figures are written into that link, so only send it if you are happy for us to see them.</p>
     <h3>Reporting an error</h3>
     <p>Send us the address of the page, the figure or sentence you think is wrong, and a link to the GOV.UK, HMRC or gov.scot page that shows the correct position if you have one.</p>
     <h3>Asking about our Self Assessment service</h3>
     <p>Tell us briefly what you would like help with, such as how many properties you let and whether you have filed a Self Assessment tax return before. You can read about the <a href="{{root}}our-services/self-assessment-tax-returns/">Self Assessment tax return service</a> before you get in touch.</p>
-    <h2>Keep sensitive details out of your email</h2>
-    <p>Please do not email us your bank details, your National Insurance number, your Unique Taxpayer Reference or copies of tax documents. Email is not a secure way to send them. Our <a href="{{root}}privacy-policy/">privacy policy</a> explains how we handle the emails you send.</p>
+    <h2>Keep sensitive details out of your message</h2>
+    <p>Please do not send us your bank details, your National Insurance number, your Unique Taxpayer Reference or copies of tax documents. Neither the form nor email is a secure way to send them. Our <a href="{{root}}privacy-policy/">privacy policy</a> explains how we handle the messages you send.</p>
   </div>
 </section>
 
-<section class="prose" data-section="Before you email">
+<section class="prose" data-section="Before you get in touch">
   <div class="prose__wrap">
     <h2>You may find the answer already</h2>
-    <p>Many common questions about how rental income is taxed are answered in our <a href="{{root}}faq/">frequently asked questions about landlord tax</a>. To see how the tax on your own rent is worked out, try the <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a>, which shows your tax, the Section 24 credit and what you keep.</p>
+    <p>Many common questions about how rental income is taxed are answered in our <a href="{{root}}faq/">frequently asked questions about landlord tax</a>. To see the tax on your own rent, try the <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a>, and to check what a property earns, use the <a href="{{root}}rental-yield-calculator/">rental yield calculator</a>.</p>
   </div>
 </section>

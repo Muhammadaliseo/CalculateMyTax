@@ -220,3 +220,23 @@ What the build does to meet the targets:
 - only the calculator page loads calculator CSS and JS
 
 **After deploy:** run https://pagespeed.web.dev/ on the home page, calculator page and one guide, on mobile. If a score is under 95, the report names the element responsible.
+
+## Header, footer and contact page
+
+Changed on 13 September 2026 at the client's request, and checked in the browser before publishing:
+
+- **Header menu.** It now reads Home, Calculators, Guides, Our services and Contact, followed by a "Calculate my tax" button in brand blue with white text. Who we can help no longer appears in the header but is still in the footer. On a 375px phone, the button fills the width at the end of the open menu, and nothing scrolls sideways.
+- **Sources.** The Sources section has been removed from all 13 pages that had one, and none remains in the built site. Links inside the page text are still checked.
+- **Footer location.** The footer shows "Merseyside, England, United Kingdom" with a map pin. The Organization structured data now includes the address: region Merseyside, country GB.
+- **Home page.** It has a new feature section for the rental yield calculator.
+- **Contact form checks.** The contact page's form was tested with the form service simulated, so no email was sent:
+  - submitting it empty shows four field messages and moves focus to the name field;
+  - an invalid email address shows its own message;
+  - an unactivated form keeps the visitor's message and shows "could not be sent";
+  - a successful send shows the thank-you message, clears the form and re-enables the button;
+  - an entry in the hidden spam field never reaches the service.
+- **Contact form setup.**
+  - Without JavaScript, the form posts to FormSubmit and returns to `/contact/thank-you/`, which is marked noindex and left out of the sitemap.
+  - The privacy policy now describes the form and FormSubmit.
+  - Activation and email forwarding steps are in `handover/EMAIL-SETUP.md`.
+- **Build.** 24 pages built, all 55 tests pass, all audit checks pass, and the home page weighs 279 KB.

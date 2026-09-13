@@ -231,18 +231,22 @@ function navGroup(id, label, links, ctx) {
 
 function renderNav(ctx) {
   const live = site.tools.filter((t) => t.status === 'live');
-  const items = [];
+  const header = site.header || {};
+  const items = [`<li class="site-nav__item">${navLink('site-nav__link', header.homeLabel || 'Home', '', ctx)}</li>`];
   if (live.length === 1) {
     items.push(`<li class="site-nav__item">${navLink('site-nav__link', 'Calculators', live[0].path, ctx)}</li>`);
   } else if (live.length > 1) {
     items.push(navGroup('calculators', 'Calculators', live.map((t) => [t.name, t.path]), ctx));
   }
   items.push(navGroup('guides', 'Guides', site.guides.map((g) => [g.name, g.path]), ctx));
+  // Who we can help is listed in the footer only.
   const parent = (section) => [[section.name, section.path], ...section.children.map((c) => [c.name, c.path])];
-  items.push(navGroup('who-we-can-help', site.whoWeCanHelp.name, parent(site.whoWeCanHelp), ctx));
   items.push(navGroup('our-services', site.ourServices.name, parent(site.ourServices), ctx));
   const contact = site.company.find((c) => c.path === 'contact/');
   items.push(`<li class="site-nav__item">${navLink('site-nav__link', contact.name, contact.path, ctx)}</li>`);
+  if (header.cta) {
+    items.push(`<li class="site-nav__item">${navLink('site-nav__cta', header.cta.label, header.cta.path, ctx)}</li>`);
+  }
   return `<ul class="site-nav__list">
       ${items.join('\n      ')}
     </ul>`;
@@ -538,7 +542,7 @@ function howToSchema(html) {
 function schemaGraph(meta, route, url, trail, body) {
   const orgId = `${site.brand.url}/#organization`;
   const graph = [
-    { '@type': 'Organization', '@id': orgId, name: site.brand.name, url: `${site.brand.url}/`, logo: `${site.brand.url}/${site.brand.logoPng}`, email: site.contact.email },
+    { '@type': 'Organization', '@id': orgId, name: site.brand.name, url: `${site.brand.url}/`, logo: `${site.brand.url}/${site.brand.logoPng}`, email: site.contact.email, address: site.contact.address ? { '@type': 'PostalAddress', ...site.contact.address } : undefined },
     { '@type': 'WebSite', '@id': `${site.brand.url}/#website`, name: site.brand.name, url: `${site.brand.url}/`, publisher: { '@id': orgId }, inLanguage: 'en-GB' },
   ];
   if (trail.length > 1) {

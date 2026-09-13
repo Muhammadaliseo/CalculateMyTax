@@ -41,7 +41,12 @@
       "name": "CalculateMyTax",
       "url": "https://muhammadaliseo.github.io/CalculateMyTax/",
       "logo": "https://muhammadaliseo.github.io/CalculateMyTax/assets/img/brand/calculatemytax-logo.png",
-      "email": "contact@calculatemytax.uk"
+      "email": "contact@calculatemytax.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Merseyside",
+        "addressCountry": "GB"
+      }
     },
     {
       "@type": "WebSite",
@@ -123,6 +128,7 @@
     <button class="site-header__menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul class="site-nav__list">
+      <li class="site-nav__item"><a class="site-nav__link" href="./" aria-current="page">Home</a></li>
       <li class="site-nav__item">
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-calculators">Calculators</button>
         <ul class="site-nav__menu" id="menu-calculators"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./rental-income-tax-calculator/">Rental income tax calculator</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./rental-yield-calculator/">Rental yield calculator</a></li></ul>
@@ -132,14 +138,11 @@
         <ul class="site-nav__menu" id="menu-guides"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./tax-on-rental-income/">Tax on rental income</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./allowable-expenses-for-landlords/">Allowable expenses for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./property-allowance-vs-expenses/">Property allowance or expenses</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./rent-a-room-scheme/">The Rent a Room Scheme</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./rental-income-tax-scotland/">Rental income tax in Scotland</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./property-income-tax-rates-2027/">Property income tax rates from April 2027</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./making-tax-digital-for-landlords/">Making Tax Digital for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./faq/">Frequently asked questions</a></li></ul>
       </li>
       <li class="site-nav__item">
-        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-who-we-can-help">Who we can help</button>
-        <ul class="site-nav__menu" id="menu-who-we-can-help"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./who-we-can-help/">Who we can help</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./who-we-can-help/first-time-filers/">First-time filers</a></li></ul>
-      </li>
-      <li class="site-nav__item">
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-our-services">Our services</button>
         <ul class="site-nav__menu" id="menu-our-services"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./our-services/">Our services</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="./our-services/self-assessment-tax-returns/">Self Assessment tax returns</a></li></ul>
       </li>
       <li class="site-nav__item"><a class="site-nav__link" href="./contact/">Contact</a></li>
+      <li class="site-nav__item"><a class="site-nav__cta" href="./rental-income-tax-calculator/">Calculate my tax</a></li>
     </ul>
     </nav>
   </div>
@@ -259,6 +262,18 @@
       <a class="button" href="./rental-income-tax-calculator/">Open the calculator</a>
     </div>
     <ul class="feature__list"><li class="feature__item">Estimates UK income tax on rental profit for every tax year in the rates file</li><li class="feature__item">Covers England, Wales and Northern Ireland, and Scotland</li><li class="feature__item">Applies the Section 24 mortgage interest credit with all three limits and carry-forward</li><li class="feature__item">Compares allowable expenses, the property allowance and Rent a Room relief, and recommends the cheapest</li><li class="feature__item">Handles joint ownership at any split, using each owner's other income</li><li class="feature__item">Pools several properties into one property business</li><li class="feature__item">Uses brought-forward property losses and unrelieved finance costs</li><li class="feature__item">Flags Making Tax Digital thresholds and the April 2027 property income rates</li><li class="feature__item">Runs in the browser with no sign-up; results can be shared as a link or printed</li></ul>
+  </div>
+</section>
+
+<section class="feature" data-section="Yield calculator" data-tone="sheet">
+  <div class="feature__wrap">
+    <div class="feature__text">
+      <h2 class="feature__title">A rental yield calculator that counts every cost</h2>
+      <p>Most yield calculators stop at gross yield. Ours takes off empty weeks, letting fees and running costs, adds your mortgage, and shows what you keep each month after income tax, with the return on the cash you put in.</p>
+      <p>Use it before you buy, or to check how a property you already own is performing.</p>
+      <a class="button" href="./rental-yield-calculator/">Open the rental yield calculator</a>
+    </div>
+    <ul class="feature__list"><li class="feature__item">Works out gross and net rental yield from the price, rent, running costs and empty weeks</li><li class="feature__item">Itemises running costs, with the letting agent fee as a percentage of the rent collected</li><li class="feature__item">Models the first year of an interest-only or repayment mortgage, with interest cover</li><li class="feature__item">Shows monthly and annual cash flow and the return on the cash you put in, including buying costs</li><li class="feature__item">Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland</li><li class="feature__item">Runs in the browser with no sign-up; results can be shared as a link or printed</li></ul>
   </div>
 </section>
 
@@ -406,6 +421,7 @@
         </picture>
       </a>
       <p class="site-footer__description">Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates.</p>
+      <p class="site-footer__location"><svg class="site-footer__location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Merseyside, England, United Kingdom</p>
       <a class="site-footer__email" href="mailto:contact@calculatemytax.uk">contact@calculatemytax.uk</a>
     </div>
     <div class="site-footer__columns">

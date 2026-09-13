@@ -133,11 +133,13 @@ Neither depends on page-specific CSS. Source files: `src/partials/header.html` a
 - **Row container:** white background (Sheet), 1px Hairline bottom border, content width 1224px, padding 16px top and bottom, 24px sides, items spaced between.
 - **Site Logo widget:** `assets/img/brand/calculatemytax-logo.webp`, with the PNG as a fallback. It is 798 by 160 pixels and leaves out the tagline, which is unreadable at header size. Display it 51px tall, or 34px below 768px. Link to home. Alt text "CalculateMyTax home".
 - **Nav Menu widget** using a WordPress menu called "Main":
+  - **Home.**
   - **Calculators.** One link while there is one live tool; a dropdown of tools once there are two or more (see section 11 for the tools registry).
   - **Guides:** a dropdown with the nine guide pages in the order in section 12, ending with Frequently asked questions.
-  - **Who we can help:** a dropdown with the parent page first, then First-time filers.
   - **Our services:** a dropdown with the parent page first, then Self Assessment tax returns.
   - **Contact.**
+  - **Call-to-action button:** "Calculate my tax", linking to the rental income tax calculator and styled as the Primary button. Its label and link are `header.cta` in `data/site.json`. On mobile it sits at the end of the open menu.
+  - Who we can help is not in the header; it is listed in the footer only.
   - Dropdown panels: white, 1px Rule border with a 4px Navy top border, 17rem minimum width. Item hover background is Navy wash.
 - **Sticky:** set the section to sticky top. On scroll it should **shrink, not hide**: the logo goes from 51px to 40px and the vertical padding from 16px to 8px. Use Elementor Pro's sticky "Effects offset" with Custom CSS on `.elementor-sticky--effects`.
 - **Mobile, below 768px:** the Nav Menu collapses behind a **Menu** button. Sub-menus open inline, with a 2px Navy left border.
@@ -145,7 +147,7 @@ Neither depends on page-specific CSS. Source files: `src/partials/header.html` a
 ### Footer template: container "Site footer"
 
 - **Container:** white background, 4px Navy top border, content width 1224px, padding 48px top, 24px sides and bottom.
-- **Inner container "Brand"** (flex basis 16rem): the full logo with its tagline (`calculatemytax-logo-full.webp`), 340px wide and never wider than its container; the one-line description "Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates."; the contact email as a mailto link.
+- **Inner container "Brand"** (flex basis 16rem): the full logo with its tagline (`calculatemytax-logo-full.webp`), 340px wide and never wider than its container; the one-line description "Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates."; the location "Merseyside, England, United Kingdom" with a map pin icon (`contact.location` in `data/site.json`); the contact email as a mailto link.
 - **Inner container "Columns"** (flex basis 36rem), holding four columns, each with a Besley heading and a list of links:
   1. **Calculators:** every live tool from the tools registry (section 11). Currently Rental income tax calculator.
   2. **Who we can help:** First-time filers.
@@ -175,10 +177,10 @@ Each block type is rebuilt like this:
 | `faq`: questions | Container. **Accordion widget with FAQ schema switched on.** Question 21.3px bold; answers as paragraphs; a 1px Rule line under each item |
 | `callout`: link to the calculator | Container row, white background, 4px Navy top border, 32px padding. A column of Heading (26.6px) and Text, then a Button |
 | `related`: related guides | Container, with a Heading (H2) and an inner row container of Button widgets styled as text links: 1px Rule bottom border, flex basis 16rem, wrapping |
-| `sources`: sources | Container, 13.6px Muted text. Heading (H2, 21.3px) and a Text Editor list of external links |
 | `feature`: home calculator block | Container row with two inner containers: text with a button, and a list with a 2px Navy top border and Hairline row dividers |
 | `audience`: home "Who we help" | Container row, white background, two inner columns, each a Heading, Text and Button |
-| `contact`: contact page | Container, column: Heading, a mailto link at 33px in Besley, Text |
+| `contact-form`: contact page | Container row, white background. **Left:** a Form widget in a white card (1px Hairline border, 12px radius, card shadow, 32px padding) with Name, Email, Phone (optional), a Topic select and Message. On submit, send an email to hivenexis6@gmail.com and redirect to `/contact/thank-you/`. **Right:** a column with a Heading, the email and location as label and value rows, and a short note. See section 15 |
+| `feature` with `data-tone="sheet"` | As `feature`, with a white background and a 1px Hairline top border. Used for the rental yield calculator block on the home page |
 | `Calculator` | **Shortcode widget, not containers.** See section 10 |
 | `Rental yield calculator` | **Shortcode widget, not containers.** See section 10 |
 
@@ -291,6 +293,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 | `/our-services/self-assessment-tax-returns/` | Self Assessment tax returns | Our services |
 | `/about/` | About | |
 | `/contact/` | Contact | |
+| `/contact/thank-you/` | Message sent (set to noindex) | Contact |
 | `/privacy-policy/` | Privacy policy | |
 | `/terms-of-use/` | Terms of use | |
 | `/cookie-policy/` | Cookie policy | |
@@ -302,7 +305,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 - **Title and meta description:** copy each page's from the `<title>` and `<meta name="description">` in `docs/…/index.html` into the SEO plugin. Each page targets one keyword; the keyword is the `keyword` field at the top of each file in `src/pages/`. Do not change them without checking for overlap.
 - **Social sharing image:** set `assets/img/brand/calculatemytax-social.png` (1200 by 630) as the default Open Graph and Twitter image. Each guide uses its own featured image (`assets/img/guides/<page>.jpg`) instead. Set it as the page's Featured Image and the SEO plugin will use it.
 - **Structured data.** Copy each JSON-LD block from the built pages where the plugin cannot produce it:
-  - Organization, WebSite and BreadcrumbList on every page, via the SEO plugin settings.
+  - Organization, WebSite and BreadcrumbList on every page, via the SEO plugin settings. The Organization includes the address: region Merseyside, country GB.
   - WebApplication on the calculator page (FinanceApplication, price 0). Add it as custom schema.
   - FAQPage on the home page, the FAQ page and every guide with a questions block. Use the Accordion widget's FAQ schema switch. The home page questions are different from the FAQ page's, so no question is marked up twice.
   - HowTo on "Tax on rental income". Use custom schema.
@@ -353,5 +356,10 @@ Everything not listed here converts directly into containers and standard widget
     None of it is used for page layout.
 14. **The quick estimate form in the home hero.** A small shortcode that belongs to the calculator plugin (section 10), not Form widgets, because it recalculates as you type.
 15. **Guide cards on the home page.** A Loop Grid of the guide pages with their featured images and summaries (section 8).
+16. **The contact form.**
+    - The static site posts to FormSubmit, because GitHub Pages cannot send email.
+    - In WordPress, rebuild it with Elementor Pro's Form widget: an Email action to hivenexis6@gmail.com and a Redirect action to `/contact/thank-you/`. WordPress then sends the email itself, so FormSubmit is no longer needed.
+    - Use an SMTP plugin so the emails are delivered reliably.
+    - The email setup for contact@calculatemytax.uk is in `handover/EMAIL-SETUP.md`.
 
 **Not used anywhere, so there is nothing to rework:** CSS Grid, `:has()`, container queries, clip-path, scroll-driven animation, utility classes, third-party scripts, or fonts loaded from Google.

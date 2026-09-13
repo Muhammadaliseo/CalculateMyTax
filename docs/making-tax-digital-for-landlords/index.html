@@ -40,7 +40,12 @@
       "name": "CalculateMyTax",
       "url": "https://muhammadaliseo.github.io/CalculateMyTax/",
       "logo": "https://muhammadaliseo.github.io/CalculateMyTax/assets/img/brand/calculatemytax-logo.png",
-      "email": "contact@calculatemytax.uk"
+      "email": "contact@calculatemytax.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Merseyside",
+        "addressCountry": "GB"
+      }
     },
     {
       "@type": "WebSite",
@@ -115,6 +120,7 @@
     <button class="site-header__menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul class="site-nav__list">
+      <li class="site-nav__item"><a class="site-nav__link" href="../">Home</a></li>
       <li class="site-nav__item">
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-calculators">Calculators</button>
         <ul class="site-nav__menu" id="menu-calculators"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-income-tax-calculator/">Rental income tax calculator</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-yield-calculator/">Rental yield calculator</a></li></ul>
@@ -124,14 +130,11 @@
         <ul class="site-nav__menu" id="menu-guides"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../tax-on-rental-income/">Tax on rental income</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../allowable-expenses-for-landlords/">Allowable expenses for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../property-allowance-vs-expenses/">Property allowance or expenses</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rent-a-room-scheme/">The Rent a Room Scheme</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-income-tax-scotland/">Rental income tax in Scotland</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../property-income-tax-rates-2027/">Property income tax rates from April 2027</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../making-tax-digital-for-landlords/" aria-current="page">Making Tax Digital for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../faq/">Frequently asked questions</a></li></ul>
       </li>
       <li class="site-nav__item">
-        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-who-we-can-help">Who we can help</button>
-        <ul class="site-nav__menu" id="menu-who-we-can-help"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../who-we-can-help/">Who we can help</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../who-we-can-help/first-time-filers/">First-time filers</a></li></ul>
-      </li>
-      <li class="site-nav__item">
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-our-services">Our services</button>
         <ul class="site-nav__menu" id="menu-our-services"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../our-services/">Our services</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../our-services/self-assessment-tax-returns/">Self Assessment tax returns</a></li></ul>
       </li>
       <li class="site-nav__item"><a class="site-nav__link" href="../contact/">Contact</a></li>
+      <li class="site-nav__item"><a class="site-nav__cta" href="../rental-income-tax-calculator/">Calculate my tax</a></li>
     </ul>
     </nav>
   </div>
@@ -293,18 +296,6 @@
   </div>
 </section>
 
-<section class="sources" data-section="Sources">
-  <div class="sources__wrap">
-    <h2 class="sources__title">Sources</h2>
-    <ul class="sources__list">
-      <li><a class="sources__link" href="https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax">GOV.UK: Find out if and when you need to use Making Tax Digital for Income Tax</a></li>
-      <li><a class="sources__link" href="https://www.gov.uk/guidance/work-out-your-qualifying-income-for-making-tax-digital-for-income-tax">GOV.UK: Work out your qualifying income for Making Tax Digital for Income Tax</a></li>
-      <li><a class="sources__link" href="https://www.gov.uk/guidance/use-making-tax-digital-for-income-tax/send-quarterly-updates">GOV.UK: Send quarterly updates</a></li>
-      <li><a class="sources__link" href="https://www.gov.uk/guidance/find-out-if-you-can-get-an-exemption-from-making-tax-digital-for-income-tax">GOV.UK: Find out if you can get an exemption from Making Tax Digital for Income Tax</a></li>
-    </ul>
-  </div>
-</section>
-
 </main>
 <footer class="site-footer" data-section="Site footer">
   <div class="site-footer__wrap">
@@ -316,6 +307,7 @@
         </picture>
       </a>
       <p class="site-footer__description">Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates.</p>
+      <p class="site-footer__location"><svg class="site-footer__location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Merseyside, England, United Kingdom</p>
       <a class="site-footer__email" href="mailto:contact@calculatemytax.uk">contact@calculatemytax.uk</a>
     </div>
     <div class="site-footer__columns">

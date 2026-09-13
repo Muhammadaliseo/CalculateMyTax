@@ -46,8 +46,8 @@ Every figure comes from published GOV.UK, HMRC and gov.scot rates, last verified
 ## Company
 
 - [About](https://muhammadaliseo.github.io/CalculateMyTax/about/): CalculateMyTax offers free UK landlord tax tools. See how we keep figures accurate, what the calculator covers and why results are estimates, not advice.
-- [Contact](https://muhammadaliseo.github.io/CalculateMyTax/contact/): Email CalculateMyTax with a question about the rental income tax calculator, to report an error in our figures or to ask about our Self Assessment service.
-- [Privacy policy](https://muhammadaliseo.github.io/CalculateMyTax/privacy-policy/): How CalculateMyTax handles personal data: the calculator runs in your browser, we set no cookies or tracking, and emails you send are used only to reply.
+- [Contact](https://muhammadaliseo.github.io/CalculateMyTax/contact/): Contact CalculateMyTax with our form or by email about the landlord tax calculators, an error in our figures, or our Self Assessment service.
+- [Privacy policy](https://muhammadaliseo.github.io/CalculateMyTax/privacy-policy/): How CalculateMyTax handles personal data: the calculators run in your browser, we set no cookies or tracking, and messages you send are used only to reply.
 - [Terms of use](https://muhammadaliseo.github.io/CalculateMyTax/terms-of-use/): The terms for using CalculateMyTax: general information and tax estimates for UK landlords, not advice, plus links, copyright and the law that applies.
 - [Cookie policy](https://muhammadaliseo.github.io/CalculateMyTax/cookie-policy/): CalculateMyTax sets no cookies and uses no analytics, adverts or tracking. Find out what cookies are and what we would do before adding any to the site.
 - [Disclaimer](https://muhammadaliseo.github.io/CalculateMyTax/disclaimer/): All figures on CalculateMyTax are estimates based on published HMRC rates and are not tax advice. See what the calculator does not cover before relying on it.

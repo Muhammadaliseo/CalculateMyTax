@@ -3,15 +3,16 @@
 - PASS: CSS Grid used 0 time(s)
 - PASS: no :has(), container queries, clip-path or scroll-driven animation
 
-## Built pages (23)
+## Built pages (24)
 - PASS: one class per element (no class soup)
 - PASS: no utility classes
 - PASS: every section is named and holds exactly one __wrap div
-- PASS: container nesting inside wraps: 2 section(s) deeper than two levels (listed for the migration notes)
+- PASS: container nesting inside wraps: 3 section(s) deeper than two levels (listed for the migration notes)
+  - Contact form: 3 levels
   - Calculator: 5 levels
   - Rental yield calculator: 6 levels
 - PASS: no third-party scripts or stylesheets
-- PASS: every page under 300 KB excluding fonts (largest index.html at 274 KB)
+- PASS: every page under 300 KB excluding fonts (largest index.html at 279 KB)
 - PASS: no skipped heading levels
 - PASS: no placeholder text
 - PASS: every image has width and height
@@ -20,28 +21,29 @@
 
 ### Page weight (KB, excluding fonts)
 - 404.html: 12
-- about/index.html: 90
-- allowable-expenses-for-landlords/index.html: 138
-- contact/index.html: 87
-- cookie-policy/index.html: 88
-- disclaimer/index.html: 88
-- faq/index.html: 105
-- index.html: 274
-- making-tax-digital-for-landlords/index.html: 135
-- our-services/index.html: 88
-- our-services/self-assessment-tax-returns/index.html: 94
-- privacy-policy/index.html: 89
-- property-allowance-vs-expenses/index.html: 134
-- property-income-tax-rates-2027/index.html: 137
-- rent-a-room-scheme/index.html: 127
-- rental-income-tax-calculator/index.html: 207
-- rental-income-tax-scotland/index.html: 135
-- rental-yield-calculator/index.html: 199
-- section-24-mortgage-interest-relief/index.html: 136
-- tax-on-rental-income/index.html: 138
-- terms-of-use/index.html: 88
-- who-we-can-help/first-time-filers/index.html: 98
-- who-we-can-help/index.html: 90
+- about/index.html: 94
+- allowable-expenses-for-landlords/index.html: 141
+- contact/index.html: 99
+- contact/thank-you/index.html: 89
+- cookie-policy/index.html: 91
+- disclaimer/index.html: 91
+- faq/index.html: 107
+- index.html: 279
+- making-tax-digital-for-landlords/index.html: 138
+- our-services/index.html: 91
+- our-services/self-assessment-tax-returns/index.html: 97
+- privacy-policy/index.html: 93
+- property-allowance-vs-expenses/index.html: 137
+- property-income-tax-rates-2027/index.html: 140
+- rent-a-room-scheme/index.html: 130
+- rental-income-tax-calculator/index.html: 209
+- rental-income-tax-scotland/index.html: 138
+- rental-yield-calculator/index.html: 202
+- section-24-mortgage-interest-relief/index.html: 139
+- tax-on-rental-income/index.html: 141
+- terms-of-use/index.html: 91
+- who-we-can-help/first-time-filers/index.html: 101
+- who-we-can-help/index.html: 93
 
 ## Contrast (WCAG 2.1, computed from tokens.css)
 - PASS: Navy text on Sheet: #03214B on #FFFFFF = 15.87:1 (needs 4.5:1)

@@ -23,8 +23,18 @@
   "customDomain": "",
   "customDomainNote": "Leave empty until calculatemytax.uk is registered and its DNS points at GitHub Pages. When filled in, the build writes docs/CNAME so GitHub keeps the custom domain.",
   "basePathNote": "Used only by 404.html, which GitHub Pages serves at any missing address. It is \"/CalculateMyTax/\" while the site runs at muhammadaliseo.github.io/CalculateMyTax/. Change it back to \"/\" once calculatemytax.uk points at the site.",
+  "header": {
+    "homeLabel": "Home",
+    "cta": { "label": "Calculate my tax", "path": "rental-income-tax-calculator/" },
+    "note": "The header menu is Home, Calculators, Guides, Our services and Contact, then the call-to-action button. Who we can help is listed in the footer only."
+  },
   "contact": {
-    "email": "contact@calculatemytax.uk"
+    "email": "contact@calculatemytax.uk",
+    "location": "Merseyside, England, United Kingdom",
+    "address": { "addressRegion": "Merseyside", "addressCountry": "GB" },
+    "formAction": "https://formsubmit.co/hivenexis6@gmail.com",
+    "formAjax": "https://formsubmit.co/ajax/hivenexis6@gmail.com",
+    "formNote": "The contact form is delivered by FormSubmit (formsubmit.co) to hivenexis6@gmail.com. The first message sends an activation email to that inbox. After activating, replace the email address in formAction and formAjax with the random string FormSubmit provides, so the Gmail address is not visible in the page source. See handover/EMAIL-SETUP.md."
   },
   "tools": [
     {

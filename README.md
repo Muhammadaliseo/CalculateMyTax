@@ -52,6 +52,7 @@ You can also open `docs/index.html` straight from your computer by double-clicki
 | `assets/js/quick-estimate.js` | The quick estimate form in the home page hero. |
 | `assets/js/yield-engine.js` | The rental yield engine: yield, empty weeks, first-year mortgage, cash flow and return on cash. |
 | `assets/js/yield-calculator.js` | The rental yield calculator interface. |
+| `assets/js/contact-form.js` | Checks the contact form and sends it without leaving the page. |
 | `assets/css/tokens.css` | Every colour, font, size, spacing, radius and shadow value. Change a value here and the whole site follows. |
 | `assets/css/home.css` | Home page blocks: hero, quick estimate, tool cards and guide cards. |
 | `assets/img/brand/`, `assets/img/guides/` | Logos, icons, the social image and each guide's featured image. |
@@ -67,6 +68,8 @@ You can also open `docs/index.html` straight from your computer by double-clicki
 - **Add a calculator to the menus.** Add an entry to `tools` in `data/site.json` with `"status": "live"` and run `npm run build`. It appears in the header and footer automatically.
 - **Social links.** Fill in a `url` and set `"enabled": true` in `data/site.json`, then rebuild. Disabled or empty links are never shown.
 - **Guide cards.** Each guide's `summary` and `imageAlt` in `data/site.json` feed the home page cards and the featured image.
+- **Header menu and button.** `header` in `data/site.json` sets the Home label and the call-to-action button's text and link.
+- **Contact form and email.** The contact form sends messages through FormSubmit to the address in `contact.formAction` and `contact.formAjax` in `data/site.json`. Activate it once, and set up forwarding for contact@calculatemytax.uk after registering the domain; both are explained in `handover/EMAIL-SETUP.md`. The footer location is `contact.location`.
 - **Logo and images.** Run `node build/asset-studio.mjs` and open http://localhost:4178/. It crops `assets/img/brand/Calculate tax name logo.png` into the logo files and favicons, and redraws the social image and guide images. The crop is measured for that upload, so a different logo file needs its crop measuring again at the top of `build/asset-studio.html`.
 
 All figures on the site are estimates based on published HMRC rates and are not a substitute for professional advice.
