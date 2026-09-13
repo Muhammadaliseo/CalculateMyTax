@@ -1,0 +1,131 @@
+<!--page
+{
+  "title": "Rental Yield Calculator UK | Gross, Net & After-Tax Yield",
+  "description": "Free UK rental yield calculator. Work out gross and net yield, monthly cash flow and return on cash for a buy-to-let, including mortgage costs and income tax.",
+  "keyword": "rental yield calculator",
+  "secondaryKeywords": ["yield calculator", "rental yield calculator uk", "property yield calculator", "rental return calculator", "rental property return calculator", "real estate yield calculator", "rent yield calculator", "buy to let yield calculator", "yield calculator uk", "btl yield calculator", "net yield calculator", "rental property roi calculator", "how to calculate rental yield", "rental yield formula", "is a 5 yield good for property"],
+  "crumb": "Rental yield calculator",
+  "schema": ["WebApplication", "FAQPage"],
+  "styles": ["calculator"],
+  "scripts": ["tax-engine", "yield-engine", "yield-calculator"],
+  "data": ["rates"],
+  "yieldExamples": {
+    "example": { "price": 250000, "monthlyRent": 1250, "runningCosts": 2500, "voidWeeks": 2, "buyingCosts": 15000, "mortgage": { "depositRate": 0.25, "interestRate": 0.05, "type": "interestOnly", "termYears": 25 }, "tax": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 30000 } },
+    "five": { "price": 250000, "monthlyRent": 1041.67, "runningCosts": 2500, "voidWeeks": 2, "buyingCosts": 15000, "mortgage": { "depositRate": 0.25, "interestRate": 0.05, "type": "interestOnly", "termYears": 25 }, "tax": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 30000 } }
+  }
+}
+-->
+<section class="intro" data-section="Intro" data-print-hide>
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Rental yield calculator for UK landlords</h1>
+    <p class="intro__lede">Work out the gross and net rental yield on a UK buy-to-let property. Then see the monthly cash flow, the return on the cash you put in, and what is left after mortgage payments and income tax.</p>
+    <p class="intro__meta">Income tax figures use {{label:current}} HMRC rates, last verified {{verified}}. Results are estimates for the first year, not financial advice.</p>
+  </div>
+</section>
+
+{{include:yield-calculator}}
+
+<section class="prose" data-section="How to use">
+  <div class="prose__wrap">
+    <h2>How to use the rental yield calculator</h2>
+    <ol>
+      <li><strong>Enter the price and the monthly rent.</strong> Use what you paid, or the current value if you already own the property.</li>
+      <li><strong>Add running costs and empty weeks.</strong> Enter a year of costs as one figure, or itemise them, including the letting agent fee as a percentage of the rent.</li>
+      <li><strong>Set the mortgage.</strong> Enter your deposit and interest rate, and choose interest only or repayment. Untick the box for a cash purchase.</li>
+      <li><strong>Include income tax.</strong> Enter your other income and where you live, so the rental profit is taxed at your own rates.</li>
+      <li><strong>Add stamp duty and buying costs</strong> under More options, so the return on your cash reflects everything you paid.</li>
+    </ol>
+    <p>The result shows the net yield first, because it is closer to what a property really earns, with the gross yield, cash flow, return on cash and interest cover alongside.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="How to calculate rental yield">
+  <div class="prose__wrap">
+    <h2>How to calculate rental yield</h2>
+    <p>There are two rental yield formulas. <strong>Gross rental yield</strong> is the annual rent divided by the property price, multiplied by 100. <strong>Net rental yield</strong> takes the rent lost to empty weeks and the running costs off the annual rent first, then divides by the price and multiplies by 100.</p>
+    <p>Here is the example already in the calculator: a £250,000 flat let for £1,250 a month, with two empty weeks and £2,500 of running costs a year.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Annual rent, £1,250 × 12</dt><dd class="worked__amount">{{ymoney:example.annualRent}}</dd></div>
+      <div class="worked__row"><dt>Gross yield, {{ymoney:example.annualRent}} ÷ £250,000 × 100</dt><dd class="worked__amount">{{ypct:example.grossYield}}</dd></div>
+      <div class="worked__row"><dt>Less two empty weeks</dt><dd class="worked__amount">{{ymoney:example.voidLoss}}</dd></div>
+      <div class="worked__row"><dt>Less running costs</dt><dd class="worked__amount">{{ymoney:example.runningTotal}}</dd></div>
+      <div class="worked__row"><dt>Net rental income</dt><dd class="worked__amount">{{ymoney:example.netIncome}}</dd></div>
+      <div class="worked__total"><dt>Net yield, {{ymoney:example.netIncome}} ÷ £250,000 × 100</dt><dd class="worked__amount">{{ypct:example.netYield}}</dd></div>
+    </dl>
+    <p>Gross yield is quick and useful for comparing adverts. Net yield is the better guide to what a property earns, because two homes with the same rent and price can have very different service charges, repair bills and letting fees.</p>
+
+    <h2>Cash flow and the return on your cash</h2>
+    <p>Yield ignores how you paid for the property. With a 75% interest-only mortgage at 5%, the example pays {{ymoney:example.mortgage.annualInterest}} of interest a year, leaving a cash flow of {{ymoney:example.cashFlowBeforeTax}} before tax. The rent is {{ycover:example.mortgage.interestCover}} of the interest, a figure lenders call interest cover.</p>
+    <p>The return on cash, sometimes called cash-on-cash return, compares that cash flow with what you actually put in: the deposit plus stamp duty and buying costs, {{ymoney:example.cashInvested}} here. Before tax it is {{ypct:example.cashOnCash}}. A repayment mortgage lowers the cash flow further, because capital repayments come out of the rent even though they build up your equity rather than costing you money.</p>
+
+    <h2>How income tax changes your rental return</h2>
+    <p>You pay income tax on the rental profit at your own rates, and since Section 24, mortgage interest earns a tax credit instead of coming off the rent. For a basic rate taxpayer, the example's tax is {{ymoney:example.tax.propertyTax}}, leaving {{ymoney:example.tax.cashFlowAfterTax}} a year and a return on cash of {{ypct:example.tax.cashOnCashAfterTax}}. A higher rate taxpayer with the same property keeps less. The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> shows the full tax working, and the guide to <a href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a> explains the credit.</p>
+
+    <h2>Is a 5% rental yield good?</h2>
+    <p>It depends on what the yield has to pay for. Take the same £250,000 property let at a 5% gross yield, £1,041.67 a month, with the same costs, a 75% interest-only mortgage at 5% and a basic rate taxpayer. The net yield is {{ypct:five.netYield}}, the rent is {{ycover:five.mortgage.interestCover}} of the mortgage interest, and after income tax the landlord keeps {{ymoney:five.tax.cashFlowAfterTax}} a year.</p>
+    <p>With a smaller mortgage, a lower rate or lower costs, the same 5% yield leaves far more. That is why the calculator shows cash flow and return on cash, not just the yield.</p>
+
+    <h2>What this property yield calculator does not cover</h2>
+    <ul>
+      <li>Capital growth, and Capital Gains Tax when you sell.</li>
+      <li>Stamp duty worked out for you. Enter your own figure; GOV.UK sets out the higher rates for additional homes.</li>
+      <li>Mortgage payments after the first year, or a change of rate when a fixed deal ends.</li>
+      <li>Property owned through a limited company, which pays Corporation Tax instead of income tax.</li>
+      <li>Joint owners' tax. The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> splits the profit between owners.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="faq" data-section="Rental yield questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Rental yield questions</h2>
+    <details class="faq__item">
+      <summary class="faq__question">What is rental yield?</summary>
+      <div class="faq__answer"><p>Rental yield is the rent a property earns in a year, shown as a percentage of what it cost or what it is worth. It puts properties at different prices on the same scale, so a £150,000 flat and a £400,000 house can be compared directly.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How do you work out rental yield?</summary>
+      <div class="faq__answer"><p>Multiply the monthly rent by 12, divide by the property price and multiply by 100. That is the gross yield. For the net yield, take the rent lost to empty weeks and a year of running costs off the annual rent before you divide.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What is the difference between gross and net rental yield?</summary>
+      <div class="faq__answer"><p>Gross yield uses the full rent. Net yield uses the rent left after empty weeks and running costs such as letting fees, repairs, insurance, service charges and ground rent, so it is always lower and closer to what the property actually earns.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does rental yield include mortgage payments?</summary>
+      <div class="faq__answer"><p>No. Gross and net yield measure the property against its price, whether or not it has a mortgage. Mortgage payments are counted in cash flow and return on cash instead, which is why the calculator shows those next to the yield.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What is a good rental yield in the UK?</summary>
+      <div class="faq__answer"><p>There is no single figure. Compare the net yield with your mortgage rate and with what the same cash could earn elsewhere. A high yield can come with higher running costs, more empty weeks or more management, and a lower yield can still suit you if you expect the property's value to grow. Net yield and cash flow after tax are better for comparing properties than gross yield.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is rental yield the same as return on investment?</summary>
+      <div class="faq__answer"><p>No. Yield compares the rent with the whole property price. Return on investment, or return on cash, compares your yearly cash flow after mortgage payments with the cash you put in: the deposit and buying costs. With a mortgage, it can be higher or lower than the yield, depending on your interest rate.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Tools and guides for landlords</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}rental-income-tax-calculator/">Work out the tax on your rental income</a>
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">How Section 24 mortgage interest relief works</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Which running costs landlords can claim</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/stamp-duty-land-tax/residential-property-rates">GOV.UK: Stamp Duty Land Tax residential property rates</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out</a></li>
+    </ul>
+  </div>
+</section>

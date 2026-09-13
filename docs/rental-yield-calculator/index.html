@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rental Yield Calculator UK | Gross, Net &amp; After-Tax Yield</title>
+  <meta name="description" content="Free UK rental yield calculator. Work out gross and net yield, monthly cash flow and return on cash for a buy-to-let, including mortgage costs and income tax.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://muhammadaliseo.github.io/CalculateMyTax/rental-yield-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CalculateMyTax">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Rental Yield Calculator UK | Gross, Net &amp; After-Tax Yield">
+  <meta property="og:description" content="Free UK rental yield calculator. Work out gross and net yield, monthly cash flow and return on cash for a buy-to-let, including mortgage costs and income tax.">
+  <meta property="og:url" content="https://muhammadaliseo.github.io/CalculateMyTax/rental-yield-calculator/">
+  <meta property="og:image" content="https://muhammadaliseo.github.io/CalculateMyTax/assets/img/brand/calculatemytax-social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rental Yield Calculator UK | Gross, Net &amp; After-Tax Yield">
+  <meta name="twitter:description" content="Free UK rental yield calculator. Work out gross and net yield, monthly cash flow and return on cash for a buy-to-let, including mortgage costs and income tax.">
+  <meta name="twitter:image" content="https://muhammadaliseo.github.io/CalculateMyTax/assets/img/brand/calculatemytax-social.png">
+  <meta name="theme-color" content="#03214B">
+  <link rel="icon" href="../assets/img/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/brand/icon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/atkinson-hyperlegible-next-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css">
+  <link rel="stylesheet" href="../assets/css/print.css" media="print">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://muhammadaliseo.github.io/CalculateMyTax/#organization",
+      "name": "CalculateMyTax",
+      "url": "https://muhammadaliseo.github.io/CalculateMyTax/",
+      "logo": "https://muhammadaliseo.github.io/CalculateMyTax/assets/img/brand/calculatemytax-logo.png",
+      "email": "contact@calculatemytax.uk"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://muhammadaliseo.github.io/CalculateMyTax/#website",
+      "name": "CalculateMyTax",
+      "url": "https://muhammadaliseo.github.io/CalculateMyTax/",
+      "publisher": {
+        "@id": "https://muhammadaliseo.github.io/CalculateMyTax/#organization"
+      },
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://muhammadaliseo.github.io/CalculateMyTax/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rental yield calculator",
+          "item": "https://muhammadaliseo.github.io/CalculateMyTax/rental-yield-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Rental yield calculator",
+      "url": "https://muhammadaliseo.github.io/CalculateMyTax/rental-yield-calculator/",
+      "description": "Free UK rental yield calculator. Work out gross and net yield, monthly cash flow and return on cash for a buy-to-let, including mortgage costs and income tax.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      },
+      "featureList": [
+        "Works out gross and net rental yield from the price, rent, running costs and empty weeks",
+        "Itemises running costs, with the letting agent fee as a percentage of the rent collected",
+        "Models the first year of an interest-only or repayment mortgage, with interest cover",
+        "Shows monthly and annual cash flow and the return on the cash you put in, including buying costs",
+        "Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland",
+        "Runs in the browser with no sign-up; results can be shared as a link or printed"
+      ],
+      "publisher": {
+        "@id": "https://muhammadaliseo.github.io/CalculateMyTax/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is rental yield?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rental yield is the rent a property earns in a year, shown as a percentage of what it cost or what it is worth. It puts properties at different prices on the same scale, so a £150,000 flat and a £400,000 house can be compared directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you work out rental yield?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the monthly rent by 12, divide by the property price and multiply by 100. That is the gross yield. For the net yield, take the rent lost to empty weeks and a year of running costs off the annual rent before you divide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between gross and net rental yield?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross yield uses the full rent. Net yield uses the rent left after empty weeks and running costs such as letting fees, repairs, insurance, service charges and ground rent, so it is always lower and closer to what the property actually earns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does rental yield include mortgage payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Gross and net yield measure the property against its price, whether or not it has a mortgage. Mortgage payments are counted in cash flow and return on cash instead, which is why the calculator shows those next to the yield."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good rental yield in the UK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single figure. Compare the net yield with your mortgage rate and with what the same cash could earn elsewhere. A high yield can come with higher running costs, more empty weeks or more management, and a lower yield can still suit you if you expect the property's value to grow. Net yield and cash flow after tax are better for comparing properties than gross yield."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is rental yield the same as return on investment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Yield compares the rent with the whole property price. Return on investment, or return on cash, compares your yearly cash flow after mortgage payments with the cash you put in: the deposit and buying costs. With a mortgage, it can be higher or lower than the yield, depending on your interest rate."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="site-body">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header" data-section="Site header">
+  <div class="site-header__wrap">
+    <a class="site-header__logo" href="../">
+      <picture>
+        <source srcset="../assets/img/brand/calculatemytax-logo.webp" type="image/webp">
+        <img class="site-header__logo-image" src="../assets/img/brand/calculatemytax-logo.png" width="798" height="160" alt="CalculateMyTax home">
+      </picture>
+    </a>
+    <button class="site-header__menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-calculators" data-current="true">Calculators</button>
+        <ul class="site-nav__menu" id="menu-calculators"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-income-tax-calculator/">Rental income tax calculator</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-yield-calculator/" aria-current="page">Rental yield calculator</a></li></ul>
+      </li>
+      <li class="site-nav__item">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-guides">Guides</button>
+        <ul class="site-nav__menu" id="menu-guides"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../tax-on-rental-income/">Tax on rental income</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../allowable-expenses-for-landlords/">Allowable expenses for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../property-allowance-vs-expenses/">Property allowance or expenses</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rent-a-room-scheme/">The Rent a Room Scheme</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../rental-income-tax-scotland/">Rental income tax in Scotland</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../property-income-tax-rates-2027/">Property income tax rates from April 2027</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../making-tax-digital-for-landlords/">Making Tax Digital for landlords</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../faq/">Frequently asked questions</a></li></ul>
+      </li>
+      <li class="site-nav__item">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-who-we-can-help">Who we can help</button>
+        <ul class="site-nav__menu" id="menu-who-we-can-help"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../who-we-can-help/">Who we can help</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../who-we-can-help/first-time-filers/">First-time filers</a></li></ul>
+      </li>
+      <li class="site-nav__item">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-our-services">Our services</button>
+        <ul class="site-nav__menu" id="menu-our-services"><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../our-services/">Our services</a></li><li class="site-nav__menu-item"><a class="site-nav__menu-link" href="../our-services/self-assessment-tax-returns/">Self Assessment tax returns</a></li></ul>
+      </li>
+      <li class="site-nav__item"><a class="site-nav__link" href="../contact/">Contact</a></li>
+    </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main" id="main">
+<section class="intro" data-section="Intro" data-print-hide>
+  <div class="intro__wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb__link" href="../">Home</a><span class="breadcrumb__separator" aria-hidden="true">/</span><span class="breadcrumb__current" aria-current="page">Rental yield calculator</span></nav>
+    <h1 class="intro__title">Rental yield calculator for UK landlords</h1>
+    <p class="intro__lede">Work out the gross and net rental yield on a UK buy-to-let property. Then see the monthly cash flow, the return on the cash you put in, and what is left after mortgage payments and income tax.</p>
+    <p class="intro__meta">Income tax figures use 2026/27 HMRC rates, last verified 13 September 2026. Results are estimates for the first year, not financial advice.</p>
+  </div>
+</section>
+
+<section class="calculator" data-section="Rental yield calculator" data-yield-calculator>
+  <div class="calculator__wrap">
+    <form class="calculator__form" data-form novalidate autocomplete="off">
+      <p class="calc-example" data-example-note>These are example figures. Type over them with your own.</p>
+
+      <div class="calc-ledger">
+        <div class="calc-line" data-line="price">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Property price or value</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="price" type="text" inputmode="decimal" value="250,000"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>What you paid, or what the property is worth now if you already own it.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <div class="calc-line" data-line="monthlyRent">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Monthly rent</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="monthlyRent" type="text" inputmode="decimal" value="1,250"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>The rent your tenant pays each month, before any costs.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <div class="calc-line" data-line="runningCosts">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Annual running costs</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="runningCosts" type="text" inputmode="decimal" value="2,500"></span>
+          </label>
+          <p class="calc-line__hint" data-cost-hint>A year of letting agent fees, repairs, insurance, service charge and ground rent. Leave out mortgage payments.</p>
+          <p class="calc-line__hint" data-itemised-note hidden>Worked out from your itemised list below.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <details class="calc-helper" data-cost-helper>
+          <summary class="calc-helper__summary">Itemise your running costs</summary>
+          <div class="calc-helper__body">
+            <p class="calc-helper__intro">Enter a year of costs. The letting agent fee is a percentage of the rent you actually collect.</p>
+            <div class="calc-helper__rows">
+              <div class="calc-item" data-line="lettingFee">
+                <label class="calc-item__label">
+                  <span class="calc-item__name">Letting agent fee</span>
+                  <span class="calc-item__field"><input class="calc-item__input" name="lettingFee" type="text" inputmode="decimal" data-plain><span class="calc-line__unit" aria-hidden="true">%</span></span>
+                </label>
+                <p class="calc-item__tip">Full management often costs more than a tenant-find service.</p>
+                <p class="calc-line__error" data-error hidden></p>
+              </div>
+              <div class="calc-item" data-line="costRepairs">
+                <label class="calc-item__label">
+                  <span class="calc-item__name">Repairs and maintenance</span>
+                  <span class="calc-item__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-item__input" name="costRepairs" type="text" inputmode="decimal"></span>
+                </label>
+                <p class="calc-line__error" data-error hidden></p>
+              </div>
+              <div class="calc-item" data-line="costInsurance">
+                <label class="calc-item__label">
+                  <span class="calc-item__name">Landlord insurance</span>
+                  <span class="calc-item__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-item__input" name="costInsurance" type="text" inputmode="decimal"></span>
+                </label>
+                <p class="calc-line__error" data-error hidden></p>
+              </div>
+              <div class="calc-item" data-line="costService">
+                <label class="calc-item__label">
+                  <span class="calc-item__name">Service charge and ground rent</span>
+                  <span class="calc-item__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-item__input" name="costService" type="text" inputmode="decimal"></span>
+                </label>
+                <p class="calc-line__error" data-error hidden></p>
+              </div>
+              <div class="calc-item" data-line="costOther">
+                <label class="calc-item__label">
+                  <span class="calc-item__name">Safety checks, licences and other costs</span>
+                  <span class="calc-item__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-item__input" name="costOther" type="text" inputmode="decimal"></span>
+                </label>
+                <p class="calc-line__error" data-error hidden></p>
+              </div>
+            </div>
+            <div class="calc-helper__footer">
+              <p class="calc-helper__total">Total <strong data-out="costTotal">£2,500</strong></p>
+              <button class="button-quiet" type="button" data-clear-items>Clear the list</button>
+            </div>
+          </div>
+        </details>
+
+        <div class="calc-line" data-line="voidWeeks">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Empty weeks a year</span>
+            <span class="calc-line__field"><input class="calc-line__input" name="voidWeeks" type="text" inputmode="decimal" value="2" data-plain><span class="calc-line__unit" aria-hidden="true">weeks</span></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Weeks between tenants with no rent coming in. Two weeks is about 4% of the year.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+      </div>
+
+      <fieldset class="calc-group">
+        <legend class="calc-group__legend">Mortgage</legend>
+        <label class="calc-check"><input class="calc-check__input" type="checkbox" name="hasMortgage" checked><span class="calc-check__text">The property has a mortgage</span></label>
+        <div class="calc-line" data-line="deposit" data-mortgage-only>
+          <label class="calc-line__label">
+            <span class="calc-line__name">Deposit</span>
+            <span class="calc-line__field"><input class="calc-line__input" name="deposit" type="text" inputmode="decimal" value="25" data-plain><span class="calc-line__unit" aria-hidden="true">%</span></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Your deposit as a percentage of the price. The rest is the mortgage loan.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+        <div class="calc-line" data-line="interestRate" data-mortgage-only>
+          <label class="calc-line__label">
+            <span class="calc-line__name">Mortgage interest rate</span>
+            <span class="calc-line__field"><input class="calc-line__input" name="interestRate" type="text" inputmode="decimal" value="5" data-plain><span class="calc-line__unit" aria-hidden="true">%</span></span>
+          </label>
+          <p class="calc-line__hint" data-hint>The yearly rate on your mortgage deal.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+        <label class="calc-setting" data-mortgage-only>
+          <span class="calc-setting__label">Mortgage type</span>
+          <select class="calc-setting__control" name="mortgageType">
+            <option value="interestOnly" selected>Interest only</option>
+            <option value="repayment">Repayment</option>
+          </select>
+        </label>
+        <div class="calc-line" data-line="termYears" data-repayment-only hidden>
+          <label class="calc-line__label">
+            <span class="calc-line__name">Mortgage term</span>
+            <span class="calc-line__field"><input class="calc-line__input" name="termYears" type="text" inputmode="decimal" value="25" data-plain><span class="calc-line__unit" aria-hidden="true">years</span></span>
+          </label>
+          <p class="calc-line__hint" data-hint>The calculator shows the first year of payments.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="calc-group">
+        <legend class="calc-group__legend">Income tax</legend>
+        <label class="calc-check"><input class="calc-check__input" type="checkbox" name="includeTax" checked><span class="calc-check__text">Show my cash flow after income tax</span></label>
+        <div class="calc-settings" data-tax-only>
+          <label class="calc-setting">
+            <span class="calc-setting__label">Tax year</span>
+            <select class="calc-setting__control" name="taxYear"><option value="2025-26">2025/26</option><option value="2026-27" selected>2026/27</option><option value="2027-28">2027/28 (future year)</option></select>
+          </label>
+          <label class="calc-setting">
+            <span class="calc-setting__label">Where you live</span>
+            <select class="calc-setting__control" name="region"><option value="england_wales_ni" selected>England, Wales and Northern Ireland</option><option value="scotland">Scotland</option></select>
+          </label>
+        </div>
+        <div class="calc-line" data-line="otherIncome" data-tax-only>
+          <label class="calc-line__label">
+            <span class="calc-line__name">Your other annual income</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="otherIncome" type="text" inputmode="decimal" value="30,000"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Salary, pension and self-employment profit before tax. Rental profit is taxed on top of it.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+      </fieldset>
+
+      <details class="calc-advanced">
+        <summary class="calc-advanced__summary">More options: stamp duty and buying costs</summary>
+        <div class="calc-advanced__body">
+          <div class="calc-line" data-line="buyingCosts">
+            <label class="calc-line__label">
+              <span class="calc-line__name">Stamp duty and buying costs</span>
+              <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="buyingCosts" type="text" inputmode="decimal" value="15,000"></span>
+            </label>
+            <p class="calc-line__hint" data-hint>Stamp duty, legal and survey fees, mortgage fees and any refurbishment. They count towards the cash you put in.</p>
+            <p class="calc-line__error" data-error hidden></p>
+          </div>
+        </div>
+      </details>
+    </form>
+
+    <aside class="calc-results" data-results aria-label="Your result">
+      <div class="calc-results__panel" data-panel>
+        <p class="calc-results__label">Net rental yield</p>
+        <p class="calc-results__figure" data-out="netYield">4.77%</p>
+        <p class="calc-results__monthly">Gross yield <span data-out="grossYield">6.00%</span></p>
+        <p class="calc-results__keep" data-out="cashSentence">You clear £170 a month after running costs, mortgage payments and income tax.</p>
+        <dl class="calc-results__rates">
+          <div class="calc-results__rate"><dt class="calc-results__rate-name" data-out="returnLabel">Return on cash, after tax</dt><dd class="calc-results__rate-value" data-out="returnValue">2.63%</dd></div>
+          <div class="calc-results__rate" data-cover><dt class="calc-results__rate-name">Interest cover</dt><dd class="calc-results__rate-value" data-out="interestCover">160%</dd></div>
+        </dl>
+        <p class="calc-results__invalid" data-invalid-note hidden>Check the highlighted box to update your result.</p>
+      </div>
+
+      <div class="calc-alerts">
+        <p class="calc-alert" data-alert="negative" hidden><strong>The rent does not cover the outgoings.</strong> On these figures you would need to pay in money from elsewhere every month.</p>
+        <p class="calc-alert" data-alert="noCover" hidden><strong>The rent is less than the mortgage interest.</strong> Buy-to-let lenders usually want the rent to be well above the interest, so check this with a mortgage broker.</p>
+        <p class="calc-alert" data-alert="forecast" hidden><strong><span data-slot="year"></span> has not started yet.</strong> <span data-slot="note"></span></p>
+      </div>
+
+      <details class="calc-detail" open>
+        <summary class="calc-detail__summary">Where the rent goes</summary>
+        <div class="calc-detail__body">
+          <div class="calc-bar" data-bar role="img"></div>
+          <ul class="calc-bar-key" data-bar-key></ul>
+          <dl class="calc-sums">
+            <div class="calc-sums__row"><dt class="calc-sums__name">Rent for a full year</dt><dd class="calc-sums__value" data-out="sumAnnualRent">£15,000</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Less empty weeks</dt><dd class="calc-sums__value" data-out="sumVoid">£577</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Less running costs</dt><dd class="calc-sums__value" data-out="sumCosts">£2,500</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Net rental income</dt><dd class="calc-sums__value" data-out="sumNet">£11,923</dd></div>
+            <div class="calc-sums__row" data-mortgage-only><dt class="calc-sums__name">Less mortgage interest</dt><dd class="calc-sums__value" data-out="sumInterest">£9,375</dd></div>
+            <div class="calc-sums__row" data-mortgage-only data-empty="true"><dt class="calc-sums__name">Less capital repayments</dt><dd class="calc-sums__value" data-out="sumCapital">£0</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Cash flow before income tax</dt><dd class="calc-sums__value" data-out="sumCashBefore">£2,548</dd></div>
+            <div class="calc-sums__row" data-tax-only><dt class="calc-sums__name">Less income tax on the profit</dt><dd class="calc-sums__value" data-out="sumTax">£510</dd></div>
+            <div class="calc-sums__total"><dt class="calc-sums__name">Cash flow for the year</dt><dd class="calc-sums__value" data-out="sumCashFinal">£2,038</dd></div>
+          </dl>
+        </div>
+      </details>
+
+      <details class="calc-detail">
+        <summary class="calc-detail__summary">Yield and return figures</summary>
+        <div class="calc-detail__body">
+          <dl class="calc-sums">
+            <div class="calc-sums__row"><dt class="calc-sums__name">Gross yield</dt><dd class="calc-sums__value" data-out="figGross">6.00%</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Net yield</dt><dd class="calc-sums__value" data-out="figNet">4.77%</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Cash you put in</dt><dd class="calc-sums__value" data-out="figCashInvested">£77,500</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Return on cash before tax</dt><dd class="calc-sums__value" data-out="figReturnBefore">3.29%</dd></div>
+            <div class="calc-sums__row" data-tax-only><dt class="calc-sums__name">Return on cash after tax</dt><dd class="calc-sums__value" data-out="figReturnAfter">2.63%</dd></div>
+            <div class="calc-sums__row" data-mortgage-only><dt class="calc-sums__name">Mortgage loan</dt><dd class="calc-sums__value" data-out="figLoan">£187,500</dd></div>
+            <div class="calc-sums__row" data-mortgage-only><dt class="calc-sums__name">Monthly mortgage payment</dt><dd class="calc-sums__value" data-out="figPayment">£781</dd></div>
+            <div class="calc-sums__row" data-mortgage-only><dt class="calc-sums__name">Interest cover</dt><dd class="calc-sums__value" data-out="figCover">160%</dd></div>
+          </dl>
+          <p class="calc-detail__text">Gross yield is a year's rent divided by the price. Net yield takes empty weeks and running costs off first. Return on cash compares your cash flow with the deposit and buying costs you paid, and interest cover is the rent as a percentage of the mortgage interest.</p>
+        </div>
+      </details>
+
+      <details class="calc-detail" data-tax-only>
+        <summary class="calc-detail__summary">Income tax on this property</summary>
+        <div class="calc-detail__body">
+          <dl class="calc-sums">
+            <div class="calc-sums__row"><dt class="calc-sums__name">Tax on the rental profit</dt><dd class="calc-sums__value" data-out="taxAmount">£510</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">After a mortgage interest credit of</dt><dd class="calc-sums__value" data-out="taxCredit">£1,875</dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Relief used</dt><dd class="calc-sums__value" data-out="taxRoute"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Top band reached</dt><dd class="calc-sums__value" data-out="taxBand"></dd></div>
+          </dl>
+          <p class="calc-detail__text">Running costs are treated as allowable expenses. Mortgage interest earns a tax credit instead of coming off the rent, and capital repayments get no tax relief.</p>
+          <a class="calc-detail__link" href="../rental-income-tax-calculator/" data-tax-link>See the full tax breakdown in the rental income tax calculator</a>
+        </div>
+      </details>
+
+      <details class="calc-detail" data-print-hide open>
+        <summary class="calc-detail__summary">Your result in plain English</summary>
+        <div class="calc-detail__body">
+          <p class="calc-detail__text" data-narration></p>
+        </div>
+      </details>
+
+      <div class="calc-actions">
+        <button class="button" type="button" data-action="copy">Copy shareable link</button>
+        <button class="button-quiet" type="button" data-action="print">Print or save as PDF</button>
+        <button class="button-quiet" type="button" data-action="reset">Reset</button>
+      </div>
+      <p class="calc-actions__status" data-action-status role="status"></p>
+      <p class="visually-hidden" data-live aria-live="polite"></p>
+
+      <div class="calc-print" data-print-summary>
+        <p class="calc-print__title">Rental yield estimate from CalculateMyTax</p>
+        <dl class="calc-sums">
+          <div class="calc-sums__row"><dt class="calc-sums__name">Prepared on</dt><dd class="calc-sums__value" data-out="printDate"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Price and rent</dt><dd class="calc-sums__value" data-out="printProperty"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Running costs and empty weeks</dt><dd class="calc-sums__value" data-out="printCosts"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Mortgage</dt><dd class="calc-sums__value" data-out="printMortgage"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Stamp duty and buying costs</dt><dd class="calc-sums__value" data-out="printBuying"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Income tax basis</dt><dd class="calc-sums__value" data-out="printTax"></dd></div>
+        </dl>
+        <p class="calc-print__note">An estimate for the first year, not financial or tax advice.</p>
+      </div>
+    </aside>
+
+    <div class="calc-strip" data-strip hidden>
+      <p class="calc-strip__label">Net rental yield</p>
+      <p class="calc-strip__figure" data-out="stripYield">4.77%</p>
+      <button class="calc-strip__button" type="button" data-show-results>See breakdown</button>
+    </div>
+
+    <template data-text="key-void">{amount} lost to empty weeks</template>
+    <template data-text="key-costs">{amount} running costs</template>
+    <template data-text="key-interest">{amount} mortgage interest</template>
+    <template data-text="key-capital">{amount} capital repaid</template>
+    <template data-text="key-tax">{amount} income tax</template>
+    <template data-text="key-left">{amount} left for you</template>
+    <template data-text="key-short">{amount} you pay in</template>
+    <template data-text="barLabel">Where a year of rent, {rent}, goes: {parts}</template>
+    <template data-text="separator">, </template>
+    <template data-text="what-tax-mortgage">running costs, mortgage payments and income tax</template>
+    <template data-text="what-tax-nomortgage">running costs and income tax</template>
+    <template data-text="what-notax-mortgage">running costs and mortgage payments, before income tax</template>
+    <template data-text="what-notax-nomortgage">running costs, before income tax</template>
+    <template data-text="cashPositive">You clear {amount} a month after {what}.</template>
+    <template data-text="cashNegative">You pay in {amount} a month after {what}.</template>
+    <template data-text="returnAfterTax">Return on cash, after tax</template>
+    <template data-text="returnBeforeTax">Return on cash, before tax</template>
+    <template data-text="emptyPrompt">Enter the price and rent to see the yield.</template>
+    <template data-text="route-expenses">Allowable expenses</template>
+    <template data-text="route-propertyAllowance">The property allowance</template>
+    <template data-text="route-rentARoom">Rent a Room relief</template>
+    <template data-text="withinAllowance">Within your personal allowance</template>
+    <template data-text="weekOne">{n} empty week</template>
+    <template data-text="weekMany">{n} empty weeks</template>
+    <template data-text="narrGross">A property worth {price} let at {rent} a month brings in {annual} a year, a gross yield of {gross}.</template>
+    <template data-text="narrNet">After {weeks} and {costs} of running costs, {net} is left, a net yield of {netYield}.</template>
+    <template data-text="narrNetNoVoids">After {costs} of running costs, {net} is left, a net yield of {netYield}.</template>
+    <template data-text="narrInterestOnly">The interest-only mortgage costs {interest} this year, leaving {flow} before income tax.</template>
+    <template data-text="narrRepayment">Mortgage payments of {payments}, including {capital} of capital repaid, leave {flow} before income tax.</template>
+    <template data-text="narrNoMortgage">With no mortgage, that is also your cash flow before income tax.</template>
+    <template data-text="narrTax">Income tax on the rental profit is about {tax}, so you keep {flow} a year, or {monthly} a month.</template>
+    <template data-text="narrReturn">That is a {rate} return on the {cash} you put in.</template>
+    <template data-text="narrBasis">Tax uses {year} rates for {region}.</template>
+    <template data-text="narrNetShort">After {weeks} and {costs} of running costs, the rent falls {net} short, a net yield of {netYield}.</template>
+    <template data-text="narrNetNoVoidsShort">After {costs} of running costs, the rent falls {net} short, a net yield of {netYield}.</template>
+    <template data-text="narrInterestOnlyShort">The interest-only mortgage costs {interest} this year, leaving a shortfall of {flow} before income tax.</template>
+    <template data-text="narrRepaymentShort">Mortgage payments of {payments}, including {capital} of capital repaid, leave a shortfall of {flow} before income tax.</template>
+    <template data-text="narrTaxShort">Income tax on the rental profit is about {tax}, so you are {flow} a year short, or {monthly} a month.</template>
+    <template data-text="narrReturnLoss">That is a loss of {rate} a year on the {cash} you put in.</template>
+    <template data-text="liveSummary">Net yield {net}, gross yield {gross}, cash flow {monthly} a month.</template>
+    <template data-text="printProperty">{price} price, {rent} a month</template>
+    <template data-text="printCosts">{costs} a year, {weeks}</template>
+    <template data-text="printMortgageIO">{deposit} deposit, interest only at {rate}</template>
+    <template data-text="printMortgageRep">{deposit} deposit, repayment at {rate} over {term} years</template>
+    <template data-text="printNoMortgage">No mortgage</template>
+    <template data-text="printTax">{year}, {region}, {income} other income</template>
+    <template data-text="printNoTax">Not included</template>
+    <template data-text="copied">Link copied. Anyone who opens it sees these figures.</template>
+    <template data-text="copyFailed">Your browser blocked copying. The link is now in the address bar, ready to copy.</template>
+    <template data-text="resetDone">Calculator cleared.</template>
+    <template data-text="error-notANumber">Use numbers only, for example 250,000.</template>
+    <template data-text="error-negative">Enter 0 or more.</template>
+    <template data-text="error-notWholePence">Use no more than two decimal places.</template>
+    <template data-text="error-tooLarge">That number is too large. Check for extra digits.</template>
+    <template data-text="error-price-priceMustBeAboveZero">Enter the property price or value.</template>
+    <template data-text="error-voidWeeks-outOfRange">Enter between 0 and 52 weeks.</template>
+    <template data-text="error-lettingFeeRate-outOfRange">Enter a fee between 0% and 100%.</template>
+    <template data-text="error-depositRate-outOfRange">Enter a deposit between 0% and 100%.</template>
+    <template data-text="error-interestRate-outOfRange">Enter a rate between 0% and 50%.</template>
+    <template data-text="error-termYears-outOfRange">Enter a term between 1 and 50 years.</template>
+    <template data-text="error-termYears-notWholeYears">Enter the term in whole years.</template>
+  </div>
+</section>
+
+
+<section class="prose" data-section="How to use">
+  <div class="prose__wrap">
+    <h2>How to use the rental yield calculator</h2>
+    <ol>
+      <li><strong>Enter the price and the monthly rent.</strong> Use what you paid, or the current value if you already own the property.</li>
+      <li><strong>Add running costs and empty weeks.</strong> Enter a year of costs as one figure, or itemise them, including the letting agent fee as a percentage of the rent.</li>
+      <li><strong>Set the mortgage.</strong> Enter your deposit and interest rate, and choose interest only or repayment. Untick the box for a cash purchase.</li>
+      <li><strong>Include income tax.</strong> Enter your other income and where you live, so the rental profit is taxed at your own rates.</li>
+      <li><strong>Add stamp duty and buying costs</strong> under More options, so the return on your cash reflects everything you paid.</li>
+    </ol>
+    <p>The result shows the net yield first, because it is closer to what a property really earns, with the gross yield, cash flow, return on cash and interest cover alongside.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="How to calculate rental yield">
+  <div class="prose__wrap">
+    <h2>How to calculate rental yield</h2>
+    <p>There are two rental yield formulas. <strong>Gross rental yield</strong> is the annual rent divided by the property price, multiplied by 100. <strong>Net rental yield</strong> takes the rent lost to empty weeks and the running costs off the annual rent first, then divides by the price and multiplies by 100.</p>
+    <p>Here is the example already in the calculator: a £250,000 flat let for £1,250 a month, with two empty weeks and £2,500 of running costs a year.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Annual rent, £1,250 × 12</dt><dd class="worked__amount">£15,000</dd></div>
+      <div class="worked__row"><dt>Gross yield, £15,000 ÷ £250,000 × 100</dt><dd class="worked__amount">6.00%</dd></div>
+      <div class="worked__row"><dt>Less two empty weeks</dt><dd class="worked__amount">£577</dd></div>
+      <div class="worked__row"><dt>Less running costs</dt><dd class="worked__amount">£2,500</dd></div>
+      <div class="worked__row"><dt>Net rental income</dt><dd class="worked__amount">£11,923</dd></div>
+      <div class="worked__total"><dt>Net yield, £11,923 ÷ £250,000 × 100</dt><dd class="worked__amount">4.77%</dd></div>
+    </dl>
+    <p>Gross yield is quick and useful for comparing adverts. Net yield is the better guide to what a property earns, because two homes with the same rent and price can have very different service charges, repair bills and letting fees.</p>
+
+    <h2>Cash flow and the return on your cash</h2>
+    <p>Yield ignores how you paid for the property. With a 75% interest-only mortgage at 5%, the example pays £9,375 of interest a year, leaving a cash flow of £2,548 before tax. The rent is 160% of the interest, a figure lenders call interest cover.</p>
+    <p>The return on cash, sometimes called cash-on-cash return, compares that cash flow with what you actually put in: the deposit plus stamp duty and buying costs, £77,500 here. Before tax it is 3.29%. A repayment mortgage lowers the cash flow further, because capital repayments come out of the rent even though they build up your equity rather than costing you money.</p>
+
+    <h2>How income tax changes your rental return</h2>
+    <p>You pay income tax on the rental profit at your own rates, and since Section 24, mortgage interest earns a tax credit instead of coming off the rent. For a basic rate taxpayer, the example's tax is £510, leaving £2,038 a year and a return on cash of 2.63%. A higher rate taxpayer with the same property keeps less. The <a href="../rental-income-tax-calculator/">rental income tax calculator</a> shows the full tax working, and the guide to <a href="../section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a> explains the credit.</p>
+
+    <h2>Is a 5% rental yield good?</h2>
+    <p>It depends on what the yield has to pay for. Take the same £250,000 property let at a 5% gross yield, £1,041.67 a month, with the same costs, a 75% interest-only mortgage at 5% and a basic rate taxpayer. The net yield is 3.81%, the rent is 133% of the mortgage interest, and after income tax the landlord keeps £115 a year.</p>
+    <p>With a smaller mortgage, a lower rate or lower costs, the same 5% yield leaves far more. That is why the calculator shows cash flow and return on cash, not just the yield.</p>
+
+    <h2>What this property yield calculator does not cover</h2>
+    <ul>
+      <li>Capital growth, and Capital Gains Tax when you sell.</li>
+      <li>Stamp duty worked out for you. Enter your own figure; GOV.UK sets out the higher rates for additional homes.</li>
+      <li>Mortgage payments after the first year, or a change of rate when a fixed deal ends.</li>
+      <li>Property owned through a limited company, which pays Corporation Tax instead of income tax.</li>
+      <li>Joint owners' tax. The <a href="../rental-income-tax-calculator/">rental income tax calculator</a> splits the profit between owners.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="faq" data-section="Rental yield questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Rental yield questions</h2>
+    <details class="faq__item">
+      <summary class="faq__question">What is rental yield?</summary>
+      <div class="faq__answer"><p>Rental yield is the rent a property earns in a year, shown as a percentage of what it cost or what it is worth. It puts properties at different prices on the same scale, so a £150,000 flat and a £400,000 house can be compared directly.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How do you work out rental yield?</summary>
+      <div class="faq__answer"><p>Multiply the monthly rent by 12, divide by the property price and multiply by 100. That is the gross yield. For the net yield, take the rent lost to empty weeks and a year of running costs off the annual rent before you divide.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What is the difference between gross and net rental yield?</summary>
+      <div class="faq__answer"><p>Gross yield uses the full rent. Net yield uses the rent left after empty weeks and running costs such as letting fees, repairs, insurance, service charges and ground rent, so it is always lower and closer to what the property actually earns.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does rental yield include mortgage payments?</summary>
+      <div class="faq__answer"><p>No. Gross and net yield measure the property against its price, whether or not it has a mortgage. Mortgage payments are counted in cash flow and return on cash instead, which is why the calculator shows those next to the yield.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What is a good rental yield in the UK?</summary>
+      <div class="faq__answer"><p>There is no single figure. Compare the net yield with your mortgage rate and with what the same cash could earn elsewhere. A high yield can come with higher running costs, more empty weeks or more management, and a lower yield can still suit you if you expect the property's value to grow. Net yield and cash flow after tax are better for comparing properties than gross yield.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is rental yield the same as return on investment?</summary>
+      <div class="faq__answer"><p>No. Yield compares the rent with the whole property price. Return on investment, or return on cash, compares your yearly cash flow after mortgage payments with the cash you put in: the deposit and buying costs. With a mortgage, it can be higher or lower than the yield, depending on your interest rate.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Tools and guides for landlords</h2>
+    <div class="related__list">
+      <a class="related__link" href="../rental-income-tax-calculator/">Work out the tax on your rental income</a>
+      <a class="related__link" href="../tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="../section-24-mortgage-interest-relief/">How Section 24 mortgage interest relief works</a>
+      <a class="related__link" href="../allowable-expenses-for-landlords/">Which running costs landlords can claim</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/stamp-duty-land-tax/residential-property-rates">GOV.UK: Stamp Duty Land Tax residential property rates</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer" data-section="Site footer">
+  <div class="site-footer__wrap">
+    <div class="site-footer__brand">
+      <a class="site-footer__logo" href="../">
+        <picture>
+          <source srcset="../assets/img/brand/calculatemytax-logo-full.webp" type="image/webp">
+          <img class="site-footer__logo-image" src="../assets/img/brand/calculatemytax-logo-full.png" width="798" height="160" alt="CalculateMyTax: Free UK Tax Calculators &amp; Tools. Home" loading="lazy">
+        </picture>
+      </a>
+      <p class="site-footer__description">Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates.</p>
+      <a class="site-footer__email" href="mailto:contact@calculatemytax.uk">contact@calculatemytax.uk</a>
+    </div>
+    <div class="site-footer__columns">
+      <details class="site-footer__group" open>
+        <summary class="site-footer__heading">Calculators</summary>
+        <ul class="site-footer__list"><li class="site-footer__item"><a class="site-footer__link" href="../rental-income-tax-calculator/">Rental income tax calculator</a></li><li class="site-footer__item"><a class="site-footer__link" href="../rental-yield-calculator/" aria-current="page">Rental yield calculator</a></li></ul>
+      </details>
+      <details class="site-footer__group" open>
+        <summary class="site-footer__heading">Who we can help</summary>
+        <ul class="site-footer__list"><li class="site-footer__item"><a class="site-footer__link" href="../who-we-can-help/first-time-filers/">First-time filers</a></li></ul>
+      </details>
+      <details class="site-footer__group" open>
+        <summary class="site-footer__heading">Our services</summary>
+        <ul class="site-footer__list"><li class="site-footer__item"><a class="site-footer__link" href="../our-services/self-assessment-tax-returns/">Self Assessment tax returns</a></li></ul>
+      </details>
+      <details class="site-footer__group" open>
+        <summary class="site-footer__heading">Company</summary>
+        <ul class="site-footer__list"><li class="site-footer__item"><a class="site-footer__link" href="../about/">About</a></li><li class="site-footer__item"><a class="site-footer__link" href="../contact/">Contact</a></li><li class="site-footer__item"><a class="site-footer__link" href="../privacy-policy/">Privacy policy</a></li><li class="site-footer__item"><a class="site-footer__link" href="../terms-of-use/">Terms of use</a></li><li class="site-footer__item"><a class="site-footer__link" href="../cookie-policy/">Cookie policy</a></li><li class="site-footer__item"><a class="site-footer__link" href="../disclaimer/">Disclaimer</a></li></ul>
+      </details>
+    </div>
+    <div class="site-footer__legal">
+      <p class="site-footer__copyright">© 2026 CalculateMyTax</p>
+      <p class="site-footer__compliance">All figures are estimates based on published HMRC rates and are not a substitute for professional advice.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="cmt-config-rates">{"2025-26":{"label":"2025/26","startDate":"2025-04-06","endDate":"2026-04-05","isForecast":false,"forecastNote":null,"lastVerified":"2026-09-13","personalAllowance":1257000,"paTaperThreshold":10000000,"paTaperRate":2,"propertyAllowance":100000,"rentARoom":750000,"rentARoomShared":375000,"financeReliefRate":0.2,"paOrdering":"standard","regions":{"england_wales_ni":{"label":"England, Wales and Northern Ireland","assumed":false,"notes":null,"bands":[{"name":"Basic rate","upTo":3770000,"rate":0.2},{"name":"Higher rate","upTo":12514000,"rate":0.4},{"name":"Additional rate","upTo":null,"rate":0.45}],"propertyIncomeBands":null},"scotland":{"label":"Scotland","assumed":false,"notes":null,"bands":[{"name":"Starter rate","upTo":282700,"rate":0.19},{"name":"Basic rate","upTo":1492100,"rate":0.2},{"name":"Intermediate rate","upTo":3109200,"rate":0.21},{"name":"Higher rate","upTo":6243000,"rate":0.42},{"name":"Advanced rate","upTo":12514000,"rate":0.45},{"name":"Top rate","upTo":null,"rate":0.48}],"propertyIncomeBands":null}},"sources":["https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past","https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/proposed-rates-and-bands-2025-to-2026/"]},"2026-27":{"label":"2026/27","startDate":"2026-04-06","endDate":"2027-04-05","isForecast":false,"forecastNote":null,"lastVerified":"2026-09-13","personalAllowance":1257000,"paTaperThreshold":10000000,"paTaperRate":2,"propertyAllowance":100000,"rentARoom":750000,"rentARoomShared":375000,"financeReliefRate":0.2,"paOrdering":"standard","regions":{"england_wales_ni":{"label":"England, Wales and Northern Ireland","assumed":false,"notes":null,"bands":[{"name":"Basic rate","upTo":3770000,"rate":0.2},{"name":"Higher rate","upTo":12514000,"rate":0.4},{"name":"Additional rate","upTo":null,"rate":0.45}],"propertyIncomeBands":null},"scotland":{"label":"Scotland","assumed":false,"notes":null,"bands":[{"name":"Starter rate","upTo":396700,"rate":0.19},{"name":"Basic rate","upTo":1695600,"rate":0.2},{"name":"Intermediate rate","upTo":3109200,"rate":0.21},{"name":"Higher rate","upTo":6243000,"rate":0.42},{"name":"Advanced rate","upTo":12514000,"rate":0.45},{"name":"Top rate","upTo":null,"rate":0.48}],"propertyIncomeBands":null}},"sources":["https://www.gov.uk/income-tax-rates","https://www.legislation.gov.uk/ukpga/2026/11/section/2","https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/2026-to-2027/","https://www.gov.wales/written-statement-draft-budget-2026-27-welsh-taxes"]},"2027-28":{"label":"2027/28","startDate":"2027-04-06","endDate":"2028-04-05","isForecast":true,"forecastNote":"Property income rates of 22%, 42% and 47% and the 22% finance cost credit are enacted in Finance Act 2026. Scottish bands and the Welsh rate for 2027/28 have not been set yet, so 2026/27 figures are assumed.","lastVerified":"2026-09-13","personalAllowance":1257000,"paTaperThreshold":10000000,"paTaperRate":2,"propertyAllowance":100000,"rentARoom":750000,"rentARoomShared":375000,"financeReliefRate":0.22,"paOrdering":"employment_first","regions":{"england_wales_ni":{"label":"England, Wales and Northern Ireland","assumed":true,"notes":"Welsh property rates assume the Senedd keeps the Welsh rate at 10p in each band.","bands":[{"name":"Basic rate","upTo":3770000,"rate":0.2},{"name":"Higher rate","upTo":12514000,"rate":0.4},{"name":"Additional rate","upTo":null,"rate":0.45}],"propertyIncomeBands":[{"name":"Property basic rate","upTo":3770000,"rate":0.22},{"name":"Property higher rate","upTo":12514000,"rate":0.42},{"name":"Property additional rate","upTo":null,"rate":0.47}]},"scotland":{"label":"Scotland","assumed":true,"notes":"Scottish rates for 2027/28 are set in the Scottish Budget. The 2026/27 bands are assumed until then.","bands":[{"name":"Starter rate","upTo":396700,"rate":0.19},{"name":"Basic rate","upTo":1695600,"rate":0.2},{"name":"Intermediate rate","upTo":3109200,"rate":0.21},{"name":"Higher rate","upTo":6243000,"rate":0.42},{"name":"Advanced rate","upTo":12514000,"rate":0.45},{"name":"Top rate","upTo":null,"rate":0.48}],"propertyIncomeBands":null}},"sources":["https://www.legislation.gov.uk/ukpga/2026/11/section/7","https://www.legislation.gov.uk/ukpga/2026/11/section/10","https://www.gov.uk/government/publications/changes-to-tax-rates-for-property-savings-and-dividend-income/change-to-tax-rates-for-property-savings-and-dividend-income-technical-note"]}}</script>
+<script src="../assets/js/tax-engine.js" defer></script>
+<script src="../assets/js/yield-engine.js" defer></script>
+<script src="../assets/js/yield-calculator.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

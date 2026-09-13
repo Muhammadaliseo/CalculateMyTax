@@ -44,6 +44,21 @@
         "Flags Making Tax Digital thresholds and the April 2027 property income rates",
         "Runs in the browser with no sign-up; results can be shared as a link or printed"
       ]
+    },
+    {
+      "id": "rental-yield-calculator",
+      "name": "Rental yield calculator",
+      "path": "rental-yield-calculator/",
+      "status": "live",
+      "summary": "Work out gross and net rental yield, cash flow and return on cash, after mortgage costs and income tax.",
+      "capabilities": [
+        "Works out gross and net rental yield from the price, rent, running costs and empty weeks",
+        "Itemises running costs, with the letting agent fee as a percentage of the rent collected",
+        "Models the first year of an interest-only or repayment mortgage, with interest cover",
+        "Shows monthly and annual cash flow and the return on the cash you put in, including buying costs",
+        "Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland",
+        "Runs in the browser with no sign-up; results can be shared as a link or printed"
+      ]
     }
   ],
   "guides": [

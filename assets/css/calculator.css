@@ -268,6 +268,11 @@
   border: 0;
 }
 
+/* Inside a stacked group a setting takes its natural height; its flex basis is meant for rows only */
+.calc-group > .calc-setting {
+  flex: none;
+}
+
 .calc-group__legend {
   padding: 0 0 var(--space-xs);
   font-family: var(--font-display);
@@ -672,6 +677,47 @@
   color: var(--colour-sheet);
   font-weight: var(--weight-bold);
   cursor: pointer;
+}
+
+/* Rental yield calculator: where-the-rent-goes segments and itemised cost rows */
+
+.calc-bar__segment[data-kind="void"],
+.calc-bar-key__swatch[data-kind="void"] {
+  background: var(--colour-hairline);
+}
+
+.calc-bar__segment[data-kind="costs"],
+.calc-bar-key__swatch[data-kind="costs"] {
+  background: var(--colour-navy-soft);
+}
+
+.calc-bar__segment[data-kind="interest"],
+.calc-bar-key__swatch[data-kind="interest"] {
+  background: var(--colour-rule);
+}
+
+.calc-bar__segment[data-kind="capital"],
+.calc-bar-key__swatch[data-kind="capital"] {
+  background: var(--colour-navy-wash);
+}
+
+.calc-bar__segment[data-kind="tax"],
+.calc-bar-key__swatch[data-kind="tax"] {
+  background: var(--colour-navy);
+}
+
+.calc-bar__segment[data-kind="left"],
+.calc-bar-key__swatch[data-kind="left"] {
+  background: var(--colour-brand);
+}
+
+.calc-bar-key__swatch[data-kind="short"] {
+  background: var(--colour-sheet);
+}
+
+.calc-item[data-invalid="true"] .calc-item__field {
+  border-bottom: var(--border-heavy) solid var(--colour-navy);
+  background: var(--colour-navy-wash);
 }
 
 .calc-results :focus-visible,

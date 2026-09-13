@@ -4,8 +4,8 @@ These notes are for whoever rebuilds calculatemytax.uk in WordPress with Element
 
 ## 1. What you are moving
 
-- **A static website** of 21 pages plus a 404 page, built from plain HTML, CSS and JavaScript. There is no framework and no database.
-- **One tool**, the rental income tax calculator. It runs entirely in the visitor's browser.
+- **A static website** of 22 pages plus a 404 page, built from plain HTML, CSS and JavaScript. There is no framework and no database.
+- **Two tools**, the rental income tax calculator and the rental yield calculator. Both run entirely in the visitor's browser.
 - **Where to look:**
   - `docs/` is the finished site exactly as visitors see it. Use it as your visual reference. You can open it with `npm run preview`, or just look at the files on GitHub Pages.
   - `src/pages/` holds each page's content, one folder per page, and `src/partials/` holds the header, footer and calculator markup.
@@ -180,6 +180,7 @@ Each block type is rebuilt like this:
 | `audience`: home "Who we help" | Container row, white background, two inner columns, each a Heading, Text and Button |
 | `contact`: contact page | Container, column: Heading, a mailto link at 33px in Besley, Text |
 | `Calculator` | **Shortcode widget, not containers.** See section 10 |
+| `Rental yield calculator` | **Shortcode widget, not containers.** See section 10 |
 
 Buttons have three styles.
 
@@ -206,6 +207,7 @@ No tax rate, threshold, allowance or date is typed into any page. In the source 
 | `{{table:bands:scotland:current}}`, `{{table:property-rates:next}}`, `{{table:allowances}}`, `{{table:mtd}}` | Whole tables | Tables built from the config |
 | `{{list:expenses}}` | The expenses checklist | `expenses.json` |
 | `{{calc:example.owner.result.propertyTax}}` | £3,586 | A worked-example figure computed by the tax engine from inputs in the page header |
+| `{{ymoney:example.netIncome}}`, `{{ypct:example.netYield}}`, `{{ycover:example.mortgage.interestCover}}` | £11,923, 4.77%, 160% | Rental yield figures computed by the yield engine from `yieldExamples` in the page header. Money is in whole pounds |
 
 **Recommended WordPress approach:** register shortcodes that map one to one onto these tokens, for example `[cmt_money key="current.personalAllowance"]`, `[cmt_pct key="current.financeReliefRate"]` and `[cmt_table type="bands" region="scotland" year="current"]`. They read the options records in section 11. Then a new tax year updates every page at once, as it does now.
 
@@ -225,6 +227,9 @@ The calculator is a self-contained unit. It is deliberately **not** rebuilt from
 | `assets/js/tax-engine.js` | Enqueued script, no dependencies. Pure calculation, no page code |
 | `assets/js/quick-estimate.js` | Enqueued on the home page, depends on `tax-engine.js`. It starts every form marked `data-quick-estimate` and exposes `CalculateMyTaxQuickEstimate.init(form)`. The form markup, `form.quick` in `src/pages/index.html`, is the output of a second shortcode such as `[cmt_quick_estimate]`, and needs only the rates JSON block. Submitting it opens the calculator page with the same figures, because its field names match the calculator's shareable link |
 | `assets/css/home.css` | Home page stylesheet for the hero, quick estimate, tool cards and guide cards. Enqueue it on the home page, or rebuild those blocks with the container settings in section 8 |
+| `assets/js/yield-engine.js` | Enqueued on the rental yield page, with no dependencies of its own. It is pure calculation: gross and net yield, empty weeks, letting fees, the first year of an interest-only or repayment mortgage, cash flow and return on cash. It calls the tax engine for income tax when the tax engine is passed in |
+| `assets/js/yield-calculator.js` | Enqueued on the rental yield page, depends on `tax-engine.js` and `yield-engine.js`. It starts every section marked `data-yield-calculator` and exposes `CalculateMyTaxYieldCalculator.init(element)` |
+| `src/partials/yield-calculator.html` | The output of a third shortcode such as `[cmt_yield_calculator]`. It uses the same `calculator.css` and needs only the rates JSON block. Replace `{{calc-year-options}}`, `{{calc-region-options}}`, `{{root}}` and the `{{ymoney…}}`, `{{ypct…}}` and `{{ycover…}}` example figures before output |
 | `assets/js/calculator.js` | Enqueued script, depends on `tax-engine.js`. It starts every element with `data-calculator` on the page and exposes `CalculateMyTaxCalculator.init(element)` |
 | `assets/css/calculator.css` | Enqueued stylesheet. Needs the tokens from section 6 |
 | `assets/css/print.css` | Enqueued with `media="print"` on the calculator page, so "Print or save as PDF" gives a clean summary for an accountant |
@@ -270,6 +275,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 |---|---|---|
 | `/` | Home (static front page) | |
 | `/rental-income-tax-calculator/` | Rental income tax calculator | |
+| `/rental-yield-calculator/` | Rental yield calculator | |
 | `/tax-on-rental-income/` | Tax on rental income | |
 | `/allowable-expenses-for-landlords/` | Allowable expenses for landlords | |
 | `/section-24-mortgage-interest-relief/` | Section 24 mortgage interest relief | |

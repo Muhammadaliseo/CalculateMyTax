@@ -195,3 +195,114 @@ The on-page gap is now closed. What separates positions 4 to 10 from position 1 
 3. List the calculator in UK finance and landlord tool round-ups.
 4. Track the calculator group and "tax on rental income" in a Semrush Position Tracking project on your own account. The shared account's projects belong to other people.
 5. Review in 8 to 12 weeks. If "landlord tax calculator" lags "rental income tax calculator", add it to the calculator page's H2s.
+
+---
+
+# Second tool: rental yield calculator
+
+Researched on 13 September 2026. The starting point was the client's keyword sheet: its "rental yield" rows and competitor list, gathered with Semrush and Ubersuggest on 23 August 2026. Semrush UK data for the same terms was then pulled fresh, and the top competitor tools were opened and tested.
+
+## Summary
+
+- **Primary keyword: rental yield calculator.** 3,600 searches a month, KD 35%, CPC $1.69, commercial intent, and 9,900 searches worldwide. The sheet had recorded KD 32%.
+- **A second head term is worth the same.** "yield calculator" also gets 3,600 searches a month (KD 27%), and in the UK its results are the same rental yield pages.
+- **Volume around it.** The group has 253 keyword variations worth 12,000 searches a month, and 75 questions worth 3,800.
+- **The top ten is weak.** Page authority scores run from 8 to 53. The results include an Australian bank's page, and a page with authority score 8 ranks 10th.
+- **Competitor gap.** No page in the top ten shows cash flow after income tax. Only Landlord Studio shows a return on the cash invested.
+
+## Who ranks for "rental yield calculator"
+
+| Position | Page | Page authority score |
+|---|---|---|
+| 1 | landlordvision.co.uk/rental-yield-calculator.html | 27 |
+| 2 | savills.co.uk/resources-and-tools/rental-yield-calculator.aspx | 53 |
+| 3 | moneysupermarket.com/mortgages/rental-yield-calculator/ | 17 |
+| 4 | themortgageworks.co.uk/our-mortgages/rental-yield-calculator | 13 |
+| 5 | propertydata.co.uk/yield-calculator | 42 |
+| 6 | foxtons.co.uk/landlord/yield-calculator | 14 |
+| 7 | calculatestuff.com/financial/rental-yield-calculator | 44 |
+| 8 | ing.com.au/home-loans/calculators/rental-yield-calculator.html | 14 |
+| 9 | charcol.co.uk/mortgage-calculators/rental-yield-calculator/ | 9 |
+| 10 | landlordstudio.com/uk/calculators/free-rental-yield-calculator | 8 |
+
+## Competitor tools, tested
+
+| Tool | Inputs | Results | Words | What it lacks |
+|---|---|---|---|---|
+| Landlord Vision (1st) | Price, buying costs, monthly rent, monthly mortgage payment, nine running costs, vacancy loss | Gross and net yield | About 1,100 | Cash flow, return on cash, tax. The sheet also noted no mobile viewport tag |
+| Savills (2nd) | Price, monthly rent | Gross yield | About 900 | Costs, mortgage, tax |
+| MoneySupermarket (3rd) | Price, monthly rent, annual running costs | Gross and net yield, monthly cash flow | About 450 | Mortgage, empty weeks, tax |
+| PropertyData (5th) | Price, monthly rent | Gross yield | About 2,400, with 15 questions | Costs, mortgage, tax; asks for an email address |
+| Landlord Studio (10th) | Price, rent, running costs, vacancy %, buying costs, deposit %, interest rate | Net and gross yield, cash flow, payback, return on cash | About 1,900 | Tax; interest-only mortgages only |
+| rentalyieldcalculator.co.uk | Price, rent for any period, mortgage payment, six costs | Gross and net yield, share link | About 1,900 | Empty weeks, return on cash, tax |
+
+**What CalculateMyTax's tool adds:**
+- itemised running costs, with the letting fee as a percentage of the rent collected;
+- empty weeks;
+- a first-year interest-only or repayment mortgage, with interest cover;
+- cash flow and return on cash, including buying costs, both before and after income tax;
+- income tax worked out by the site's tested tax engine, covering Section 24, Scotland and the 2027/28 property rates;
+- a plain-English summary, a share link, a print summary, and a link that opens the same figures in the rental income tax calculator.
+
+## Keyword groups
+
+### Calculator group: target `/rental-yield-calculator/`
+
+| Keyword | Volume | KD | Intent |
+|---|---|---|---|
+| rental yield calculator | 3,600 | 35% | Commercial |
+| yield calculator | 3,600 | 27% | Commercial |
+| rental yield calculator uk | 720 | 25% | Informational, commercial |
+| property yield calculator | 480 | 33% | Informational, commercial |
+| rental return calculator | 480 | 34% | Informational, commercial |
+| rental property return calculator | 390 | 28% | Informational |
+| real estate yield calculator | 320 | 32% | Informational, commercial |
+| rent yield calculator | 260 | 31% | Informational, commercial |
+| yield calculator property | 260 | 28% | Informational, commercial |
+| rental yield calc | 210 | 31% | Commercial |
+| buy to let yield calculator | 210 | 26% | Transactional |
+| yield calculator uk | 170 | 24% | Commercial |
+| rental yield uk calculator | 110 | 23% | Informational, commercial |
+| buy to let rental yield calculator | 110 | 24% | Transactional |
+| btl yield calculator | 110 | 26% | Commercial |
+| net yield calculator | 90 | 21% | Informational |
+| yield on rental property calculator | 90 | 30% | Commercial |
+| rental property roi calculator | 90 | 31% | Commercial |
+
+### How-to and questions: answered on the same page
+
+| Keyword | Volume | KD | Answered in |
+|---|---|---|---|
+| rental yield | 1,000 | 27% | Page as a whole |
+| how to calculate rental yield | 880 | 34% | "How to calculate rental yield" |
+| calculate rental yield / how do i calculate rental yield / how to work out rental yield / how do i work out rental yield | 720 each | 30–34% | "How to calculate rental yield", and the question "How do you work out rental yield?" |
+| how do you calculate rental yield / how do you work out rental yield | 390 each | 34–35% | Same |
+| is a 5 yield good for property | 320 | 12% | "Is a 5% rental yield good?", worked with the tool's engine |
+| how to calculate yield on rental property / how to calculate property yield | 260 each | 27–34% | "How to calculate rental yield" |
+| rental yield formula | 140 | 32% | "How to calculate rental yield" |
+| what is a good yield on a rental property | 140 | 29% | Question "What is a good rental yield in the UK?" |
+| average rental yield | 140 | 25% | Same question. No average is quoted, because no source was verified |
+| what is a rental yield | 110 | 29% | Question "What is rental yield?" |
+
+### Left for other pages
+
+| Keyword | Volume | KD | Reason |
+|---|---|---|---|
+| buy to let investment calculator | 880 | 24% | A fuller deal appraisal with stamp duty worked out; a future tool |
+| rental profit calculator | 210 | 27% | Reserved by the client for a later tool |
+| rental value of property calculator, rental property value calculator, rental rate calculator | 170–260 | 25–38% | These searchers want to know what rent to charge, not the yield |
+
+## Page targeting
+
+- **Title:** "Rental Yield Calculator UK | Gross, Net & After-Tax Yield"
+- **H1:** "Rental yield calculator for UK landlords"
+- **Meta description:** gross and net yield, monthly cash flow, return on cash, buy-to-let, mortgage costs and income tax.
+- **Sections:**
+  - How to use the rental yield calculator
+  - How to calculate rental yield, with a worked ledger
+  - Cash flow and the return on your cash
+  - How income tax changes your rental return
+  - Is a 5% rental yield good?
+  - What this property yield calculator does not cover
+- **Questions block with FAQ markup:** six questions, none repeated elsewhere on the site.
+- **Home page:** the tool cards now include the rental yield calculator, which replaced the April 2027 rates card so the grid stays at six. Because the tools registry has two live tools, the header's Calculators link becomes a dropdown and the footer lists both tools.

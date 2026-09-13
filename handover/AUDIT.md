@@ -17,6 +17,7 @@ node build/audit.mjs
 | Gate | Result |
 |---|---|
 | Tax engine tests (at least 25, including HMRC examples and per-year regression) | Pass: 40 of 40 |
+| Rental yield engine tests | Pass: 15 of 15 (55 in total) |
 | No raw colours, fonts or lengths outside `tokens.css` | Pass |
 | Flexbox only, no Grid | Pass: Grid used 0 times |
 | One section and one wrapper per block, every section named | Pass |
@@ -175,6 +176,35 @@ Checked after renaming the site CalculateMyTax:
 - **Opening the site from disk.** Clicking a link showed a dark file listing instead of a page when `docs/index.html` was opened straight from the computer. That happens because links end in a folder, and a browser lists a folder's files instead of opening its `index.html`. `assets/js/site.js` now points links and form addresses at `index.html` whenever a page is opened from a file. Headless Edge opened the home page, the calculator and the Self Assessment page from disk. All 50, 41 and 35 page links respectively pointed at an `index.html` that exists, and none still ended in a folder. On GitHub Pages nothing changes.
 - **Home page questions.** Seven questions from the question searches in the keyword sheet, marked up as FAQPage. None repeats a question on the FAQ page or a guide, so no question is marked up twice.
 - **Guide images.** Each of the eight guides has a 1200 × 630 featured image (WebP with a JPEG fallback), a 600px copy for the home page cards, and uses the image for social sharing.
+
+## Rental yield calculator
+
+Added on 13 September 2026 at `/rental-yield-calculator/`.
+
+**Engine tests.** `tests/yield-engine.test.mjs` has 15 tests. The figures were worked out by hand, or with a separate amortisation script for repayment mortgages, and checked against the published £644.30 monthly payment on £100,000 at 6% over 25 years. They cover:
+- gross and net yield, empty weeks and letting fees;
+- cash purchases;
+- interest-only, repayment and zero-rate mortgages, a 100% deposit, and interest cover;
+- a return on cash that is negative, and one that cannot be given;
+- income tax from the tax engine for England and Scotland;
+- validation, and whole pence throughout.
+
+**Checked in the browser:**
+- **Example figures:** net yield 4.77%, gross 6.00%, £170 a month after mortgage and tax, and a 2.63% return on cash. The rent-breakdown bar and plain-English summary match these.
+- **Changing inputs:** raising the rent to £1,500 gives a 7.20% gross yield. Switching to a repayment mortgage shows the term and £3,866 of capital repaid.
+- **Switching things off:** turning off income tax relabels the return as before tax and hides the tax detail. Turning off the mortgage hides interest cover and the deposit field.
+- **Itemised costs:** a 10% letting fee and £800 of repairs make running costs £2,531, and the running-costs box becomes read-only.
+- **Invalid input:** 60 empty weeks shows "Enter between 0 and 52 weeks" and marks the result out of date; putting back a valid figure clears both.
+- **Reset and shared links:** reset clears everything. A shared link with a Scottish taxpayer, a repayment mortgage and buying costs refills every field and shows the 42% band.
+- **Negative cash flow:** the summary uses words, for example "leave a shortfall of £834" and "a loss of 3.30% a year", rather than negative numbers.
+- **Page quality:** no console errors, a page weight of 199 KB, and no unfilled figures.
+- **Navigation:** the header's Calculators link has become a dropdown listing both tools, and the footer lists both.
+
+**Bug found and fixed in both calculators.** Screenshots showed "Mortgage term" on screen for an interest-only mortgage, with an empty gap under "Mortgage type".
+- **Cause of the visible field:** a class that sets `display: flex` overrode the browser's handling of the `hidden` attribute. The rental income tax calculator had the same fault, with its joint-owner fields showing when they should not.
+- **Cause of the gap:** a setting's flex basis stretched its height inside a stacked group.
+- **Fix:** `base.css` now makes `[hidden]` always win, and `calculator.css` gives settings in stacked groups their natural height.
+- **Result, checked in the browser:** hidden fields in both calculators now disappear and reappear as their options change, and the mortgage type setting is 73px tall, not stretched.
 
 ## Performance
 

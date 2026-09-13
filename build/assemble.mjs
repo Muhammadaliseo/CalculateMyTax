@@ -25,6 +25,7 @@ const rates = readJson('data/rates.json');
 const expenses = readJson('data/expenses.json');
 const mtd = readJson('data/mtd.json');
 const engine = require(path.join(ROOT, 'assets', 'js', 'tax-engine.js'));
+const yieldEngine = require(path.join(ROOT, 'assets', 'js', 'yield-engine.js'));
 const CONFIG = { rates, expenses, mtd, site };
 
 const BUILD_DATE = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
@@ -85,6 +86,32 @@ function computeExamples(examples = {}, route) {
   }
   return results;
 }
+
+// Rental yield examples, so the yield calculator page opens showing real results before its script runs.
+function computeYieldExamples(examples = {}, route) {
+  const results = {};
+  const pence = (pounds) => Math.round((pounds || 0) * 100);
+  for (const [id, spec] of Object.entries(examples)) {
+    const input = {
+      price: pence(spec.price),
+      monthlyRent: pence(spec.monthlyRent),
+      runningCosts: pence(spec.runningCosts),
+      lettingFeeRate: spec.lettingFeeRate || 0,
+      voidWeeks: spec.voidWeeks || 0,
+      buyingCosts: pence(spec.buyingCosts),
+      mortgage: spec.mortgage || null,
+      tax: spec.tax ? { taxYear: yearKey(spec.tax.taxYear || 'current'), region: spec.tax.region || 'england_wales_ni', otherIncome: pence(spec.tax.otherIncome) } : null,
+    };
+    const result = yieldEngine.calculate(input, { taxEngine: engine, rates });
+    if (!result.ok) {
+      problems.push(`${route}: yield example "${id}" is invalid: ${JSON.stringify(result.errors)}`);
+    }
+    results[id] = result;
+  }
+  return results;
+}
+
+const yieldPercent = (rate) => `${(Math.round(rate * 10000) / 100).toFixed(2)}%`;
 
 /* Tables and lists rendered from config */
 
@@ -398,6 +425,21 @@ function renderToken(name, arg, ctx) {
       const tool = arg.startsWith('capabilities:') && site.tools.find((t) => t.id === arg.slice('capabilities:'.length));
       return tool ? tool.capabilities.map((c) => `<li class="feature__item">${escapeHtml(c)}</li>`).join('') : undefined;
     }
+    case 'ymoney':
+    case 'ypct':
+    case 'ycover': {
+      const [id, ...rest] = arg.split('.');
+      const raw = ctx.yieldExamples && ctx.yieldExamples[id] && lookup(ctx.yieldExamples[id], rest.join('.'));
+      if (typeof raw !== 'number') {
+        return undefined;
+      }
+      if (name === 'ymoney') {
+        // Whole pounds, as the yield calculator's script shows them, so nothing changes when it loads.
+        const pounds = Math.round(Math.abs(raw) / 100);
+        return `${raw < 0 && pounds > 0 ? '-' : ''}£${pounds.toLocaleString('en-GB')}`;
+      }
+      return name === 'ypct' ? yieldPercent(raw) : `${Math.round(raw * 100)}%`;
+    }
     case 'year-key':
       return rates[yearKey(arg)] ? yearKey(arg) : undefined;
     case 'calc-pct-value': {
@@ -564,7 +606,7 @@ function renderPage(page) {
   const root = is404 ? site.basePath : depth === 0 ? './' : '../'.repeat(depth);
   const url = `${site.brand.url}/${is404 ? '' : route}`;
   const trail = breadcrumbFor(route, meta);
-  const ctx = { route, root, examples: computeExamples(meta.examples, route), plain: false };
+  const ctx = { route, root, examples: computeExamples(meta.examples, route), yieldExamples: computeYieldExamples(meta.yieldExamples, route), plain: false };
   ctx.breadcrumbHtml = breadcrumbHtml(trail, ctx);
   const plainCtx = { ...ctx, plain: true };
 

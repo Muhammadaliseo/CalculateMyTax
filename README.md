@@ -31,7 +31,7 @@ You need Node.js 20 or newer for these commands. The published site does not use
 
 | Command | What it does |
 |---|---|
-| `npm test` | Runs the tax engine tests (40 cases, including HMRC's worked examples). |
+| `npm test` | Runs the tax engine and rental yield engine tests (55 cases, including HMRC's worked examples). |
 | `npm run build` | Rebuilds every page into `docs/` and checks for broken links, missing headings and unfilled figures. |
 | `npm run preview` | Serves `docs/` at http://localhost:8080 so you can click around as visitors will. |
 
@@ -50,6 +50,8 @@ You can also open `docs/index.html` straight from your computer by double-clicki
 | `assets/js/tax-engine.js` | The calculation engine. No page code; reads a tax year from `rates.json`. |
 | `assets/js/calculator.js` | The calculator interface. |
 | `assets/js/quick-estimate.js` | The quick estimate form in the home page hero. |
+| `assets/js/yield-engine.js` | The rental yield engine: yield, empty weeks, first-year mortgage, cash flow and return on cash. |
+| `assets/js/yield-calculator.js` | The rental yield calculator interface. |
 | `assets/css/tokens.css` | Every colour, font, size, spacing, radius and shadow value. Change a value here and the whole site follows. |
 | `assets/css/home.css` | Home page blocks: hero, quick estimate, tool cards and guide cards. |
 | `assets/img/brand/`, `assets/img/guides/` | Logos, icons, the social image and each guide's featured image. |
