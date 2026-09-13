@@ -1,0 +1,14 @@
+{
+  "lastVerified": "2026-09-13",
+  "name": "Making Tax Digital for Income Tax",
+  "qualifyingIncomeBasis": "Gross income from self-employment and property before expenses, taken from the tax return for the tax year in testYear. Joint owners count their own share only.",
+  "phases": [
+    { "threshold": 5000000, "testYear": "2024-25", "startDate": "2026-04-06" },
+    { "threshold": 3000000, "testYear": "2025-26", "startDate": "2027-04-06" },
+    { "threshold": 2000000, "testYear": "2026-27", "startDate": "2028-04-06" }
+  ],
+  "sources": [
+    "https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax",
+    "https://www.gov.uk/guidance/work-out-your-qualifying-income-for-making-tax-digital-for-income-tax"
+  ]
+}

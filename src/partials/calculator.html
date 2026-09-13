@@ -1,0 +1,349 @@
+<section class="calculator" data-section="Calculator" data-calculator>
+  <div class="calculator__wrap">
+    <form class="calculator__form" data-form novalidate autocomplete="off">
+      <div class="calc-settings">
+        <label class="calc-setting">
+          <span class="calc-setting__label">Tax year</span>
+          <select class="calc-setting__control" name="taxYear">{{calc-year-options}}</select>
+        </label>
+        <label class="calc-setting">
+          <span class="calc-setting__label">Where you live</span>
+          <select class="calc-setting__control" name="region">{{calc-region-options}}</select>
+        </label>
+      </div>
+
+      <p class="calc-example" data-example-note>These are example figures. Type over them with your own.</p>
+
+      <div class="calc-ledger">
+        <div class="calc-line" data-line="otherIncome">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Your other annual income</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="otherIncome" type="text" inputmode="decimal" value="45,000"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Salary, pension and self-employment profit for the tax year, before tax.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <div class="calc-line" data-line="rent">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Annual rental income</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="rent" type="text" inputmode="decimal" value="18,000"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>All rent received in the tax year, before costs. For a jointly owned property, enter the full rent and set your share under More options.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <div class="calc-line" data-line="expenses">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Annual allowable expenses</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="expenses" type="text" inputmode="decimal" value="3,200"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Running costs such as agent fees, repairs and insurance. Leave out mortgage interest and capital repayments.</p>
+          <p class="calc-line__hint" data-itemised-note hidden>Worked out from your itemised list below.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+
+        <details class="calc-helper" data-expense-helper>
+          <summary class="calc-helper__summary">Itemise your expenses</summary>
+          <div class="calc-helper__body">
+            <p class="calc-helper__intro">Enter what you spent in the tax year. The total becomes your allowable expenses, and each item says what counts.</p>
+            <div class="calc-helper__rows" data-expense-rows></div>
+            <div class="calc-helper__footer">
+              <p class="calc-helper__total">Total <strong data-out="expenseTotal">£0</strong></p>
+              <button class="button-quiet" type="button" data-clear-items>Clear the list</button>
+            </div>
+          </div>
+          <template data-expense-template>
+            <div class="calc-item">
+              <label class="calc-item__label">
+                <span class="calc-item__name" data-expense-name></span>
+                <span class="calc-item__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-item__input" type="text" inputmode="decimal" data-expense></span>
+              </label>
+              <p class="calc-item__tip" data-hint data-expense-tip></p>
+            </div>
+          </template>
+        </details>
+
+        <button class="calc-reveal" type="button" data-reveal-finance hidden>Add mortgage interest</button>
+
+        <div class="calc-line" data-line="financeCosts">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Annual mortgage interest</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="financeCosts" type="text" inputmode="decimal" value="6,400"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>Interest only, including other finance costs such as arrangement fees. Capital repayments are not a cost for tax.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+      </div>
+
+      <details class="calc-advanced">
+        <summary class="calc-advanced__summary">More options: joint ownership, other properties, Rent a Room and amounts brought forward</summary>
+        <div class="calc-advanced__body">
+
+          <fieldset class="calc-group">
+            <legend class="calc-group__legend">Joint ownership</legend>
+            <label class="calc-check"><input class="calc-check__input" type="checkbox" name="joint"><span class="calc-check__text">I own the rental property with someone else</span></label>
+            <div class="calc-line" data-line="ownerShare" data-joint-only hidden>
+              <label class="calc-line__label">
+                <span class="calc-line__name">Your share of the rent and costs</span>
+                <span class="calc-line__field"><input class="calc-line__input" name="ownerShare" type="text" inputmode="decimal" value="50"><span class="calc-line__unit" aria-hidden="true">%</span></span>
+              </label>
+              <p class="calc-line__hint" data-hint>Usually your share of ownership. Married couples and civil partners are taxed 50/50 unless they have told HMRC otherwise.</p>
+              <p class="calc-line__error" data-error hidden></p>
+            </div>
+            <div class="calc-line" data-line="partnerOtherIncome" data-joint-only hidden>
+              <label class="calc-line__label">
+                <span class="calc-line__name">The other owner's other annual income</span>
+                <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="partnerOtherIncome" type="text" inputmode="decimal"></span>
+              </label>
+              <p class="calc-line__hint" data-hint>Their salary, pension and self-employment profit, so their share is taxed in their own bands.</p>
+              <p class="calc-line__error" data-error hidden></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="calc-group">
+            <legend class="calc-group__legend">Other rental properties</legend>
+            <p class="calc-group__hint">The figures above are your first property. HMRC treats all your UK lettings as one property business, so profits and losses are added together.</p>
+            <div class="calc-properties" data-properties></div>
+            <button class="button-quiet" type="button" data-add-property>Add another property</button>
+            <template data-property-template>
+              <div class="calc-property" data-property>
+                <p class="calc-property__title">Property <span data-property-number></span></p>
+                <div class="calc-line" data-line="propertyRent">
+                  <label class="calc-line__label">
+                    <span class="calc-line__name">Annual rental income</span>
+                    <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" type="text" inputmode="decimal" data-property-field="rent"></span>
+                  </label>
+                  <p class="calc-line__error" data-error hidden></p>
+                </div>
+                <div class="calc-line" data-line="propertyExpenses">
+                  <label class="calc-line__label">
+                    <span class="calc-line__name">Annual allowable expenses</span>
+                    <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" type="text" inputmode="decimal" data-property-field="expenses"></span>
+                  </label>
+                  <p class="calc-line__error" data-error hidden></p>
+                </div>
+                <div class="calc-line" data-line="propertyFinance">
+                  <label class="calc-line__label">
+                    <span class="calc-line__name">Annual mortgage interest</span>
+                    <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" type="text" inputmode="decimal" data-property-field="financeCosts"></span>
+                  </label>
+                  <p class="calc-line__error" data-error hidden></p>
+                </div>
+                <button class="calc-remove" type="button" data-remove-property>Remove this property</button>
+              </div>
+            </template>
+          </fieldset>
+
+          <fieldset class="calc-group">
+            <legend class="calc-group__legend">How your rent is relieved</legend>
+            <label class="calc-setting">
+              <span class="calc-setting__label">Relief route</span>
+              <select class="calc-setting__control" name="reliefMode">
+                <option value="auto" selected>Choose the cheapest for me</option>
+                <option value="expenses">Claim allowable expenses</option>
+                <option value="propertyAllowance">Use the property allowance</option>
+                <option value="rentARoom">Use Rent a Room relief</option>
+              </select>
+            </label>
+            <label class="calc-check"><input class="calc-check__input" type="checkbox" name="roomInOwnHome"><span class="calc-check__text">This is a furnished room in my own home (Rent a Room)</span></label>
+            <label class="calc-check" data-shared-only hidden><input class="calc-check__input" type="checkbox" name="rentARoomShared"><span class="calc-check__text">Someone else also receives rent from this home</span></label>
+          </fieldset>
+
+          <fieldset class="calc-group">
+            <legend class="calc-group__legend">Brought forward from earlier years</legend>
+            <div class="calc-line" data-line="lossesBroughtForward">
+              <label class="calc-line__label">
+                <span class="calc-line__name">Unused property losses</span>
+                <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="lossesBroughtForward" type="text" inputmode="decimal"></span>
+              </label>
+              <p class="calc-line__hint" data-hint>Property losses from earlier years that you have not used yet. They only reduce property profits.</p>
+              <p class="calc-line__error" data-error hidden></p>
+            </div>
+            <div class="calc-line" data-line="financeCostsBroughtForward">
+              <label class="calc-line__label">
+                <span class="calc-line__name">Unrelieved mortgage interest</span>
+                <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="financeCostsBroughtForward" type="text" inputmode="decimal"></span>
+              </label>
+              <p class="calc-line__hint" data-hint>Interest from earlier years that did not get the full tax credit because of the Section 24 limits.</p>
+              <p class="calc-line__error" data-error hidden></p>
+            </div>
+          </fieldset>
+        </div>
+      </details>
+    </form>
+
+    <aside class="calc-results" data-results aria-label="Your result">
+      <div class="calc-results__panel" data-panel>
+        <p class="calc-results__label">Tax on your rental income, <span data-out="yearLabel">{{label:current}}</span></p>
+        <p class="calc-results__figure" data-out="propertyTax">{{calc:example.owner.result.propertyTax}}</p>
+        <p class="calc-results__monthly"><span data-out="monthlyTax">{{calc-month:example.owner.result.propertyTax}}</span> a month</p>
+        <p class="calc-results__keep">You keep <span data-out="netRentalIncome">{{calc:example.owner.result.netRentalIncome}}</span> of <span data-out="grossRent">{{calc:example.owner.grossRent}}</span> rent after costs and tax</p>
+        <dl class="calc-results__rates">
+          <div class="calc-results__rate"><dt class="calc-results__rate-name">Effective rate on rent</dt><dd class="calc-results__rate-value" data-out="effectiveRate">{{calc-pct:example.owner.result.effectiveRate}}</dd></div>
+          <div class="calc-results__rate"><dt class="calc-results__rate-name">Top band reached</dt><dd class="calc-results__rate-value" data-out="marginalBand">{{calc-band:example.owner.result}}</dd></div>
+        </dl>
+        <p class="calc-results__invalid" data-invalid-note hidden>Check the highlighted box to update your result.</p>
+        <p class="calc-results__partner" data-partner hidden>The other owner pays <span data-out="partnerTax"></span> on their share and keeps <span data-out="partnerKeep"></span>.</p>
+      </div>
+
+      <div class="calc-alerts" data-alerts>
+        <p class="calc-alert" data-alert="allowanceForfeitsCredit" hidden><strong>You give up your mortgage interest credit.</strong> With the property allowance there is no credit on your mortgage interest this year. It would have been worth <span data-slot="amount"></span>.</p>
+        <p class="calc-alert" data-alert="routeUnavailable" hidden><strong>That relief route does not fit these figures.</strong> <span data-slot="reason"></span>, so the calculator used <span data-slot="route"></span> instead.</p>
+        <p class="calc-alert" data-alert="taper" hidden><strong>Your personal allowance is being withdrawn.</strong> It falls as income passes <span data-slot="threshold"></span>, so each extra pound of profit here is taxed at about <span data-slot="rate"></span>.</p>
+        <p class="calc-alert" data-alert="financeCarried" hidden><strong><span data-slot="amount"></span> of mortgage interest carries forward.</strong> The credit was limited this year. Enter this as unrelieved interest when you work out next year.</p>
+        <p class="calc-alert" data-alert="lossCarried" hidden><strong>A loss of <span data-slot="amount"></span> carries forward.</strong> It can reduce future property profits, but not your other income.</p>
+        <p class="calc-alert" data-alert="creditCapped" hidden><strong>Your credit is capped at your tax bill.</strong> It can bring your tax down to nothing, but it cannot create a refund.</p>
+        <p class="calc-alert" data-alert="rateChangeMore" hidden><strong>From <span data-slot="date"></span> these figures would cost <span data-slot="amount"></span> more a year.</strong> Property income gets its own tax rates in <span data-slot="year"></span>. <a class="calc-alert__link" href="{{root}}property-income-tax-rates-2027/">See how the property income rates change</a></p>
+        <p class="calc-alert" data-alert="rateChangeLess" hidden><strong>From <span data-slot="date"></span> these figures would cost <span data-slot="amount"></span> less a year.</strong> The mortgage interest credit rises in <span data-slot="year"></span>. <a class="calc-alert__link" href="{{root}}property-income-tax-rates-2027/">See how the property income rates change</a></p>
+        <p class="calc-alert" data-alert="mtdNow" hidden><strong>Making Tax Digital applies.</strong> Your share of rent is over <span data-slot="threshold"></span>, so digital records and quarterly updates have been required since <span data-slot="date"></span> if your <span data-slot="testYear"></span> tax return showed the same. Self-employment turnover counts towards the limit too. <a class="calc-alert__link" href="{{root}}making-tax-digital-for-landlords/">Check what Making Tax Digital means for landlords</a></p>
+        <p class="calc-alert" data-alert="mtdFuture" hidden><strong>Making Tax Digital will apply from <span data-slot="date"></span>.</strong> Your share of rent is over <span data-slot="threshold"></span>. HMRC tests this against your <span data-slot="testYear"></span> tax return, and self-employment turnover counts too. <a class="calc-alert__link" href="{{root}}making-tax-digital-for-landlords/">Check what Making Tax Digital means for landlords</a></p>
+        <p class="calc-alert" data-alert="forecast" hidden><strong><span data-slot="year"></span> has not started yet.</strong> <span data-slot="note"></span></p>
+      </div>
+
+      <details class="calc-detail" open>
+        <summary class="calc-detail__summary">How your rent is taxed</summary>
+        <div class="calc-detail__body">
+          <div class="calc-bar" data-bar role="img"></div>
+          <ul class="calc-bar-key" data-bar-key></ul>
+          <dl class="calc-sums">
+            <div class="calc-sums__row"><dt class="calc-sums__name">Rent received</dt><dd class="calc-sums__value" data-out="sumRent"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Less <span data-out="sumDeductionName"></span></dt><dd class="calc-sums__value" data-out="sumDeduction"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Property profit</dt><dd class="calc-sums__value" data-out="sumProfit"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Tax on that profit before the credit</dt><dd class="calc-sums__value" data-out="sumTaxBefore"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Less mortgage interest credit</dt><dd class="calc-sums__value" data-out="sumCredit"></dd></div>
+            <div class="calc-sums__total"><dt class="calc-sums__name">Tax on your rental income</dt><dd class="calc-sums__value" data-out="sumTax"></dd></div>
+          </dl>
+        </div>
+      </details>
+
+      <details class="calc-detail">
+        <summary class="calc-detail__summary">Section 24 mortgage interest credit</summary>
+        <div class="calc-detail__body">
+          <dl class="calc-sums">
+            <div class="calc-sums__row"><dt class="calc-sums__name">Mortgage interest this year</dt><dd class="calc-sums__value" data-out="s24Paid"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Brought forward from earlier years</dt><dd class="calc-sums__value" data-out="s24BroughtForward"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Amount that earns the credit</dt><dd class="calc-sums__value" data-out="s24Relieved"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Credit at <span data-out="s24Rate"></span></dt><dd class="calc-sums__value" data-out="s24Credit"></dd></div>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Carried forward to next year</dt><dd class="calc-sums__value" data-out="s24CarriedForward"></dd></div>
+          </dl>
+          <p class="calc-detail__text" data-limit="financeCosts" hidden>All of your interest earns the credit this year.</p>
+          <p class="calc-detail__text" data-limit="profits" hidden>The credit is limited by your property profit, which is lower than your interest. The rest carries forward.</p>
+          <p class="calc-detail__text" data-limit="income" hidden>The credit is limited by your income above the personal allowance, which is lower than your interest. The rest carries forward.</p>
+          <p class="calc-detail__text" data-limit="none" hidden>There is no mortgage interest in these figures, so there is no credit.</p>
+          <p class="calc-detail__text" data-limit="route" hidden>The relief route used for your result gives no credit on mortgage interest, so none of it counts this year.</p>
+          <dl class="calc-sums" data-s24-compare>
+            <div class="calc-sums__row"><dt class="calc-sums__name">Tax on your rent under the pre-2017 rules</dt><dd class="calc-sums__value" data-out="s24Pre2017"></dd></div>
+            <div class="calc-sums__total"><dt class="calc-sums__name">Extra tax you pay because of Section 24</dt><dd class="calc-sums__value" data-out="s24Cost"></dd></div>
+          </dl>
+          <a class="calc-detail__link" href="{{root}}section-24-mortgage-interest-relief/">Read how Section 24 mortgage interest relief works</a>
+        </div>
+      </details>
+
+      <details class="calc-detail">
+        <summary class="calc-detail__summary">Compare relief routes</summary>
+        <div class="calc-detail__body">
+          <div class="calc-routes">
+            <div class="calc-routes__row" data-route="expenses">
+              <p class="calc-routes__name">Claim allowable expenses</p>
+              <p class="calc-routes__tax" data-route-tax></p>
+              <p class="calc-routes__status" data-route-status></p>
+            </div>
+            <div class="calc-routes__row" data-route="propertyAllowance">
+              <p class="calc-routes__name">Use the property allowance</p>
+              <p class="calc-routes__tax" data-route-tax></p>
+              <p class="calc-routes__status" data-route-status></p>
+            </div>
+            <div class="calc-routes__row" data-route="rentARoom">
+              <p class="calc-routes__name">Use Rent a Room relief</p>
+              <p class="calc-routes__tax" data-route-tax></p>
+              <p class="calc-routes__status" data-route-status></p>
+            </div>
+          </div>
+          <a class="calc-detail__link" href="{{root}}property-allowance-vs-expenses/">Read when the property allowance beats claiming expenses</a>
+        </div>
+      </details>
+
+      <details class="calc-detail" data-print-hide open>
+        <summary class="calc-detail__summary">Your result in plain English</summary>
+        <div class="calc-detail__body">
+          <p class="calc-detail__text" data-narration></p>
+        </div>
+      </details>
+
+      <div class="calc-actions">
+        <button class="button" type="button" data-action="copy">Copy shareable link</button>
+        <button class="button-quiet" type="button" data-action="print">Print or save as PDF</button>
+        <button class="button-quiet" type="button" data-action="reset">Reset</button>
+      </div>
+      <p class="calc-actions__status" data-action-status role="status"></p>
+      <p class="visually-hidden" data-live aria-live="polite"></p>
+
+      <div class="calc-print" data-print-summary>
+        <p class="calc-print__title">Rental income tax estimate from CalculateMyTax</p>
+        <dl class="calc-sums">
+          <div class="calc-sums__row"><dt class="calc-sums__name">Prepared on</dt><dd class="calc-sums__value" data-out="printDate"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Tax year and location</dt><dd class="calc-sums__value" data-out="printBasis"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Other annual income</dt><dd class="calc-sums__value" data-out="printOtherIncome"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Rent, expenses and mortgage interest, all properties</dt><dd class="calc-sums__value" data-out="printProperty"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Your share</dt><dd class="calc-sums__value" data-out="printShare"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Relief route used</dt><dd class="calc-sums__value" data-out="printRoute"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Brought forward: losses and interest</dt><dd class="calc-sums__value" data-out="printBroughtForward"></dd></div>
+        </dl>
+        <p class="calc-print__note">An estimate based on published HMRC rates, not tax advice. Check your figures with an accountant before you file.</p>
+      </div>
+    </aside>
+
+    <div class="calc-strip" data-strip hidden>
+      <p class="calc-strip__label">Tax on your rent</p>
+      <p class="calc-strip__figure" data-out="stripTax">{{calc:example.owner.result.propertyTax}}</p>
+      <button class="calc-strip__button" type="button" data-show-results>See breakdown</button>
+    </div>
+
+    <template data-text="recommended">Recommended</template>
+    <template data-text="selected">Used for your result</template>
+    <template data-text="notAvailable">Not available</template>
+    <template data-text="reason-onlyForRoomInOwnHome">Only for a furnished room in your own home</template>
+    <template data-text="reason-notForRentARoomIncome">Cannot be used on Rent a Room income</template>
+    <template data-text="reason-broughtForwardFinanceCosts">Not allowed while brought-forward interest would cut your tax</template>
+    <template data-text="route-expenses">allowable expenses</template>
+    <template data-text="route-propertyAllowance">the property allowance</template>
+    <template data-text="route-rentARoom">the Rent a Room allowance</template>
+    <template data-text="key-expenses">{amount} allowable expenses</template>
+    <template data-text="key-propertyAllowance">{amount} property allowance</template>
+    <template data-text="key-rentARoom">{amount} Rent a Room allowance</template>
+    <template data-text="key-lossRelief">{amount} losses brought forward</template>
+    <template data-text="key-personalAllowance">{amount} personal allowance</template>
+    <template data-text="key-band">{amount} at {rate}</template>
+    <template data-text="barLabel">How your rent of {rent} is split: {parts}</template>
+    <template data-text="withinAllowance">Within your personal allowance</template>
+    <template data-text="futureYear"> (future year)</template>
+    <template data-text="and"> and </template>
+    <template data-text="separator">, </template>
+    <template data-text="narrProfit">Your rent of {rent}, less {deduction} of {routeName}, leaves a property profit of {profit}.</template>
+    <template data-text="narrLoss">Your costs of {costs} are more than your rent of {rent}, so there is no taxable profit this year and a loss of {loss} carries forward.</template>
+    <template data-text="narrLossUsed">Losses brought forward cover {amount} of that profit.</template>
+    <template data-text="narrBands">Added on top of your other income of {other}, it is taxed as {bands}.</template>
+    <template data-text="bandAllowance">{amount} inside your personal allowance</template>
+    <template data-text="bandSlice">{amount} at {rate}</template>
+    <template data-text="narrCredit">Your mortgage interest of {interest} earns a tax credit of {credit}, at {rate}.</template>
+    <template data-text="narrNoCredit">Using {routeName} means your mortgage interest earns no tax credit this year.</template>
+    <template data-text="narrTotal">That is {tax} of tax on your rental income, about {monthly} a month, leaving you {keep} after costs and tax.</template>
+    <template data-text="narrNegative">Your credit is worth more than the tax on your rent, so your overall bill falls by {amount}, leaving you {keep} after costs.</template>
+    <template data-text="narrBasis">These figures use {year} rates for {region}.</template>
+    <template data-text="liveSummary">Tax on your rental income is {tax} a year. You keep {keep}.</template>
+    <template data-text="copied">Link copied. Anyone who opens it sees these figures.</template>
+    <template data-text="copyFailed">Your browser blocked copying. The link is now in the address bar, ready to copy.</template>
+    <template data-text="resetDone">Calculator cleared.</template>
+    <template data-text="error-notANumber">Use numbers only, for example 18,000.</template>
+    <template data-text="error-tooLarge">That number is too large. Check for extra digits.</template>
+    <template data-text="error-negative">Enter £0 or more.</template>
+    <template data-text="error-notWholePence">Use no more than two decimal places.</template>
+    <template data-text="error-shareOutOfRange">Enter your share as a number between 1 and 99.</template>
+    <template data-text="error-jointShareMustBeBelow100">Enter your share as a number between 1 and 99.</template>
+    <template data-text="share">{share}% of the property</template>
+    <template data-text="shareSole">Sole owner</template>
+    <template data-text="propertyTotals">{rent} rent, {expenses} expenses, {interest} interest</template>
+    <template data-text="broughtForward">{losses} losses, {interest} interest</template>
+  </div>
+</section>

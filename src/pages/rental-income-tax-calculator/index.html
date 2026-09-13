@@ -1,0 +1,141 @@
+<!--page
+{
+  "title": "Rental Income Tax Calculator UK {{label:current}} | Landlord & BTL",
+  "description": "Free UK rental income tax calculator for landlords and buy-to-let. Work out tax on rental income for {{label:current}} with Section 24 relief, expenses and Scotland.",
+  "keyword": "rental income tax calculator",
+  "secondaryKeywords": ["landlord tax calculator", "uk rental income tax calculator", "tax on rental income uk calculator", "buy to let tax calculator", "rental income calculator", "buy to let expenses calculator", "rental tax calculator", "tax on rental income calculator", "landlord costs calculator uk", "holiday let tax calculator", "rental property tax calculator", "calculate tax on rental income", "btl tax calculator"],
+  "crumb": "Rental income tax calculator",
+  "schema": ["WebApplication", "FAQPage"],
+  "styles": ["calculator"],
+  "scripts": ["tax-engine", "calculator"],
+  "data": ["rates", "expenses", "mtd"],
+  "examples": {
+    "example": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }] }
+  }
+}
+-->
+<section class="intro" data-section="Intro" data-print-hide>
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Rental income tax calculator for UK landlords</h1>
+    <p class="intro__lede">Work out the tax on your rental income for {{label:current}}. Enter your other income, rent, running costs and mortgage interest, and this landlord tax calculator applies the Section 24 mortgage interest credit, compares your expenses with the property allowance, and handles buy-to-let, Scotland and joint owners.</p>
+    <p class="intro__meta">Uses {{label:current}} HMRC rates, last verified {{verified}}. Results are estimates, not tax advice.</p>
+  </div>
+</section>
+
+{{include:calculator}}
+
+<section class="prose" data-section="How to use">
+  <div class="prose__wrap">
+    <h2>How to use the landlord tax calculator</h2>
+    <ol>
+      <li><strong>Choose the tax year and where you live.</strong> Scotland has its own income tax bands, so choose it if your main home is there.</li>
+      <li><strong>Enter your other income.</strong> This is your salary, pension and self-employment profit for the year, before tax. Rental profit is taxed on top of it.</li>
+      <li><strong>Enter your rent and running costs.</strong> Use the rent you received in the tax year and your allowable expenses as one total, or open Itemise your expenses to add them one by one.</li>
+      <li><strong>Add your mortgage interest.</strong> Enter only the interest, not capital repayments. It earns a tax credit rather than coming off your rent.</li>
+      <li><strong>Open More options if you need them.</strong> They cover joint ownership, more than one property, a room in your own home, and losses or interest brought forward from earlier years.</li>
+    </ol>
+    <p>The result shows the tax your rental income adds, how much you keep, how each part of your profit is taxed, and whether another relief would cost you less.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="How it works">
+  <div class="prose__wrap">
+    <h2>How the calculator works out tax on rental income</h2>
+    <p>It follows the order HMRC uses. Your rent, less allowable expenses, gives your property profit. That profit sits on top of your other income, so it is taxed at the rate your salary or pension has already reached. Mortgage interest is not deducted; it earns a tax credit of {{pct:current.financeReliefRate}} instead, limited by your profit and your income.</p>
+    <p>The headline figure is the tax your rental income adds: your total bill with the rent, minus the bill on your other income alone. For the example figures that is {{calc:example.owner.result.propertyTax}}, and you keep {{calc:example.owner.result.netRentalIncome}} of {{calc:example.owner.grossRent}} rent after costs and tax.</p>
+    <p>Each step is set out in the guide to <a href="{{root}}tax-on-rental-income/">tax on rental income</a>, with examples at every tax rate.</p>
+
+    <h2>Buy-to-let expenses you can include</h2>
+    <p>Enter your running costs as one figure, or itemise them. The costs landlords claim most often are letting agent and management fees, repairs and maintenance, landlord insurance, ground rent and service charges, bills and council tax you pay for the property, accountancy fees, and the cost of replacing furniture and appliances.</p>
+    <p>Mortgage interest has its own box because it is not an expense. Capital repayments, the cost of buying the property and improvements such as an extension cannot be taken off rent. The guide to <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a> explains each cost.</p>
+
+    <h2>What this buy-to-let tax calculator covers</h2>
+    <ul>
+      <li>The {{label:2025-26}}, {{label:2026-27}} and {{label:2027-28}} tax years, including the separate property income rates from {{date:2027-28.startDate}}.</li>
+      <li>England, Wales and Northern Ireland, and Scotland's own tax bands.</li>
+      <li>Section 24 mortgage interest relief with all three limits, and interest carried forward.</li>
+      <li>Allowable expenses, the {{money:current.propertyAllowance}} property allowance and Rent a Room relief, with the cheapest route recommended.</li>
+      <li>Joint owners at any split, several properties, and losses brought forward.</li>
+      <li>Former furnished holiday lets, which are taxed like other lettings.</li>
+      <li>Whether Making Tax Digital for Income Tax applies to your rental income.</li>
+    </ul>
+
+    <h2>Using the calculator for a holiday let</h2>
+    <p>Since 6 April 2025, furnished holiday lets have been taxed in the same way as other rental property. Mortgage interest on a holiday let now earns the tax credit instead of being deducted, and the profit no longer counts as earnings for pension contributions. Enter a holiday let's income, running costs and interest as you would for any other let. If you let a furnished room in a home you live in, tick the Rent a Room option under More options instead.</p>
+
+    <h2>What taxes do landlords pay?</h2>
+    <ul>
+      <li><strong>Income tax on rental profit.</strong> This is what the calculator works out.</li>
+      <li><strong>Capital Gains Tax</strong> when you sell a rental property for more than it cost you.</li>
+      <li><strong>Stamp Duty Land Tax</strong> when you buy, usually at higher rates for an additional home. Scotland has Land and Buildings Transaction Tax and Wales has Land Transaction Tax instead.</li>
+      <li><strong>Corporation Tax</strong> instead of income tax, if a limited company owns the property.</li>
+    </ul>
+    <p>National Insurance does not normally apply to rental income.</p>
+
+    <h2>What it does not cover</h2>
+    <ul>
+      <li>Property owned through a limited company, which pays Corporation Tax instead.</li>
+      <li>Landlords who live abroad, overseas property, and Capital Gains Tax when you sell.</li>
+      <li>Savings and dividend income, pension contributions and Gift Aid, which can change your allowances.</li>
+      <li>National Insurance, which does not normally apply to rental income.</li>
+    </ul>
+
+    <h2>Your figures stay with you</h2>
+    <p>The calculator runs in your browser. Nothing you type is sent to us or stored. If you copy a shareable link, your figures are written into that link so whoever opens it sees the same result.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Calculator questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Rental income tax calculator questions</h2>
+    <details class="faq__item">
+      <summary class="faq__question">How do I calculate tax on rental income?</summary>
+      <div class="faq__answer"><p>Add up the rent you received in the tax year and take off your allowable expenses, or the {{money:current.propertyAllowance}} property allowance, to find your profit. Add that profit to your other income and work out income tax at the rates your total income reaches. Then take off a tax credit of {{pct:current.financeReliefRate}} of your mortgage interest, limited by your profit and your income. The calculator on this page does each step and shows the working.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does the calculator include Section 24 mortgage interest relief?</summary>
+      <div class="faq__answer"><p>Yes. It does not deduct mortgage interest from your rent. Instead it gives a tax credit of {{pct:current.financeReliefRate}} of the lowest of three amounts: your finance costs, your property profit, and your income above the personal allowance. Interest that cannot be used is carried forward to the next year, and the result compares your tax with the rules before April 2017.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is this landlord tax calculator free?</summary>
+      <div class="faq__answer"><p>Yes. There is no sign-up and no email address to give, and it has no limit on how often you use it. It runs in your browser, so the figures you enter are not sent anywhere or stored.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does HMRC have a rental income tax calculator?</summary>
+      <div class="faq__answer"><p>Not one built for landlords. GOV.UK's <a href="https://www.gov.uk/self-assessment-tax-calculator">Estimate your Self Assessment tax bill</a> service asks for your estimated income from each source, including rental income, and assumes the standard Personal Allowance. HMRC works out your final bill when you submit your Self Assessment tax return. This calculator follows HMRC's published rules and is tested against HMRC's worked examples. It separates running costs from mortgage interest, compares the property allowance, handles joint owners and Scotland, and shows each figure so you can check it.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Can I use it as a buy-to-let tax calculator for a limited company?</summary>
+      <div class="faq__answer"><p>No. It is built for individuals who own property in their own name, alone or jointly. A limited company pays Corporation Tax on its rental profit instead of income tax, and Section 24 does not apply, so the company deducts mortgage interest as a normal cost. Money you take out of the company as salary or dividends is taxed separately.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Guides that explain your result</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">How Section 24 mortgage interest relief works</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Which expenses landlords can claim</a>
+      <a class="related__link" href="{{root}}property-allowance-vs-expenses/">When the property allowance beats claiming expenses</a>
+      <a class="related__link" href="{{root}}rent-a-room-scheme/">How the Rent a Room Scheme works</a>
+      <a class="related__link" href="{{root}}rental-income-tax-scotland/">How rental income is taxed in Scotland</a>
+      <a class="related__link" href="{{root}}property-income-tax-rates-2027/">The new property income tax rates from April 2027</a>
+      <a class="related__link" href="{{root}}making-tax-digital-for-landlords/">What Making Tax Digital means for landlords</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past">GOV.UK: Income Tax rates and allowances</a></li>
+      <li><a class="sources__link" href="https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/2026-to-2027/">gov.scot: Scottish income tax rates and bands</a></li>
+    </ul>
+  </div>
+</section>

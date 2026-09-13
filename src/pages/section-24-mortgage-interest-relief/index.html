@@ -1,0 +1,159 @@
+<!--page
+{
+  "title": "Section 24 Mortgage Interest Relief Guide | CalculateMyTax",
+  "description": "Section 24 swaps the mortgage interest deduction for a {{pct:current.financeReliefRate}} tax credit. See who it affects, the three limits, carry-forward and worked examples for landlords.",
+  "keyword": "section 24 mortgage interest relief",
+  "crumb": "Section 24 mortgage interest relief",
+  "ogType": "article",
+  "schema": ["FAQPage"],
+  "examples": {
+    "higher": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "basic": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 20000, "properties": [{ "rent": 12000, "expenses": 1000, "financeCosts": 5000 }], "reliefMode": "expenses" },
+    "capped": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 10000, "expenses": 2000, "financeCosts": 12000 }], "reliefMode": "expenses" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Section 24 mortgage interest relief explained</h1>
+    <p class="intro__lede">Section 24 stops individual landlords deducting mortgage interest and other finance costs from residential rental income. Instead you get a tax credit worth {{pct:current.financeReliefRate}} of those costs. Higher and additional rate landlords pay more tax than they did before April 2017, while many basic rate landlords pay about the same.</p>
+    <p class="intro__meta">Rates for {{label:current}}, last verified {{verified}} against GOV.UK, HMRC and legislation.gov.uk.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="prose" data-section="What Section 24 is">
+  <div class="prose__wrap">
+    <h2>What Section 24 is and who it applies to</h2>
+    <p>Section 24 is the common name for the rules in sections 272A and 274A to 274C of the Income Tax (Trading and Other Income) Act 2005, which restrict tax relief on finance costs for residential lettings. It applies to you if you are an individual letting out residential property, such as a buy-to-let house or flat, whether you own it alone or jointly with someone else.</p>
+    <p>The furnished holiday lettings regime was abolished from 6 April 2025, so former holiday lets now fall within the restriction too. Section 24 does not apply to companies, or to commercial property.</p>
+
+    <h2>What counts as finance costs</h2>
+    <p>Finance costs are the costs of borrowing money for your letting business. They include:</p>
+    <ul>
+      <li>mortgage interest on a let property</li>
+      <li>interest on loans to buy furnishings</li>
+      <li>fees and incidental costs of getting or repaying a loan</li>
+    </ul>
+    <p>The capital you repay on a repayment mortgage has never been deductible, before or after Section 24. Your other running costs, such as letting agent fees, repairs and insurance, are still deducted from the rent as normal. The guide to <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a> lists them.</p>
+
+    <h2>How the tax credit works</h2>
+    <p>You work out your property profit without deducting finance costs, pay tax on that profit at your usual rates, and then take a tax reduction off your bill. The reduction is {{pct:current.financeReliefRate}}, the basic rate, of the lowest of three amounts:</p>
+    <ol>
+      <li>Finance costs: the finance costs not deducted this year, plus any unrelieved amounts brought forward from earlier years.</li>
+      <li>Property profits: your property business profit for the year, after any property losses brought forward.</li>
+      <li>Income: your adjusted total income above the personal allowance, which leaves out savings and dividend income.</li>
+    </ol>
+    <p>The reduction can bring your tax bill down but it cannot create a refund. If your property profits or your income are the lowest of the three, the finance costs that missed out are carried forward and added to the first amount in later years.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Worked example">
+  <div class="prose__wrap">
+    <h2>Worked example: a landlord who pays higher rate tax</h2>
+    <p>A landlord in England earns £45,000 from their job in {{label:current}}. They receive £18,000 rent, spend £3,200 on letting fees, repairs and insurance, and pay £6,400 of mortgage interest.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Rent received</dt><dd class="worked__amount">{{calc:higher.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Less allowable expenses</dt><dd class="worked__amount">{{calc:higher.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Property profit, with interest not deducted</dt><dd class="worked__amount">{{calc:higher.owner.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Section 24 credit</dt><dd class="worked__amount">{{calc:higher.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent under Section 24</dt><dd class="worked__amount">{{calc:higher.owner.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent if interest were deducted as before 2017</dt><dd class="worked__amount">{{calc:higher.owner.result.pre2017PropertyTax}}</dd></div>
+      <div class="worked__total"><dt>Extra tax caused by Section 24</dt><dd class="worked__amount">{{calc:higher.owner.result.section24Cost}}</dd></div>
+    </dl>
+    <p>The salary uses up most of the basic rate band, so {{calc:higher.owner.result.propertySlices.1.amount}} of the profit is taxed at {{pct:current.regions.england_wales_ni.bands.1.rate}}. Under the old rules the interest would have been deducted and saved tax at {{pct:current.regions.england_wales_ni.bands.1.rate}}. Under Section 24 it earns a credit at {{pct:current.financeReliefRate}}, which is why the bill is {{calc:higher.owner.result.section24Cost}} higher. Both figures use {{label:current}} rates.</p>
+
+    <h2>Why higher rate landlords pay more and many basic rate landlords do not</h2>
+    <p>Section 24 costs you extra tax when your finance costs would otherwise have been relieved above the basic rate. Before April 2017, interest was deducted from rental profit, so it saved tax at your highest rate: {{pct:current.regions.england_wales_ni.bands.1.rate}} for a higher rate taxpayer or {{pct:current.regions.england_wales_ni.bands.2.rate}} for an additional rate taxpayer. The credit gives relief at {{pct:current.financeReliefRate}} whatever rate you pay.</p>
+    <p>If all your income, including the rental profit with interest added back, stays inside the basic rate band, the credit gives you the same relief the deduction did. Take a landlord who earns £20,000, receives £12,000 rent, spends £1,000 on running costs and pays £5,000 of interest. Their tax on the rent is {{calc:basic.owner.result.propertyTax}} under Section 24 and {{calc:basic.owner.result.pre2017PropertyTax}} under the old rules, so Section 24 costs them {{calc:basic.owner.result.section24Cost}}.</p>
+    <p>Basic rate landlords are not always unaffected. Because interest is no longer deducted, your profit and total income are higher on paper. That can push you into the higher rate band, or take your income over {{money:current.paTaperThreshold}}, where the personal allowance starts to shrink.</p>
+
+    <h3>HMRC's own example: John</h3>
+    <p>HMRC's guidance shows the same effect with a case study. John has self-employment income of £35,000, rent of £18,000, mortgage interest of £8,000 and other expenses of £2,000. With the interest no longer deducted, his property profit is £16,000 and his tax before the reduction is £9,600. The reduction is £1,600, so his final tax is £8,000, compared with £6,400 before the restriction. The higher profit also makes him a higher rate taxpayer. HMRC uses the 2016/17 rates and allowances throughout its examples, so these figures will not match a calculation for {{label:current}}.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Limits and phase-in">
+  <div class="prose__wrap">
+    <h2>When the limits cut your credit and interest is carried forward</h2>
+    <p>Your credit is less than {{pct:current.financeReliefRate}} of your interest when your property profit or your income above the personal allowance is lower than your finance costs. Take a landlord who earns £45,000, receives £10,000 rent, spends £2,000 on running costs and pays £12,000 of interest.</p>
+    <p>Their property profit is {{calc:capped.owner.result.profit}}, which is less than the interest, so the credit is worked out on the profit. The credit is {{calc:capped.owner.result.finance.credit}}, and the {{calc:capped.owner.result.finance.carriedForward}} of interest that got no relief is carried forward to later years. They still pay {{calc:capped.owner.result.propertyTax}} of tax on the rent, even though the rent does not cover their costs.</p>
+    <p>Carried-forward interest is added to your finance costs next year, so you get the credit once your profit or income is high enough to absorb it.</p>
+
+    <h2>How Section 24 was phased in</h2>
+    <p>The restriction came in over four tax years starting on 6 April 2017 and has applied in full since 6 April 2020. In each year, the part of your finance costs that could not be deducted was given as a basic rate credit instead.</p>
+    <ul>
+      <li>2017/18: 75% of finance costs deductible</li>
+      <li>2018/19: 50% deductible</li>
+      <li>2019/20: 25% deductible</li>
+      <li>2020/21 onwards: none deductible, with all relief given as the credit</li>
+    </ul>
+
+    <h2>The credit rises to {{pct:next.financeReliefRate}} from April 2027</h2>
+    <p>From {{date:next.startDate}}, the credit is worked out at {{pct:next.financeReliefRate}}, because property income gets its own tax rates. In England and Northern Ireland those rates are {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} and {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}}, so the gap between the credit and the rate on your profit stays the same. The changes are set out in <a href="{{root}}property-income-tax-rates-2027/">property income tax rates from April 2027</a>.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions about Section 24</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Can you claim mortgage interest on a rental property?</summary>
+      <div class="faq__answer">
+        <p>Not as an expense. Since 6 April 2020, individual landlords of residential property cannot deduct any mortgage interest or other finance costs from rental income. You claim the costs on your tax return and receive a tax reduction of {{pct:current.financeReliefRate}} of the lowest of your finance costs, property profits and income above the personal allowance. The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> works out the credit for you.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does Section 24 apply to property owned through a limited company?</summary>
+      <div class="faq__answer">
+        <p>No. The restriction applies to individuals, not companies. A company that lets property pays corporation tax rather than income tax on its profits. Section 24 also does not apply to commercial property.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What happens to interest I do not get relief for?</summary>
+      <div class="faq__answer">
+        <p>If your credit is limited by your property profits or your income, the unrelieved finance costs are carried forward. They are added to your finance costs in later years and can earn the credit when your profits and income are high enough.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does Section 24 apply to holiday lets?</summary>
+      <div class="faq__answer">
+        <p>Yes, from 6 April 2025. Furnished holiday lets used to be outside the restriction, but that regime was abolished from that date, so interest on a former holiday let now gets the same basic rate credit as other residential lettings.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">See what Section 24 costs you</h2>
+      <p>Enter your income, rent, running costs and mortgage interest to see your credit, any interest carried forward and the tax on your rent.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}property-income-tax-rates-2027/">Property income tax rates from April 2027</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Allowable expenses landlords can claim</a>
+      <a class="related__link" href="{{root}}property-allowance-vs-expenses/">Property allowance or claiming expenses</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out, including case studies</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property: working out your rental income</a></li>
+      <li><a class="sources__link" href="https://www.legislation.gov.uk/ukpga/2005/5/section/272A">legislation.gov.uk: Income Tax (Trading and Other Income) Act 2005, section 272A</a></li>
+    </ul>
+  </div>
+</section>

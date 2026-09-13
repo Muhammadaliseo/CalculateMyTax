@@ -1,0 +1,194 @@
+<!--page
+{
+  "title": "Landlord Tax UK: Free Calculator and Guides | CalculateMyTax",
+  "description": "Landlord tax in the UK made simple: a free rental income tax calculator on current HMRC rates, Section 24 explained, and plain-English guides for landlords.",
+  "keyword": "landlord tax uk",
+  "secondaryKeywords": ["landlord tax", "uk landlord tax", "free uk tax calculators", "calculatemytax"],
+  "schema": ["FAQPage"],
+  "styles": ["home"],
+  "scripts": ["tax-engine", "quick-estimate"],
+  "data": ["rates"],
+  "examples": {
+    "example": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }] }
+  }
+}
+-->
+<section class="home-hero" data-section="Hero">
+  <div class="home-hero__wrap">
+    <div class="home-hero__content">
+      <h1 class="home-hero__title">UK landlord tax, <span class="home-hero__highlight">worked out in minutes</span></h1>
+      <p class="home-hero__text">Enter your rent, running costs and mortgage interest to see the income tax on your rental profit. The estimate uses current HMRC rates and applies Section 24 properly, and the full calculator shows every step.</p>
+      <div class="home-hero__actions">
+        <a class="button" href="{{root}}rental-income-tax-calculator/">Open the full calculator</a>
+        <a class="button-light" href="{{root}}our-services/self-assessment-tax-returns/">Want your tax return done? Talk to us</a>
+      </div>
+      <ul class="home-hero__trust">
+        <li class="home-hero__trust-item"><svg class="home-hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>{{label:current}} HMRC rates, checked {{verified}}</li>
+        <li class="home-hero__trust-item"><svg class="home-hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>Section 24 applied properly</li>
+        <li class="home-hero__trust-item"><svg class="home-hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>No sign-up, figures stay in your browser</li>
+      </ul>
+    </div>
+    <form class="quick" action="{{root}}rental-income-tax-calculator/" method="get" data-quick-estimate aria-labelledby="quick-title">
+      <h2 class="quick__title" id="quick-title">Quick rental tax estimate</h2>
+      <p class="quick__pill">{{label:current}}</p>
+      <input type="hidden" name="y" value="{{year-key:current}}">
+      <label class="quick__field" data-width="full">
+        <span class="quick__label">Where you live</span>
+        <select class="quick__select" name="r">{{calc-region-options}}</select>
+      </label>
+      <label class="quick__field">
+        <span class="quick__label">Other annual income</span>
+        <span class="quick__money"><span class="quick__unit" aria-hidden="true">£</span><input class="quick__input" name="oi" type="text" inputmode="decimal" autocomplete="off" value="45,000"></span>
+      </label>
+      <label class="quick__field">
+        <span class="quick__label">Annual rent</span>
+        <span class="quick__money"><span class="quick__unit" aria-hidden="true">£</span><input class="quick__input" name="rent" type="text" inputmode="decimal" autocomplete="off" value="18,000"></span>
+      </label>
+      <label class="quick__field">
+        <span class="quick__label">Allowable expenses</span>
+        <span class="quick__money"><span class="quick__unit" aria-hidden="true">£</span><input class="quick__input" name="exp" type="text" inputmode="decimal" autocomplete="off" value="3,200"></span>
+      </label>
+      <label class="quick__field">
+        <span class="quick__label">Mortgage interest</span>
+        <span class="quick__money"><span class="quick__unit" aria-hidden="true">£</span><input class="quick__input" name="int" type="text" inputmode="decimal" autocomplete="off" value="6,400"></span>
+      </label>
+      <div class="quick__results">
+        <p class="quick__stat"><span class="quick__stat-value" data-quick="tax" data-empty="£–">{{calc:example.owner.result.propertyTax}}</span><span class="quick__stat-label">Tax on your rent</span></p>
+        <p class="quick__stat" data-tone="navy"><span class="quick__stat-value" data-quick="keep" data-empty="£–">{{calc:example.owner.result.netRentalIncome}}</span><span class="quick__stat-label">You keep after tax</span></p>
+      </div>
+      <p class="quick__rate"><span class="quick__rate-label">Effective tax rate on your rent</span><span class="quick__rate-value" data-quick="rate" data-empty="–">{{calc-pct:example.owner.result.effectiveRate}}</span></p>
+      <progress class="quick__bar" data-quick="bar" max="100" value="{{calc-pct-value:example.owner.result.effectiveRate}}" aria-label="Effective tax rate on your rent">{{calc-pct:example.owner.result.effectiveRate}}</progress>
+      <p class="quick__month">That is about <span class="quick__month-value" data-quick="month" data-empty="£–">{{calc-month:example.owner.result.propertyTax}}</span> a month to set aside.</p>
+      <button class="button" type="submit">See the full breakdown</button>
+      <p class="quick__note">These are example figures, so type over them with your own. For joint owners, several properties or Rent a Room, use the full calculator.</p>
+      <p class="visually-hidden" data-quick="status" aria-live="polite" data-invalid="Enter amounts in pounds, using numbers only." data-template="Estimated tax on your rent is {tax}. You keep {keep} after costs and tax."></p>
+    </form>
+  </div>
+</section>
+
+<section class="tools" data-section="Tools and guides">
+  <div class="tools__wrap">
+    <h2 class="tools__title">Choose the calculator or guide you need</h2>
+    <p class="tools__intro">Free, accurate and private UK tax help for landlords. No sign-up needed, and your figures never leave your browser.</p>
+    <span class="tools__rule" aria-hidden="true"></span>
+    <div class="tools__list">
+      <a class="tool-card" href="{{root}}rental-income-tax-calculator/" data-tone="brand" data-featured="true">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="2.5" width="14" height="19" rx="2"/><rect x="8" y="5.5" width="8" height="4" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
+        <span class="tool-card__badge">Free tool</span>
+        <h3 class="tool-card__title">Rental income tax calculator</h3>
+        <p class="tool-card__text">Work out the tax on your rental profit, with Section 24 mortgage interest relief, Scotland and joint owners.</p>
+      </a>
+      <a class="tool-card" href="{{root}}section-24-mortgage-interest-relief/" data-tone="navy">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="m9.5 17 5-5"/><path d="M10 12.5h.01M14 16.5h.01"/></svg></span>
+        <span class="tool-card__badge">Mortgages</span>
+        <h3 class="tool-card__title">Section 24 mortgage interest relief</h3>
+        <p class="tool-card__text">See how the {{pct:current.financeReliefRate}} tax credit on mortgage interest works, and why higher rate landlords pay more.</p>
+      </a>
+      <a class="tool-card" href="{{root}}allowable-expenses-for-landlords/" data-tone="sky">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
+        <span class="tool-card__badge">Expenses</span>
+        <h3 class="tool-card__title">Allowable expenses for landlords</h3>
+        <p class="tool-card__text">Letting agent fees, repairs, insurance and the other running costs you can take off your rent.</p>
+      </a>
+      <a class="tool-card" href="{{root}}property-allowance-vs-expenses/" data-tone="brand">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v16M7 20h10M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0z"/><path d="m19 7-3 6a3 3 0 0 0 6 0z"/></svg></span>
+        <span class="tool-card__badge">Allowance</span>
+        <h3 class="tool-card__title">Property allowance or expenses</h3>
+        <p class="tool-card__text">Find out when the {{money:current.propertyAllowance}} tax-free allowance beats claiming your actual costs.</p>
+      </a>
+      <a class="tool-card" href="{{root}}rental-income-tax-scotland/" data-tone="navy">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+        <span class="tool-card__badge">Scotland</span>
+        <h3 class="tool-card__title">Rental income tax in Scotland</h3>
+        <p class="tool-card__text">How the Scottish income tax bands, from {{pct:current.regions.scotland.bands.0.rate}} to {{pct:current.regions.scotland.bands.5.rate}}, apply to your rental profit.</p>
+      </a>
+      <a class="tool-card" href="{{root}}property-income-tax-rates-2027/" data-tone="sky">
+        <span class="tool-card__icon"><svg class="tool-card__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
+        <span class="tool-card__badge">New for 2027</span>
+        <h3 class="tool-card__title">Property income tax rates from April 2027</h3>
+        <p class="tool-card__text">Rental profit gets its own tax rates from {{date:2027-28.startDate}}. See what they could add to your bill.</p>
+      </a>
+    </div>
+    <ul class="tools__trust">
+      <li class="tools__trust-item"><svg class="tools__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><strong class="tools__trust-title">Tested against HMRC examples</strong><span class="tools__trust-text">{{label:current}} rates, last checked {{verified}}</span></li>
+      <li class="tools__trust-item"><svg class="tools__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><strong class="tools__trust-title">Private by design</strong><span class="tools__trust-text">Your figures never leave your browser</span></li>
+      <li class="tools__trust-item"><svg class="tools__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><strong class="tools__trust-title">Instant results</strong><span class="tools__trust-text">No sign-up or email address needed</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="feature" data-section="Calculator">
+  <div class="feature__wrap">
+    <div class="feature__text">
+      <h2 class="feature__title">A rental income tax calculator that shows its working</h2>
+      <p>Most landlord calculators stop at one number. Ours shows how your rent is split across the tax bands, what Section 24 costs you compared with the old rules, and whether the property allowance would beat claiming expenses.</p>
+      <p>There is no sign-up and no email address to give. Your figures stay in your browser.</p>
+      <a class="button" href="{{root}}rental-income-tax-calculator/">Open the calculator</a>
+    </div>
+    <ul class="feature__list">{{list:capabilities:rental-income-tax-calculator}}</ul>
+  </div>
+</section>
+
+<section class="posts" data-section="Guides">
+  <div class="posts__wrap">
+    <h2 class="posts__title">Landlord tax guides</h2>
+    <p class="posts__intro">Each guide answers its question in the first few lines, then shows the detail and the figures behind it.</p>
+    <div class="posts__list">
+      {{guide-cards}}
+    </div>
+  </div>
+</section>
+
+<section class="audience" data-section="Who we help">
+  <div class="audience__wrap">
+    <div class="audience__column">
+      <h2 class="audience__title">Who we can help</h2>
+      <p>Anyone earning rent in the UK, from a single flat let through an agent to a room in your own home. If this is the first year you need to declare rental income, start with the guide for first-time filers.</p>
+      <a class="button-quiet" href="{{root}}who-we-can-help/first-time-filers/">Help for first-time filers</a>
+    </div>
+    <div class="audience__column">
+      <h2 class="audience__title">Our services</h2>
+      <p>If you would rather hand over the paperwork, we can prepare and file your Self Assessment tax return, including the property pages.</p>
+      <a class="button-quiet" href="{{root}}our-services/self-assessment-tax-returns/">Self Assessment tax returns</a>
+    </div>
+  </div>
+</section>
+
+<section class="prose" data-section="Current allowances">
+  <div class="prose__wrap">
+    <h2>The allowances behind every figure</h2>
+    <p>These come from the same rates file the calculator reads, so the numbers here always match your result.</p>
+    {{table:allowances}}
+  </div>
+</section>
+
+<section class="faq" data-section="Questions landlords ask">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions landlords ask about rental income tax</h2>
+    <details class="faq__item">
+      <summary class="faq__question">How much tax will I pay on rental income in the UK?</summary>
+      <div class="faq__answer"><p>It depends on your rental profit and your other income, because your profit is added on top of your salary or pension and taxed at the rates that income has already reached. For example, in {{label:current}} a landlord in England with a £45,000 salary, £18,000 of rent, £3,200 of running costs and £6,400 of mortgage interest pays {{calc:example.owner.result.propertyTax}} of tax on the rent, about {{calc-month:example.owner.result.propertyTax}} a month. Put your own figures into the <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> to see yours.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How is landlord tax calculated?</summary>
+      <div class="faq__answer"><p>Start with the rent you received in the tax year, from 6 April to 5 April. Take off your allowable expenses, or claim the {{money:current.propertyAllowance}} property allowance instead, to find your profit. Add the profit to your other income and work out income tax at your usual rates. Finally, take off a tax credit of {{pct:current.financeReliefRate}} of your mortgage interest, which is limited by your profit and your income. The guide to <a href="{{root}}tax-on-rental-income/">tax on rental income</a> shows each step.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay tax if I rent out my house?</summary>
+      <div class="faq__answer"><p>Yes, if the rent leaves you with a profit. Letting out your home while you live somewhere else makes you a landlord for tax: the rent, less your running costs, is added to your other income and taxed at your usual rates, with a {{pct:current.financeReliefRate}} credit for mortgage interest. If your gross rent for the year is {{money:current.propertyAllowance}} or less, the property allowance usually covers it. If you let a furnished room in a home you still live in, the <a href="{{root}}rent-a-room-scheme/">Rent a Room Scheme</a> lets you receive up to {{money:current.rentARoom}} a year tax-free.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How can landlords pay less tax on rental income?</summary>
+      <div class="faq__answer"><p>Legally, by claiming everything you are entitled to. Deduct every allowable running cost, or claim the {{money:current.propertyAllowance}} property allowance instead if your costs are lower and you have no mortgage interest to claim. Use Rent a Room relief if you let a furnished room in your own home, and carry forward losses and mortgage interest you could not use. Paying into a personal pension or giving to charity with Gift Aid extends your basic rate band, so less of your profit is taxed at higher rates. Married couples and civil partners who own a property in unequal shares can be taxed on their real shares by sending HMRC Form 17. The calculator compares expenses, the property allowance and Rent a Room relief for you.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay UK tax on rental income if I live abroad?</summary>
+      <div class="faq__answer"><p>Yes. Rent from property in the UK is taxed in the UK wherever you live. If your usual home is outside the UK, HMRC treats you as a non-resident landlord. Your letting agent, or your tenant if you have no agent and the rent is more than £100 a week, must take basic rate tax off the rent and pay it to HMRC, unless HMRC has approved you to receive the rent in full. You still report the income on a Self Assessment tax return. <a href="https://www.gov.uk/tax-uk-income-live-abroad/rent">GOV.UK explains the Non-Resident Landlord Scheme</a>. The calculator on this site assumes you live in the UK.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay tax on rental income in Scotland?</summary>
+      <div class="faq__answer"><p>Yes. If you are a Scottish taxpayer, your rental profit is taxed at Scottish income tax rates, from {{pct:current.regions.scotland.bands.0.rate}} to {{pct:current.regions.scotland.bands.5.rate}}. Where you live decides the rates, not where the property is. You report the rent on the same UK Self Assessment return. Choose Scotland in the calculator to use these bands, or read the guide to <a href="{{root}}rental-income-tax-scotland/">rental income tax in Scotland</a>.</p></div>
+    </details>
+    <p><a href="{{root}}faq/">More questions and answers for landlords</a></p>
+  </div>
+</section>

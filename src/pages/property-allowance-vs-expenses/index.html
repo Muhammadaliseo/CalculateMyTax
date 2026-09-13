@@ -1,0 +1,173 @@
+<!--page
+{
+  "title": "Property Allowance or Expenses: Which Wins? | CalculateMyTax",
+  "description": "The {{money:current.propertyAllowance}} property allowance lets landlords deduct a flat amount instead of expenses. See when it saves tax, what you give up and two worked examples.",
+  "keyword": "property allowance",
+  "crumb": "Property allowance or expenses",
+  "ogType": "article",
+  "schema": ["FAQPage"],
+  "examples": {
+    "smallcosts": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 5000, "expenses": 200, "financeCosts": 0 }], "reliefMode": "expenses" },
+    "smallcostsallowance": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 5000, "expenses": 200, "financeCosts": 0 }], "reliefMode": "propertyAllowance" },
+    "mortgage": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "mortgageallowance": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "propertyAllowance" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Property allowance or expenses: which should landlords use?</h1>
+    <p class="intro__lede">The property allowance lets you deduct a flat {{money:current.propertyAllowance}} from your rental income instead of your actual expenses, and if your gross property income is {{money:current.propertyAllowance}} or less you do not need to declare it at all. Above that, the allowance is worth choosing only when your real expenses are lower than {{money:current.propertyAllowance}}. Even then, mortgage interest can tip the balance back to expenses, because using the allowance also gives up the Section 24 tax credit.</p>
+    <p class="intro__meta">Rules for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="prose" data-section="What it is">
+  <div class="prose__wrap">
+    <h2>What the property allowance is</h2>
+    <p>The property allowance is a tax-free allowance of {{money:current.propertyAllowance}} a year for individuals with income from land or property. You get one allowance as a person, however many properties you let, and it is separate from your {{money:current.personalAllowance}} personal allowance.</p>
+    <p>It is measured against your gross property income, which is the rent you receive before taking off any costs. Using it is optional. You cannot deduct more than your income, so the allowance can never create a loss.</p>
+
+    <h2>If your property income is {{money:current.propertyAllowance}} or less</h2>
+    <p>When your gross property income for the tax year is {{money:current.propertyAllowance}} or less, the allowance covers all of it: you pay no tax on it and do not need to tell HMRC. HMRC calls this full relief.</p>
+    <p>The test uses income before expenses. If you receive £1,200 of rent and spend £400 on costs, your profit is £800 but your gross income is over the limit, so full relief does not apply. If your costs were higher than your rent, you can choose not to use full relief and report your income and expenses on a tax return instead.</p>
+
+    <h2>Partial relief when your income is over {{money:current.propertyAllowance}}</h2>
+    <p>If your gross property income is more than {{money:current.propertyAllowance}}, you can choose to deduct the allowance instead of your actual expenses. HMRC calls this partial relief. You then pay tax on your income minus {{money:current.propertyAllowance}}, and you must tell HMRC about the income.</p>
+    <p>You make the choice for each tax year separately, so you can use the allowance in a year with low costs and claim expenses the next. The choice is made through your Self Assessment tax return, and you have until one year after the 31 January filing deadline for that tax year to make it.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="What you give up">
+  <div class="prose__wrap">
+    <h2>What you give up by using the allowance</h2>
+    <p>The allowance replaces every other deduction for that income, so check what you would lose before choosing it.</p>
+    <ul>
+      <li>All your actual expenses, including letting agent fees, repairs, insurance and the rest of the <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a>.</li>
+      <li>The Section 24 tax reduction on mortgage interest and other finance costs for that tax year.</li>
+      <li>Replacement of domestic items relief for furniture and appliances you replaced.</li>
+    </ul>
+    <p>You also cannot choose the allowance at all if finance costs brought forward from earlier years would reduce your tax that year. How that credit is worked out is explained in the <a href="{{root}}section-24-mortgage-interest-relief/">guide to Section 24 mortgage interest relief</a>.</p>
+
+    <h2>Who cannot use the property allowance</h2>
+    <p>The allowance is for individuals, and even then it cannot be used against every kind of property income. You cannot use it against income from:</p>
+    <ul>
+      <li>a company that you, or someone connected to you, owns or controls</li>
+      <li>a partnership where you, or someone connected to you, is a partner</li>
+      <li>your employer, or the employer of your spouse or civil partner</li>
+      <li>letting a furnished room in your own home under the <a href="{{root}}rent-a-room-scheme/">Rent a Room Scheme</a>, which has its own limit of {{money:current.rentARoom}}</li>
+    </ul>
+
+    <h2>Joint owners</h2>
+    <p>If you own a property jointly, each owner gets their own {{money:current.propertyAllowance}} allowance against their share of the gross rent. Each owner also makes their own choice between the allowance and expenses.</p>
+    <p>For example, if you and your spouse each receive half of £1,800 a year in rent, each share is £900. Provided neither of you has other property income, you both fall within full relief and neither of you needs to declare it.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Low costs example">
+  <div class="prose__wrap">
+    <h2>Worked example: low running costs and no mortgage</h2>
+    <p>A landlord in England earns £45,000 from their job in {{label:current}}. They receive £5,000 rent from a property they own outright and spend £200 on costs during the year.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Rent received</dt><dd class="worked__amount">{{calc:smallcosts.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Deduction claiming actual expenses</dt><dd class="worked__amount">{{calc:smallcosts.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Tax on the rent claiming expenses</dt><dd class="worked__amount">{{calc:smallcosts.owner.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Deduction using the property allowance</dt><dd class="worked__amount">{{calc:smallcostsallowance.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Tax on the rent using the property allowance</dt><dd class="worked__amount">{{calc:smallcostsallowance.owner.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Tax saved by using the allowance</dt><dd class="worked__amount">{{calc-diff:smallcosts.owner.result.propertyTax|smallcostsallowance.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>The allowance gives a bigger deduction than the landlord's real costs, and with no mortgage there is no tax credit to lose. The whole profit falls in the basic rate band, so every extra pound deducted saves {{pct:current.regions.england_wales_ni.bands.0.rate}}. After costs and tax the landlord keeps {{calc:smallcostsallowance.owner.result.netRentalIncome}} using the allowance, compared with {{calc:smallcosts.owner.result.netRentalIncome}} claiming expenses.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Mortgage example">
+  <div class="prose__wrap">
+    <h2>Worked example: a property with a mortgage</h2>
+    <p>The same landlord, still earning £45,000, instead receives £18,000 rent. They spend £3,200 on letting fees, repairs and insurance and pay £6,400 of mortgage interest.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Rent received</dt><dd class="worked__amount">{{calc:mortgage.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Deduction claiming actual expenses</dt><dd class="worked__amount">{{calc:mortgage.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Section 24 credit claiming expenses</dt><dd class="worked__amount">{{calc:mortgage.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax on the rent claiming expenses</dt><dd class="worked__amount">{{calc:mortgage.owner.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Deduction using the property allowance</dt><dd class="worked__amount">{{calc:mortgageallowance.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Section 24 credit using the property allowance</dt><dd class="worked__amount">{{calc:mortgageallowance.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax on the rent using the property allowance</dt><dd class="worked__amount">{{calc:mortgageallowance.owner.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Extra tax caused by using the allowance</dt><dd class="worked__amount">{{calc-diff:mortgageallowance.owner.result.propertyTax|mortgage.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>Here the allowance costs the landlord twice. It swaps {{calc:mortgage.owner.result.deduction}} of expenses for a {{money:current.propertyAllowance}} deduction, and it removes a mortgage interest credit worth {{calc:mortgage.owner.result.finance.credit}}. Because the salary already uses most of the basic rate band, much of the extra profit is taxed at {{pct:current.regions.england_wales_ni.bands.1.rate}}. After costs and tax the landlord keeps {{calc:mortgage.owner.result.netRentalIncome}} claiming expenses, but only {{calc:mortgageallowance.owner.result.netRentalIncome}} with the allowance.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="How to decide">
+  <div class="prose__wrap">
+    <h2>How to decide</h2>
+    <p>Use the allowance only when it gives you more relief than your expenses and the Section 24 credit together, which in practice means low running costs and little or no mortgage interest.</p>
+    <ol>
+      <li>Add up your allowable expenses for the year, including any replaced furniture and appliances, but leaving out mortgage interest.</li>
+      <li>If your expenses are {{money:current.propertyAllowance}} or more, claim expenses. The allowance cannot give you a bigger deduction, and it would also cost you any mortgage interest credit.</li>
+      <li>If your expenses are lower, work out the tax the allowance saves on the difference between {{money:current.propertyAllowance}} and your expenses, at the rate your profit is taxed.</li>
+      <li>Compare that saving with the Section 24 credit you would lose, which is {{pct:current.financeReliefRate}} of your finance costs, subject to its limits. Choose the allowance only if the saving is bigger.</li>
+      <li>Check that none of the exclusions above apply, and look again next year, because the choice is made one tax year at a time.</li>
+    </ol>
+    <p>The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> runs this comparison for you. It works out your tax using expenses, the property allowance and, where it applies, Rent a Room relief, and shows which costs least.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions about the property allowance</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Do I need to tell HMRC about rental income under {{money:current.propertyAllowance}}?</summary>
+      <div class="faq__answer">
+        <p>No, if your total gross property income for the tax year is {{money:current.propertyAllowance}} or less. The test uses rent before expenses, so income over the limit must be reported even if your profit is lower. You can still choose to report income and expenses if your costs were higher than your rent.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Can I use the property allowance and still get mortgage interest relief?</summary>
+      <div class="faq__answer">
+        <p>No. If you deduct the property allowance, you cannot claim the Section 24 tax reduction for finance costs in that tax year. You also cannot choose the allowance if finance costs brought forward from earlier years would reduce your tax.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is the property allowance per property or per person?</summary>
+      <div class="faq__answer">
+        <p>Per person. You get one {{money:current.propertyAllowance}} allowance a year against all your property income, however many properties you let. Joint owners each get their own allowance against their share of the rent.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Compare both options with your figures</h2>
+      <p>Enter your income, rent, expenses and mortgage interest to see which route leaves you paying less tax.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Allowable expenses landlords can claim</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+      <a class="related__link" href="{{root}}rent-a-room-scheme/">How the Rent a Room Scheme works</a>
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/tax-free-allowances-on-property-and-trading-income">GOV.UK: Tax-free allowances on property and trading income</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/hmrc-internal-manuals/property-income-manual/pim4440">HMRC Property Income Manual: property allowance elections</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Working out your rental income</a></li>
+    </ul>
+  </div>
+</section>

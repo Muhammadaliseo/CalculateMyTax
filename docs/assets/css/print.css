@@ -1,0 +1,184 @@
+/*
+ * Print stylesheet. Loaded with media="print". Produces a plain single-page summary a landlord can hand to an
+ * accountant: navigation, controls and marketing blocks are removed and colours fall back to ink on paper.
+ */
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+body {
+  background: var(--colour-sheet);
+  color: var(--colour-navy);
+  font-size: var(--size-300);
+}
+
+.skip-link,
+.site-header__menu-button,
+.site-nav,
+.site-footer__columns,
+.site-footer__social,
+.site-footer__email,
+.callout,
+.related,
+.faq,
+.sources,
+.home-hero__actions,
+.quick,
+.button,
+.button-quiet {
+  display: none !important;
+}
+
+.site-header {
+  position: static;
+  border-bottom: var(--border-rule) solid var(--colour-navy);
+}
+
+.site-header__logo-image {
+  height: var(--logo-height-compact);
+}
+
+.site-header__wrap,
+.intro__wrap,
+.prose__wrap,
+.site-footer__wrap {
+  padding: var(--space-xs) 0;
+}
+
+.intro,
+.site-footer {
+  border: 0;
+}
+
+.intro__title {
+  font-size: var(--size-600);
+}
+
+a {
+  text-decoration: none;
+}
+
+.data-table,
+.worked {
+  break-inside: avoid;
+}
+
+/* Calculator page: print only the result summary, so it fits on one page for an accountant */
+
+.breadcrumb,
+.intro__lede,
+.intro__meta,
+.calc-example,
+.calculator ~ section {
+  display: none !important;
+}
+
+.calculator__wrap {
+  gap: var(--space-xs);
+  padding: 0;
+}
+
+.calc-results {
+  gap: var(--space-xs);
+}
+
+.calc-results__panel {
+  gap: var(--space-2xs);
+}
+
+.calc-results__figure {
+  font-size: var(--size-800);
+}
+
+.calc-results__monthly,
+.calc-results__keep {
+  font-size: var(--size-400);
+}
+
+.calc-detail__summary {
+  min-height: 0;
+  padding: var(--space-2xs) 0;
+}
+
+.calc-detail__body {
+  gap: var(--space-2xs);
+  padding: 0 0 var(--space-xs);
+}
+
+.calc-bar {
+  height: var(--size-300);
+}
+
+.calc-alert {
+  padding: var(--space-2xs) 0;
+}
+
+.site-footer__wrap {
+  padding: var(--space-xs) 0 0;
+}
+
+/* One A4 page: results in two columns, compact rows, footer reduced to the compliance line */
+
+.site-footer__brand,
+[data-print-hide] {
+  display: none !important;
+}
+
+.site-footer__legal {
+  padding-top: var(--space-2xs);
+  border-top: 0;
+}
+
+.calc-results {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.calc-results__panel,
+.calc-alerts {
+  flex: 1 1 100%;
+}
+
+.calc-detail,
+.calc-print {
+  flex: 1 1 var(--basis-s);
+  order: 0;
+}
+
+.calc-results__figure {
+  font-size: var(--size-700);
+}
+
+.calc-sums__row,
+.calc-sums__total {
+  padding: var(--space-3xs) 0;
+  font-size: var(--size-200);
+}
+
+.calc-routes__row {
+  padding: var(--space-3xs) 0;
+  font-size: var(--size-200);
+}
+
+.calc-detail__text,
+.calc-print__note,
+.calc-bar-key {
+  font-size: var(--size-200);
+}
+
+.calc-print__title {
+  font-size: var(--size-400);
+}
+
+.calculator,
+.calc-alert {
+  line-height: var(--leading-snug);
+}
+
+.calc-detail__summary::after,
+.faq__question::after {
+  content: none;
+}

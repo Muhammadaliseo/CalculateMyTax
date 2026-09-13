@@ -1,0 +1,58 @@
+<!--page
+{
+  "title": "Tax Help for Landlords: Who We Can Help | CalculateMyTax",
+  "description": "Tax help for landlords with a first let, a lodger, a shared property, a mortgage, a home in Scotland or Making Tax Digital ahead. Find the guide for you.",
+  "keyword": "tax help for landlords",
+  "crumb": "Who we can help",
+  "schema": []
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Tax help for landlords: who we can help</h1>
+    <p class="intro__lede">CalculateMyTax helps anyone who earns rent from UK property understand the tax on it. That includes first-time landlords, people letting a room in their own home, joint owners, landlords with a mortgage, landlords in Scotland and landlords approaching Making Tax Digital. The calculator and guides are free and need no sign-up.</p>
+    <p class="intro__meta">Rates for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Situations we help with">
+  <div class="prose__wrap">
+    <h2>Situations we can help with</h2>
+    <p>The tax on your rent depends on how you let, who owns the property and where you live. Find the situation closest to yours below. Each one points to the guide that covers it in detail.</p>
+    <h3>Your first rental property</h3>
+    <p>Property income of {{money:current.propertyAllowance}} or less a year, before expenses, does not need to be declared because the property allowance covers it. Above that you must tell HMRC, normally by registering for Self Assessment by 5 October after the tax year ends. The guide to <a href="{{root}}who-we-can-help/first-time-filers/">your first landlord tax return</a> covers registering, records and the dates that matter.</p>
+    <h3>Letting a room in your own home</h3>
+    <p>If you let furnished accommodation in the home you live in, Rent a Room relief lets you receive up to {{money:current.rentARoom}} a year tax free. The guide to <a href="{{root}}rent-a-room-scheme/">the Rent a Room Scheme</a> explains who qualifies, and the calculator compares the relief with claiming your expenses.</p>
+    <h3>Owning property jointly</h3>
+    <p>If you own a rental property with someone else, you pay tax on your own share of the profit, at the rates your own income reaches. Married couples and civil partners who live together are usually taxed in equal shares. <a href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a> shows how the profit is worked out, and the calculator handles any ownership split.</p>
+    <h3>Landlords with a mortgage</h3>
+    <p>Mortgage interest is not deducted from your rent. Under Section 24 you get a tax credit of {{pct:current.financeReliefRate}} of the interest instead, which can leave higher rate taxpayers paying more tax than they expect. The guide to <a href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a> shows how the credit is limited and how unused interest is carried forward.</p>
+    <h3>Landlords in Scotland</h3>
+    <p>If your main home is in Scotland, your rental profit is taxed at Scottish income tax rates, which use more bands than the rest of the UK. The guide to <a href="{{root}}rental-income-tax-scotland/">rental income tax in Scotland</a> sets out the bands and shows where your profit falls.</p>
+    <h3>Landlords reaching Making Tax Digital thresholds</h3>
+    <p>Making Tax Digital for Income Tax applies to qualifying income over {{mtd-money:0.threshold}} from {{mtd-date:0.startDate}}, over {{mtd-money:1.threshold}} from {{mtd-date:1.startDate}} and over {{mtd-money:2.threshold}} from {{mtd-date:2.startDate}}. Qualifying income is your gross income from self-employment and property before expenses. The guide to <a href="{{root}}making-tax-digital-for-landlords/">Making Tax Digital for landlords</a> explains how to check whether and when it applies to you.</p>
+    <h2>If you would rather hand it over</h2>
+    <p>Everything on this site gives estimates, not tax advice. If you would rather someone prepared and filed your return, see our <a href="{{root}}our-services/">landlord tax services</a>.</p>
+  </div>
+</section>
+
+<section class="related" data-section="Help for specific landlords">
+  <div class="related__wrap">
+    <h2 class="related__title">Help for specific groups of landlords</h2>
+    <p class="related__intro">Each page covers one group of landlords in more depth, with the steps, dates and rules that matter most to them.</p>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}who-we-can-help/first-time-filers/">First-time filers</a>
+    </div>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Estimate the tax on your rent</h2>
+      <p>Enter your income, rent and costs to see your tax, the Section 24 credit and what you keep. It is free, needs no sign-up and runs in your browser.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>

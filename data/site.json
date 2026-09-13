@@ -1,0 +1,141 @@
+{
+  "brand": {
+    "name": "CalculateMyTax",
+    "domain": "calculatemytax.uk",
+    "url": "https://muhammadaliseo.github.io/CalculateMyTax",
+    "urlNote": "The live address, used for canonical links, the sitemap, robots.txt, llms.txt, structured data and social images. It is the GitHub Pages address until calculatemytax.uk is registered; then change it to \"https://calculatemytax.uk\", set customDomain and basePath as described below, and rebuild.",
+    "tagline": "Free UK Tax Calculators & Tools",
+    "description": "Free UK tax calculators and plain-English guides for landlords, built on current HMRC rates.",
+    "logoWebp": "assets/img/brand/calculatemytax-logo.webp",
+    "logoPng": "assets/img/brand/calculatemytax-logo.png",
+    "logoWidth": 798,
+    "logoHeight": 160,
+    "logoFullWebp": "assets/img/brand/calculatemytax-logo-full.webp",
+    "logoFullPng": "assets/img/brand/calculatemytax-logo-full.png",
+    "logoFullWidth": 798,
+    "logoFullHeight": 160,
+    "logoSource": "assets/img/brand/Calculate tax name logo.png",
+    "logoNote": "logoSource is the original logo upload. It is not published; build/asset-studio.html crops it into the header logo (without the tagline, which is too small to read at header size), the full footer logo, the favicons and the social image.",
+    "socialImage": "assets/img/brand/calculatemytax-social.png",
+    "themeColour": "#03214B"
+  },
+  "basePath": "/CalculateMyTax/",
+  "customDomain": "",
+  "customDomainNote": "Leave empty until calculatemytax.uk is registered and its DNS points at GitHub Pages. When filled in, the build writes docs/CNAME so GitHub keeps the custom domain.",
+  "basePathNote": "Used only by 404.html, which GitHub Pages serves at any missing address. It is \"/CalculateMyTax/\" while the site runs at muhammadaliseo.github.io/CalculateMyTax/. Change it back to \"/\" once calculatemytax.uk points at the site.",
+  "contact": {
+    "email": "contact@calculatemytax.uk"
+  },
+  "tools": [
+    {
+      "id": "rental-income-tax-calculator",
+      "name": "Rental income tax calculator",
+      "path": "rental-income-tax-calculator/",
+      "status": "live",
+      "summary": "Work out the tax on your rental profit, including Section 24 mortgage interest relief.",
+      "capabilities": [
+        "Estimates UK income tax on rental profit for every tax year in the rates file",
+        "Covers England, Wales and Northern Ireland, and Scotland",
+        "Applies the Section 24 mortgage interest credit with all three limits and carry-forward",
+        "Compares allowable expenses, the property allowance and Rent a Room relief, and recommends the cheapest",
+        "Handles joint ownership at any split, using each owner's other income",
+        "Pools several properties into one property business",
+        "Uses brought-forward property losses and unrelieved finance costs",
+        "Flags Making Tax Digital thresholds and the April 2027 property income rates",
+        "Runs in the browser with no sign-up; results can be shared as a link or printed"
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "name": "Tax on rental income",
+      "path": "tax-on-rental-income/",
+      "summary": "How much tax you pay on rental income, the five steps HMRC uses, and worked examples at every tax rate.",
+      "image": "assets/img/guides/tax-on-rental-income",
+      "imageAlt": "Illustration of a rental ledger showing rent, expenses and profit"
+    },
+    {
+      "name": "Allowable expenses for landlords",
+      "path": "allowable-expenses-for-landlords/",
+      "summary": "The running costs you can take off your rent, what counts as a repair, and the costs you cannot claim.",
+      "image": "assets/img/guides/allowable-expenses-for-landlords",
+      "imageAlt": "Illustration of a landlord's receipt with a tick"
+    },
+    {
+      "name": "Section 24 mortgage interest relief",
+      "path": "section-24-mortgage-interest-relief/",
+      "summary": "How the mortgage interest tax credit works, the three limits on it, and what happens to interest you cannot use.",
+      "image": "assets/img/guides/section-24-mortgage-interest-relief",
+      "imageAlt": "Illustration of a house with a percentage badge and a pound coin"
+    },
+    {
+      "name": "Property allowance or expenses",
+      "path": "property-allowance-vs-expenses/",
+      "summary": "When the tax-free property allowance beats claiming your actual costs, and when it leaves you paying more.",
+      "image": "assets/img/guides/property-allowance-vs-expenses",
+      "imageAlt": "Illustration of scales weighing a flat allowance against a pile of receipts"
+    },
+    {
+      "name": "The Rent a Room Scheme",
+      "path": "rent-a-room-scheme/",
+      "summary": "How letting a furnished room in your own home can be tax-free, and the two ways to work out the tax.",
+      "image": "assets/img/guides/rent-a-room-scheme",
+      "imageAlt": "Illustration of a house with one lit window and a key"
+    },
+    {
+      "name": "Rental income tax in Scotland",
+      "path": "rental-income-tax-scotland/",
+      "summary": "How the Scottish income tax bands apply to rental profit, and how the mortgage interest credit works for Scottish taxpayers.",
+      "image": "assets/img/guides/rental-income-tax-scotland",
+      "imageAlt": "Illustration of a map pin with a house inside it"
+    },
+    {
+      "name": "Property income tax rates from April 2027",
+      "path": "property-income-tax-rates-2027/",
+      "summary": "The separate income tax rates for property income from 6 April 2027, and what they could add to your bill.",
+      "image": "assets/img/guides/property-income-tax-rates-2027",
+      "imageAlt": "Illustration of a calendar page for April 2027"
+    },
+    {
+      "name": "Making Tax Digital for landlords",
+      "path": "making-tax-digital-for-landlords/",
+      "summary": "Who must keep digital records and send quarterly updates, the income thresholds and the start dates.",
+      "image": "assets/img/guides/making-tax-digital-for-landlords",
+      "imageAlt": "Illustration of a laptop showing four quarterly updates and an upload arrow"
+    },
+    { "name": "Frequently asked questions", "path": "faq/" }
+  ],
+  "whoWeCanHelp": {
+    "name": "Who we can help",
+    "path": "who-we-can-help/",
+    "children": [
+      { "name": "First-time filers", "path": "who-we-can-help/first-time-filers/" }
+    ]
+  },
+  "ourServices": {
+    "name": "Our services",
+    "path": "our-services/",
+    "children": [
+      { "name": "Self Assessment tax returns", "path": "our-services/self-assessment-tax-returns/" }
+    ]
+  },
+  "company": [
+    { "name": "About", "path": "about/" },
+    { "name": "Contact", "path": "contact/" },
+    { "name": "Privacy policy", "path": "privacy-policy/" },
+    { "name": "Terms of use", "path": "terms-of-use/" },
+    { "name": "Cookie policy", "path": "cookie-policy/" },
+    { "name": "Disclaimer", "path": "disclaimer/" }
+  ],
+  "social": [
+    { "platform": "LinkedIn", "url": "", "enabled": false },
+    { "platform": "Facebook", "url": "", "enabled": false },
+    { "platform": "X", "url": "", "enabled": false },
+    { "platform": "YouTube", "url": "", "enabled": false }
+  ],
+  "socialNote": "Social links ship disabled. The client will supply real URLs; a link renders only when enabled is true and url is not empty.",
+  "legal": {
+    "copyrightHolder": "CalculateMyTax",
+    "compliance": "All figures are estimates based on published HMRC rates and are not a substitute for professional advice."
+  }
+}

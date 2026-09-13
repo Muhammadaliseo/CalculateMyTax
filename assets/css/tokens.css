@@ -1,0 +1,139 @@
+/*
+ * CalculateMyTax design tokens.
+ * The only stylesheet allowed to hold raw colours, font stacks, sizes, spacing, radii and shadows. Every other rule
+ * reads these properties, so this list is typed once into Elementor Site Settings and the whole site follows.
+ */
+:root {
+  /* Colour: Elementor Global Colours. Navy, brand blue and navy soft are sampled from the CalculateMyTax logo. */
+  --colour-navy: #03214B;
+  --colour-brand: #016DF8;
+  --colour-signal: #4C9AFF;
+  --colour-ledger: #F4F7FC;
+  --colour-sheet: #FFFFFF;
+  --colour-muted: #56627E;
+  --colour-rule: #7B869E;
+
+  /* Tints derived from the core colours */
+  --colour-hairline: #D8E1EE;
+  --colour-navy-wash: #E7EFFB;
+  --colour-navy-deep: #021633;
+  --colour-navy-soft: #B6C9E4;
+  --colour-brand-deep: #0156C4;
+  --colour-sky: #EAF2FE;
+  --colour-sky-deep: #C6DBFB;
+
+  /* Surfaces */
+  --gradient-hero: linear-gradient(135deg, var(--colour-sky) 0%, var(--colour-sky-deep) 100%);
+  --shadow-card: 0 1.25rem 2.5rem rgba(3, 33, 75, 0.14);
+  --shadow-soft: 0 0.25rem 0.75rem rgba(3, 33, 75, 0.07);
+
+  /* Type: Elementor Global Fonts */
+  --font-display: "Besley", Rockwell, "Roboto Slab", Georgia, serif;
+  --font-text: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-figure: 800;
+
+  /* Major third scale from a 17px root */
+  --root-size: 106.25%;
+  --size-200: 0.7rem;
+  --size-300: 0.8rem;
+  --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.5625rem;
+  --size-700: 1.953rem;
+  --size-800: 2.441rem;
+  --size-900: 3.052rem;
+  --size-1000: 3.815rem;
+  --size-figure: 4.768rem;
+  --size-h1: clamp(2.441rem, 1.9rem + 2.2vw, 3.052rem);
+  --size-hero: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  --size-figure-fluid: clamp(3.052rem, 2.2rem + 4vw, 4.768rem);
+  --size-stat: clamp(1.5625rem, 1.3rem + 1vw, 1.953rem);
+
+  --leading-tight: 1.12;
+  --leading-snug: 1.35;
+  --leading-body: 1.6;
+  --tracking-display: -0.01em;
+  --tracking-figure: -0.02em;
+  --tracking-label: 0.01em;
+  --tracking-caps: 0.06em;
+  --measure: 68ch;
+
+  /* Spacing */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+
+  /* Shape */
+  --radius-s: 3px;
+  --radius-m: 6px;
+  --radius-l: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  --border-thin: 1px;
+  --border-rule: 2px;
+  --border-heavy: 4px;
+  --border-double: 6px;
+
+  /* Flex bases and line measures */
+  --basis-2xs: 10rem;
+  --basis-xs: 12rem;
+  --basis-card: 15rem;
+  --basis-s: 16rem;
+  --basis-m: 20rem;
+  --basis-l: 24rem;
+  --basis-xl: 36rem;
+  --measure-hero: 17ch;
+  --measure-title: 24ch;
+  --measure-short: 32ch;
+
+  /* Small details */
+  --underline-offset: 0.18em;
+  --underline-offset-strong: 0.3em;
+  --chevron-size: 0.4em;
+  --chevron-lift-closed: -0.15em;
+  --chevron-lift-open: 0.1em;
+  --hidden-size: 1px;
+  --icon-tile: 2.75rem;
+  --icon-size: 1.375rem;
+  --icon-small: 1.125rem;
+  --progress-height: 0.625rem;
+
+  /* Widths and fixed sizes */
+  --width-page: 72rem;
+  --width-prose: 44rem;
+  --width-menu: 17rem;
+  --width-results: 27rem;
+  --width-field: 11rem;
+  --width-hero-text: 34rem;
+  --width-quick: 29rem;
+  --width-logo-footer: 20rem;
+  --control-height: 2.75rem;
+  --logo-height: 3rem;
+  --logo-height-compact: 2.375rem;
+  --logo-height-mobile: 1.75rem;
+  --bar-height: 1.25rem;
+  --focus-width: 3px;
+  --focus-offset: 2px;
+  --sticky-offset: 5.5rem;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-medium: 300ms;
+  --duration-count: 600ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Stacking */
+  --z-header: 50;
+  --z-menu: 60;
+  --z-strip: 40;
+}

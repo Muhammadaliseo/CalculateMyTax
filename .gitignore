@@ -1,0 +1,14 @@
+# Dependencies and operating system files
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local editor and assistant settings
+.claude/
+
+# Loose copies kept in the project folder; they are not part of the website or its source
+/AUDIT.md
+/competitor-comparison.md
+/calculator-1440.png
+/Tool logo.png

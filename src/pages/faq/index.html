@@ -1,0 +1,115 @@
+<!--page
+{
+  "title": "Do I Pay Tax on Rental Income? Landlord FAQ | CalculateMyTax",
+  "description": "Yes, you pay income tax on rental profit. Plain answers for UK landlords on tax rates, allowances, mortgage interest, tax returns and deadlines.",
+  "keyword": "do i pay tax on rental income",
+  "crumb": "Frequently asked questions",
+  "ogType": "article",
+  "schema": ["FAQPage"]
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Do I pay tax on rental income? Landlord questions answered</h1>
+    <p class="intro__lede">Yes. If you make a profit from letting property, you pay income tax on it. Your profit is the rent you receive minus allowable expenses, and it is taxed at your usual rates once it is added to your other income. If your gross property income is {{money:current.propertyAllowance}} or less in a tax year, the property allowance usually covers it.</p>
+    <p class="intro__meta">Figures for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC. General information, not tax advice.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Paying tax on rent">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Paying tax on rent</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay tax on all the rent I receive?</summary>
+      <div class="faq__answer"><p>No. You pay income tax on your rental profit, which is the rent you receive in the tax year from 6 April to 5 April, minus your allowable expenses. That profit is added to your wages, pension and any other income and taxed at your usual rates. The guide to <a href="{{root}}tax-on-rental-income/">tax on rental income</a> works through each step with an example.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What rate of tax do I pay on rental income?</summary>
+      <div class="faq__answer"><p>Your rental profit is taxed at the rates your total income reaches. In {{label:current}} that means {{pct:current.regions.england_wales_ni.bands.0.rate}}, {{pct:current.regions.england_wales_ni.bands.1.rate}} or {{pct:current.regions.england_wales_ni.bands.2.rate}} in England, Wales and Northern Ireland, while Scottish rates apply if your main home is in Scotland. From {{date:next.startDate}}, property income in England and Northern Ireland has its own rates of {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} and {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}}, explained in <a href="{{root}}property-income-tax-rates-2027/">property income tax rates from April 2027</a>.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is any of my rental income tax free?</summary>
+      <div class="faq__answer"><p>Often, yes. If your gross property income is {{money:current.propertyAllowance}} or less in a tax year, the property allowance normally covers it and you do not need to tell HMRC. Your personal allowance of {{money:current.personalAllowance}} can also cover rental profit if your other income has not used it up, although the allowance shrinks once your income passes {{money:current.paTaperThreshold}}. See <a href="{{root}}property-allowance-vs-expenses/">when the property allowance beats claiming expenses</a> for how the allowance works on larger rents.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How is rent from a jointly owned property taxed?</summary>
+      <div class="faq__answer"><p>Each owner pays tax on their own share of the profit, at their own rates. Married couples and civil partners who live together are usually taxed in equal shares, but if you own the property in unequal shares you can ask HMRC to tax the income to match by sending Form 17. Each owner can use the {{money:current.propertyAllowance}} property allowance against their share of the gross rent. The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> handles joint owners at any split.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay National Insurance on rental income?</summary>
+      <div class="faq__answer"><p>National Insurance does not normally apply to income from letting property, so you pay income tax only on your rental profit. In some cases, such as when running a property business is your main job, you can choose to pay voluntary contributions.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="faq" data-section="Expenses, allowances and mortgage interest">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Expenses, allowances and mortgage interest</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Can I take my letting costs off the rent before tax?</summary>
+      <div class="faq__answer"><p>Yes. Allowable running costs, such as letting agent fees, repairs and insurance, come off your rent before your profit is taxed. A repair that restores something to its original condition counts, but an improvement such as adding an extension is a capital cost and cannot be deducted from rent. The guide to <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a> lists what you can claim.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does mortgage interest reduce the tax on my rent?</summary>
+      <div class="faq__answer"><p>Yes, but not by being deducted from the rent. For residential lets you get a tax credit of {{pct:current.financeReliefRate}} of your mortgage interest and other finance costs, rising to {{pct:next.financeReliefRate}} from {{date:next.startDate}}. The credit is based on the lowest of your finance costs, your property profit and your income above the personal allowance, and any interest that misses out is carried forward. <a href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a> sets out how the limits work.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Can I deduct a flat amount instead of my actual costs?</summary>
+      <div class="faq__answer"><p>Yes. Instead of claiming allowable expenses, you can take the {{money:current.propertyAllowance}} property allowance off your gross rent. You cannot claim both, and you cannot use the allowance if you claim the mortgage interest tax credit. Compare the two in <a href="{{root}}property-allowance-vs-expenses/">property allowance or claiming expenses</a>.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What happens if my costs are more than my rent?</summary>
+      <div class="faq__answer"><p>You make a rental loss, so there is no property profit to tax for that year. The loss is normally carried forward and set against future profits from the same rental business, and a loss on one let property is set against profits from your other lets automatically. Letting to friends or family at less than a commercial rent cannot create a loss to use against your other lettings. The <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> lets you enter losses brought forward.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is rent from a lodger in my own home taxed the same way?</summary>
+      <div class="faq__answer"><p>Not always. Under the Rent a Room Scheme, you can receive up to {{money:current.rentARoom}} a year tax free from letting furnished accommodation in your own home, or {{money:current.rentARoomShared}} if you share that income with someone else. <a href="{{root}}rent-a-room-scheme/">How the Rent a Room Scheme works</a> covers what happens if you receive more.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="faq" data-section="Tax returns and deadlines">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Tax returns and deadlines</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Do I have to tell HMRC that I receive rent?</summary>
+      <div class="faq__answer"><p>Usually, yes. If your gross property income is {{money:current.propertyAllowance}} or less you do not need to, and if it is between {{money:current.propertyAllowance}} and £2,500 a year you should contact HMRC. If it is £2,500 or more after expenses, or £10,000 or more before expenses, you report it on a Self Assessment tax return, and you must register by 5 October after the end of the tax year if you do not already send one. There is more on getting started in our page for <a href="{{root}}who-we-can-help/first-time-filers/">first-time Self Assessment filers</a>.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">When is my tax return due and when do I pay?</summary>
+      <div class="faq__answer"><p>For a tax year ending on 5 April, a paper return is due by 31 October and an online return by 31 January, which is also the deadline for paying any tax you owe. Rental income goes on the UK property pages of the return, known as SA105. If you file late, the initial penalty is £100, with more if the return is later still. Find out about our <a href="{{root}}our-services/self-assessment-tax-returns/">Self Assessment tax return service</a>.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What are payments on account?</summary>
+      <div class="faq__answer"><p>Payments on account are advance payments towards your next tax bill, each worth half of the tax you owed for the previous year. They are due by 31 January and 31 July. You do not have to make them if your last Self Assessment bill was less than £1,000, or if you paid more than 80% of the tax you owed outside Self Assessment, for example through your tax code.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Will Making Tax Digital change how I report my rent?</summary>
+      <div class="faq__answer"><p>It will if your qualifying income, which is your rent plus any self-employment turnover before expenses, is over the threshold. That threshold was {{mtd-money:0.threshold}} from {{mtd-date:0.startDate}}, and it falls to {{mtd-money:1.threshold}} from {{mtd-date:1.startDate}} and {{mtd-money:2.threshold}} from {{mtd-date:2.startDate}}. You then keep digital records, send quarterly updates from software and submit your tax return by 31 January, but your payment dates do not change. Read <a href="{{root}}making-tax-digital-for-landlords/">what Making Tax Digital means for landlords</a> to check your dates.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">See the tax on your own rent</h2>
+      <p>Enter your income, rent and costs to estimate your tax, the Section 24 credit and what you keep.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/renting-out-a-property/paying-tax">GOV.UK: Renting out your property, paying tax</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property, working out your rental income</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/tax-free-allowances-on-property-and-trading-income">GOV.UK: Tax-free allowances on property and trading income</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/self-assessment-tax-returns/deadlines">GOV.UK: Self Assessment tax return deadlines</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/understand-self-assessment-bill/payments-on-account">GOV.UK: Payments on account</a></li>
+    </ul>
+  </div>
+</section>

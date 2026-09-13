@@ -1,0 +1,146 @@
+<!--page
+{
+  "title": "Tax on Rental Income UK: How Much You Pay | CalculateMyTax",
+  "description": "Tax on rental income explained: you pay income tax on rental profit at the rate your income reaches. See HMRC's five steps, worked examples and {{label:current}} rates.",
+  "keyword": "tax on rental income",
+  "secondaryKeywords": ["tax on rental income uk", "rental income tax", "how much tax do you pay on rental income", "how much tax do i pay on rental income", "how much tax on rental income", "how is rental income taxed", "income tax rate on rental income", "paying tax on rental income", "how to work out tax on rental income"],
+  "crumb": "Tax on rental income",
+  "ogType": "article",
+  "schema": ["HowTo"],
+  "howToName": "How to work out the tax on your rental income",
+  "examples": {
+    "example": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "allowance": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "propertyAllowance" },
+    "basic": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 20000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "taper": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 100000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "additional": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 130000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Tax on rental income: how much do you pay?</h1>
+    <p class="intro__lede">In the UK you pay income tax on your rental profit, not on the rent itself. Take your allowable expenses off the rent, add what is left to your other income, and the profit is taxed at the rate your total income reaches: {{pct:current.regions.england_wales_ni.bands.0.rate}}, {{pct:current.regions.england_wales_ni.bands.1.rate}} or {{pct:current.regions.england_wales_ni.bands.2.rate}} in England, Wales and Northern Ireland. Mortgage interest is not deducted; you get a tax credit of {{pct:current.financeReliefRate}} of the interest instead.</p>
+    <p class="intro__meta">Rates for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="steps" data-section="Five steps">
+  <div class="steps__wrap">
+    <h2 class="steps__heading">How rental income is taxed: the five steps HMRC uses</h2>
+    <ol class="steps__list">
+      <li class="steps__item">
+        <h3 class="steps__title">Add up the rent you received</h3>
+        <p class="steps__text">Count all rent received in the tax year, which runs from 6 April to 5 April, before any costs. If you own part of the property, count only your share.</p>
+      </li>
+      <li class="steps__item">
+        <h3 class="steps__title">Take off allowable expenses or the property allowance</h3>
+        <p class="steps__text">Deduct running costs such as letting agent fees, repairs and insurance. If your costs are small you can deduct a flat {{money:current.propertyAllowance}} property allowance instead, but you cannot do both.</p>
+      </li>
+      <li class="steps__item">
+        <h3 class="steps__title">Add the profit to your other income</h3>
+        <p class="steps__text">Your property profit is added to your salary, pension and self-employment profit. The first {{money:current.personalAllowance}} of total income is usually tax free, but that allowance shrinks once your income passes {{money:current.paTaperThreshold}}.</p>
+      </li>
+      <li class="steps__item">
+        <h3 class="steps__title">Tax the profit at the rates it reaches</h3>
+        <p class="steps__text">Your other income fills the tax bands first and the rental profit sits on top of it. Profit inside the basic rate band is taxed at {{pct:current.regions.england_wales_ni.bands.0.rate}}, and profit above it at {{pct:current.regions.england_wales_ni.bands.1.rate}} or {{pct:current.regions.england_wales_ni.bands.2.rate}}. Scotland uses its own bands.</p>
+      </li>
+      <li class="steps__item">
+        <h3 class="steps__title">Take off the mortgage interest credit</h3>
+        <p class="steps__text">Mortgage interest is not an expense. Your tax bill is reduced by {{pct:current.financeReliefRate}} of the interest instead, limited by your property profit and your income. This is the Section 24 rule.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="prose" data-section="Worked example">
+  <div class="prose__wrap">
+    <h2>Worked example: a landlord who pays higher rate tax</h2>
+    <p>A landlord in England earns £45,000 from their job in {{label:current}}. They receive £18,000 rent, spend £3,200 on letting fees, repairs and insurance, and pay £6,400 of mortgage interest.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Rent received</dt><dd class="worked__amount">{{calc:example.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Less allowable expenses</dt><dd class="worked__amount">{{calc:example.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Property profit</dt><dd class="worked__amount">{{calc:example.owner.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Tax on the salary alone</dt><dd class="worked__amount">{{calc:example.owner.result.taxOnOtherIncomeOnly}}</dd></div>
+      <div class="worked__row"><dt>Tax on salary and profit, before the credit</dt><dd class="worked__amount">{{calc:example.owner.result.taxBeforeCredit}}</dd></div>
+      <div class="worked__row"><dt>Less the Section 24 credit</dt><dd class="worked__amount">{{calc:example.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Total income tax</dt><dd class="worked__amount">{{calc:example.owner.result.totalTax}}</dd></div>
+      <div class="worked__total"><dt>Tax caused by the rental income</dt><dd class="worked__amount">{{calc:example.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>The salary uses up the personal allowance and part of the basic rate band. Of the profit, {{calc:example.owner.result.propertySlices.0.amount}} falls in the basic rate band at {{calc-pct:example.owner.result.propertySlices.0.rate}} and {{calc:example.owner.result.propertySlices.1.amount}} in the higher rate band at {{calc-pct:example.owner.result.propertySlices.1.rate}}. The landlord keeps {{calc:example.owner.result.netRentalIncome}} of the rent after costs and tax.</p>
+    <p>Using the property allowance instead of expenses would raise the tax on the rent to {{calc:allowance.owner.result.propertyTax}}, because the allowance replaces the expenses and also removes the mortgage interest credit.</p>
+
+    <h2>How much tax do you pay on rental income at each tax rate?</h2>
+    <p>The same property can mean very different tax bills, because rental profit is taxed at the rate your other income has already reached. Each landlord below lives in England and has the property from the worked example: {{calc:basic.owner.grossRent}} rent, £3,200 of running costs and £6,400 of mortgage interest.</p>
+    <div class="data-table">
+      <table class="data-table__table">
+        <caption class="data-table__caption">Tax on the same rental property at different incomes, {{label:current}}</caption>
+        <thead><tr><th scope="col">Other income</th><th scope="col">Top rate reached</th><th scope="col">Tax on the rent</th><th scope="col">Share of the rent paid in tax</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">£20,000</th><td>{{calc-band:basic.owner.result}}</td><td>{{calc:basic.owner.result.propertyTax}}</td><td>{{calc-pct:basic.owner.result.effectiveRate}}</td></tr>
+          <tr><th scope="row">£45,000</th><td>{{calc-band:example.owner.result}}</td><td>{{calc:example.owner.result.propertyTax}}</td><td>{{calc-pct:example.owner.result.effectiveRate}}</td></tr>
+          <tr><th scope="row">£100,000</th><td>{{calc-band:taper.owner.result}}</td><td>{{calc:taper.owner.result.propertyTax}}</td><td>{{calc-pct:taper.owner.result.effectiveRate}}</td></tr>
+          <tr><th scope="row">£130,000</th><td>{{calc-band:additional.owner.result}}</td><td>{{calc:additional.owner.result.propertyTax}}</td><td>{{calc-pct:additional.owner.result.effectiveRate}}</td></tr>
+        </tbody>
+      </table>
+      <p class="data-table__note">Worked out with the same engine as the calculator, using {{label:current}} rates for England, Wales and Northern Ireland.</p>
+    </div>
+    <p>In this example the landlord earning £100,000 pays more tax on the rent than the one earning £130,000. Above {{money:current.paTaperThreshold}}, each £2 of extra income removes £1 of personal allowance until none is left, so rental profit in that range is taxed at an effective 60%. The £130,000 earner has already lost the whole allowance, so their profit is taxed at the additional rate only.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Rates">
+  <div class="prose__wrap">
+    <h2>Income tax rates on rental income for {{label:current}}</h2>
+    <p>These are the bands for England, Wales and Northern Ireland. Scotland has six bands of its own, set out in the guide to <a href="{{root}}rental-income-tax-scotland/">rental income tax in Scotland</a>.</p>
+    {{table:bands:england_wales_ni:current}}
+    <h2>Allowances that change the answer</h2>
+    {{table:allowances}}
+    <p>From {{date:next.startDate}}, property income is taxed at its own rates. The changes are explained in <a href="{{root}}property-income-tax-rates-2027/">property income tax rates from April 2027</a>.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Paying the tax">
+  <div class="prose__wrap">
+    <h2>Paying tax on rental income</h2>
+    <p>You pay tax on rental income through Self Assessment. If you have not sent a tax return before, register by 5 October after the end of the tax year in which you started letting. File your return online by 31 January and pay what you owe by the same date.</p>
+    <p>If your bill is more than £1,000, HMRC usually asks for payments on account towards the next year as well, due on 31 January and 31 July. If your gross property income is {{money:current.propertyAllowance}} or less, the property allowance covers it and you usually do not need to tell HMRC.</p>
+    <p>Making Tax Digital for Income Tax has applied since {{mtd-date:0.startDate}} to landlords and sole traders with qualifying income over {{mtd-money:0.threshold}}, and it extends to qualifying income over {{mtd-money:1.threshold}} from {{mtd-date:1.startDate}}. The guide to <a href="{{root}}making-tax-digital-for-landlords/">Making Tax Digital for landlords</a> covers the quarterly updates, and the guide for <a href="{{root}}who-we-can-help/first-time-filers/">first-time filers</a> covers your first return.</p>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Work out your own figures</h2>
+      <p>Enter your income, rent and costs to see your tax, the Section 24 credit and what you keep.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Allowable expenses landlords can claim</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+      <a class="related__link" href="{{root}}property-allowance-vs-expenses/">Property allowance or claiming expenses</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/renting-out-a-property/paying-tax">GOV.UK: Renting out your property, paying tax</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/income-tax-rates">GOV.UK: Income Tax rates and Personal Allowances</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/understand-self-assessment-bill/payments-on-account">GOV.UK: Payments on account</a></li>
+    </ul>
+  </div>
+</section>

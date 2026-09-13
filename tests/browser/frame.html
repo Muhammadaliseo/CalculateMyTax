@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Exact-width frame</title>
+<style>
+  body { margin: 0; background: #FFFFFF; }
+  iframe { display: block; border: 0; }
+</style>
+</head>
+<body>
+<!-- Development check only: renders a page inside an iframe of an exact width, so headless screenshots can show true 320px layouts. -->
+<iframe id="frame" title="Page at a fixed width"></iframe>
+<script>
+  var params = new URLSearchParams(window.location.search);
+  var frame = document.getElementById('frame');
+  frame.width = params.get('w') || '320';
+  frame.height = params.get('h') || '3000';
+  frame.src = params.get('url');
+</script>
+</body>
+</html>

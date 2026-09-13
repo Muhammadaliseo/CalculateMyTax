@@ -1,0 +1,137 @@
+/* Base: self-hosted fonts and element defaults. Values come from tokens.css. */
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../fonts/atkinson-hyperlegible-next-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Besley";
+  src: url("../fonts/besley-latin.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--root-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--colour-ledger);
+  color: var(--colour-navy);
+  font-family: var(--font-text);
+  font-size: var(--size-400);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+a {
+  color: var(--colour-navy);
+  text-decoration-thickness: var(--border-thin);
+  text-underline-offset: var(--underline-offset);
+}
+
+a:hover {
+  text-decoration-thickness: var(--border-rule);
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-width) solid var(--colour-navy);
+  outline-offset: var(--focus-offset);
+}
+
+strong {
+  font-weight: var(--weight-bold);
+}
+
+code {
+  font-family: inherit;
+  font-weight: var(--weight-semibold);
+}
+
+.config-figure {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-m);
+  top: var(--space-m);
+  z-index: var(--z-menu);
+  padding: var(--space-xs) var(--space-m);
+  background: var(--colour-navy);
+  color: var(--colour-sheet);
+  font-weight: var(--weight-bold);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: var(--hidden-size);
+  height: var(--hidden-size);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

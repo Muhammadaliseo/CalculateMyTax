@@ -1,0 +1,144 @@
+<!--page
+{
+  "title": "Property Income Tax Rates 2027 Explained | CalculateMyTax",
+  "description": "From {{date:next.startDate}}, rental profit in England and Northern Ireland is taxed at {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} and {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}}. See who is affected, what changes and worked examples.",
+  "keyword": "property income tax rates 2027",
+  "crumb": "Property income tax rates from April 2027",
+  "ogType": "article",
+  "schema": ["FAQPage"],
+  "examples": {
+    "now": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "later": { "taxYear": "next", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "basicnow": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 20000, "properties": [{ "rent": 10000, "expenses": 0, "financeCosts": 0 }], "reliefMode": "expenses" },
+    "basiclater": { "taxYear": "next", "region": "england_wales_ni", "otherIncome": 20000, "properties": [{ "rent": 10000, "expenses": 0, "financeCosts": 0 }], "reliefMode": "expenses" },
+    "scotnow": { "taxYear": "current", "region": "scotland", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "scotlater": { "taxYear": "next", "region": "scotland", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Property income tax rates from April 2027</h1>
+    <p class="intro__lede">From {{date:next.startDate}}, rental profit is taxed at its own property income rates of {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} and {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}} for taxpayers in England and Northern Ireland, 2 percentage points above the rates on wages and pensions. The Section 24 mortgage interest credit rises to {{pct:next.financeReliefRate}} at the same time, and Scottish taxpayers stay on Scottish rates.</p>
+    <p class="intro__meta">Rates for {{label:next}}, set by Finance Act 2026 and last verified {{verified}} against GOV.UK and legislation.gov.uk.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="prose" data-section="What changes">
+  <div class="prose__wrap">
+    <h2>What changes and when</h2>
+    <p>The new rates start with the {{label:next}} tax year, which begins on {{date:next.startDate}}. From then, property income has three rates of its own, while your salary, pension and trading income stay on the usual rates of {{pct:next.regions.england_wales_ni.bands.0.rate}}, {{pct:next.regions.england_wales_ni.bands.1.rate}} and {{pct:next.regions.england_wales_ni.bands.2.rate}}.</p>
+    {{table:property-rates:next}}
+    <p>Your rental profit is still added on top of your other income. The band it falls into decides which property rate applies: profit in the basic rate band is taxed at {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, and profit in the higher or additional rate bands at {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} or {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}}. Your rental income for {{label:current}} is taxed at the current rates.</p>
+
+    <h2>Who is affected</h2>
+    <p>The new rates apply to you if you pay UK income tax as a taxpayer in England or Northern Ireland and have rental profit. Limited companies pay corporation tax, so property they own is not affected.</p>
+    <h3>Wales</h3>
+    <p>Welsh taxpayers' property rates are worked out in the same way as other Welsh income tax: the UK property rates less 10 percentage points, plus the Welsh rates set by the Senedd. The Welsh rates for {{label:next}} have not been set yet. If they stay at 10p in each band, landlords in Wales pay the same property rates as landlords in England.</p>
+    <h3>Scotland</h3>
+    <p>If you are a Scottish taxpayer, your property income stays taxed at Scottish income tax rates. The law allows separate Scottish property rates, but that power has not been switched on and no Scottish property rate has been announced. The mortgage interest credit still rises to {{pct:next.financeReliefRate}}, so a Scottish landlord with a mortgage can pay slightly less.</p>
+    <p>A Scottish landlord earning £45,000, with £18,000 rent, £3,200 of running costs and £6,400 of mortgage interest, pays {{calc:scotnow.owner.result.propertyTax}} of tax on the rent in {{label:current}} and {{calc:scotlater.owner.result.propertyTax}} in {{label:next}}, which is {{calc-diff:scotnow.owner.result.propertyTax|scotlater.owner.result.propertyTax}} less. Scottish bands for {{label:next}} are not set yet, so this assumes the {{label:current}} bands. The guide to <a href="{{root}}rental-income-tax-scotland/">rental income tax in Scotland</a> has the detail.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Worked examples">
+  <div class="prose__wrap">
+    <h2>Worked example: a higher rate landlord in England</h2>
+    <p>A landlord earns £45,000 from their job. They receive £18,000 rent, spend £3,200 on letting fees, repairs and insurance, and pay £6,400 of mortgage interest. The figures are the same in both years.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Mortgage interest credit, {{label:current}}</dt><dd class="worked__amount">{{calc:now.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent, {{label:current}}</dt><dd class="worked__amount">{{calc:now.owner.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Mortgage interest credit, {{label:next}}</dt><dd class="worked__amount">{{calc:later.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent, {{label:next}}</dt><dd class="worked__amount">{{calc:later.owner.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Extra tax each year</dt><dd class="worked__amount">{{calc-diff:later.owner.result.propertyTax|now.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>Every pound of profit is taxed 2 percentage points higher, but the credit on the interest also rises by 2 points, which offsets part of the increase.</p>
+
+    <h3>A basic rate landlord with no mortgage</h3>
+    <p>A landlord earns £20,000 and receives £10,000 rent, with no expenses claimed and no mortgage. Their tax on the rent rises from {{calc:basicnow.owner.result.propertyTax}} in {{label:current}} to {{calc:basiclater.owner.result.propertyTax}} in {{label:next}}, an increase of {{calc-diff:basiclater.owner.result.propertyTax|basicnow.owner.result.propertyTax}}. With no finance costs, there is no larger credit to soften the change.</p>
+
+    <h2>The mortgage interest credit rises to {{pct:next.financeReliefRate}}</h2>
+    <p>From {{date:next.startDate}}, finance cost relief is calculated at the property basic rate of {{pct:next.financeReliefRate}}, up from {{pct:current.financeReliefRate}}. The credit is still limited to the lowest of your finance costs, your property profits and your income above the personal allowance, and unrelieved costs are still carried forward. The rules are explained in <a href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>.</p>
+
+    <h2>The new order for using your personal allowance</h2>
+    <p>From {{label:next}}, your personal allowance and other reliefs are set against your employment, pension and trading income first, and only then against property, savings and dividend income. This matters now that property income has higher rates, because the allowance shelters the income taxed at the lower rates first. If your other income is below the personal allowance of {{money:next.personalAllowance}}, the unused part still covers your rental profit.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Law and other changes">
+  <div class="prose__wrap">
+    <h2>The change is already law</h2>
+    <p>The property income rates are confirmed. They were announced at the Budget on 26 November 2025 and are set out in section 7 of Finance Act 2026, which received Royal Assent on 18 March 2026.</p>
+
+    <h2>Savings and dividend rates are changing too</h2>
+    <p>The same Budget raised the rates on other kinds of unearned income. Savings income rates rise by 2 percentage points to 22%, 42% and 47% from April 2027. The dividend ordinary and upper rates have already risen by 2 points, to 10.75% and 35.75%, from April 2026. The rental income tax calculator does not include savings or dividend income.</p>
+
+    <h2>What you can do now</h2>
+    <p>The most useful step is to understand what the change means for your own figures before the {{label:next}} tax year starts.</p>
+    <ul>
+      <li>Run your figures through the calculator for {{label:current}} and again for {{label:next}}, and compare the tax on your rent.</li>
+      <li>Check you are claiming every cost you are entitled to, using the guide to <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a>.</li>
+      <li>Keep records of your mortgage interest and any unrelieved finance costs carried forward, as the credit on them rises.</li>
+      <li>If you are unsure how the change affects you, speak to a qualified tax adviser. This site gives estimates, not tax advice.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="faq" data-section="Questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions about the April 2027 changes</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Do the new property rates affect my {{label:current}} tax return?</summary>
+      <div class="faq__answer">
+        <p>No. The property income rates start on {{date:next.startDate}}, the first day of the {{label:next}} tax year. Rental profit for {{label:current}} is taxed at the current rates, with a mortgage interest credit of {{pct:current.financeReliefRate}}.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do the 2027 property rates apply in Scotland and Wales?</summary>
+      <div class="faq__answer">
+        <p>Not in Scotland: Scottish taxpayers' property income stays on Scottish rates, and no separate Scottish property rate has been announced. In Wales, property rates depend on the Welsh rates the Senedd sets for {{label:next}}, which have not been set yet. If they stay at 10p, Welsh landlords pay the same property rates as England.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is the April 2027 change confirmed?</summary>
+      <div class="faq__answer">
+        <p>Yes. The property rates of {{pct:next.regions.england_wales_ni.propertyIncomeBands.0.rate}}, {{pct:next.regions.england_wales_ni.propertyIncomeBands.1.rate}} and {{pct:next.regions.england_wales_ni.propertyIncomeBands.2.rate}} are in section 7 of Finance Act 2026, which received Royal Assent on 18 March 2026.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Compare this year with {{label:next}}</h2>
+      <p>Enter your income, rent and costs, then switch the tax year to see how the new property rates change your bill.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+      <a class="related__link" href="{{root}}rental-income-tax-scotland/">How rental income is taxed in Scotland</a>
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Allowable expenses landlords can claim</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/government/publications/changes-to-tax-rates-for-property-savings-and-dividend-income/change-to-tax-rates-for-property-savings-and-dividend-income-technical-note">GOV.UK: Change to tax rates for property, savings and dividend income, technical note</a></li>
+      <li><a class="sources__link" href="https://www.legislation.gov.uk/ukpga/2026/11/section/7">legislation.gov.uk: Finance Act 2026, section 7</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property: working out your rental income</a></li>
+    </ul>
+  </div>
+</section>

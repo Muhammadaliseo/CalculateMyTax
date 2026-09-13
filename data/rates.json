@@ -1,0 +1,150 @@
+{
+  "2025-26": {
+    "label": "2025/26",
+    "startDate": "2025-04-06",
+    "endDate": "2026-04-05",
+    "isForecast": false,
+    "forecastNote": null,
+    "lastVerified": "2026-09-13",
+    "personalAllowance": 1257000,
+    "paTaperThreshold": 10000000,
+    "paTaperRate": 2,
+    "propertyAllowance": 100000,
+    "rentARoom": 750000,
+    "rentARoomShared": 375000,
+    "financeReliefRate": 0.20,
+    "paOrdering": "standard",
+    "regions": {
+      "england_wales_ni": {
+        "label": "England, Wales and Northern Ireland",
+        "assumed": false,
+        "notes": null,
+        "bands": [
+          { "name": "Basic rate", "upTo": 3770000, "rate": 0.20 },
+          { "name": "Higher rate", "upTo": 12514000, "rate": 0.40 },
+          { "name": "Additional rate", "upTo": null, "rate": 0.45 }
+        ],
+        "propertyIncomeBands": null
+      },
+      "scotland": {
+        "label": "Scotland",
+        "assumed": false,
+        "notes": null,
+        "bands": [
+          { "name": "Starter rate", "upTo": 282700, "rate": 0.19 },
+          { "name": "Basic rate", "upTo": 1492100, "rate": 0.20 },
+          { "name": "Intermediate rate", "upTo": 3109200, "rate": 0.21 },
+          { "name": "Higher rate", "upTo": 6243000, "rate": 0.42 },
+          { "name": "Advanced rate", "upTo": 12514000, "rate": 0.45 },
+          { "name": "Top rate", "upTo": null, "rate": 0.48 }
+        ],
+        "propertyIncomeBands": null
+      }
+    },
+    "sources": [
+      "https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past",
+      "https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/proposed-rates-and-bands-2025-to-2026/"
+    ]
+  },
+  "2026-27": {
+    "label": "2026/27",
+    "startDate": "2026-04-06",
+    "endDate": "2027-04-05",
+    "isForecast": false,
+    "forecastNote": null,
+    "lastVerified": "2026-09-13",
+    "personalAllowance": 1257000,
+    "paTaperThreshold": 10000000,
+    "paTaperRate": 2,
+    "propertyAllowance": 100000,
+    "rentARoom": 750000,
+    "rentARoomShared": 375000,
+    "financeReliefRate": 0.20,
+    "paOrdering": "standard",
+    "regions": {
+      "england_wales_ni": {
+        "label": "England, Wales and Northern Ireland",
+        "assumed": false,
+        "notes": null,
+        "bands": [
+          { "name": "Basic rate", "upTo": 3770000, "rate": 0.20 },
+          { "name": "Higher rate", "upTo": 12514000, "rate": 0.40 },
+          { "name": "Additional rate", "upTo": null, "rate": 0.45 }
+        ],
+        "propertyIncomeBands": null
+      },
+      "scotland": {
+        "label": "Scotland",
+        "assumed": false,
+        "notes": null,
+        "bands": [
+          { "name": "Starter rate", "upTo": 396700, "rate": 0.19 },
+          { "name": "Basic rate", "upTo": 1695600, "rate": 0.20 },
+          { "name": "Intermediate rate", "upTo": 3109200, "rate": 0.21 },
+          { "name": "Higher rate", "upTo": 6243000, "rate": 0.42 },
+          { "name": "Advanced rate", "upTo": 12514000, "rate": 0.45 },
+          { "name": "Top rate", "upTo": null, "rate": 0.48 }
+        ],
+        "propertyIncomeBands": null
+      }
+    },
+    "sources": [
+      "https://www.gov.uk/income-tax-rates",
+      "https://www.legislation.gov.uk/ukpga/2026/11/section/2",
+      "https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/2026-to-2027/",
+      "https://www.gov.wales/written-statement-draft-budget-2026-27-welsh-taxes"
+    ]
+  },
+  "2027-28": {
+    "label": "2027/28",
+    "startDate": "2027-04-06",
+    "endDate": "2028-04-05",
+    "isForecast": true,
+    "forecastNote": "Property income rates of 22%, 42% and 47% and the 22% finance cost credit are enacted in Finance Act 2026. Scottish bands and the Welsh rate for 2027/28 have not been set yet, so 2026/27 figures are assumed.",
+    "lastVerified": "2026-09-13",
+    "personalAllowance": 1257000,
+    "paTaperThreshold": 10000000,
+    "paTaperRate": 2,
+    "propertyAllowance": 100000,
+    "rentARoom": 750000,
+    "rentARoomShared": 375000,
+    "financeReliefRate": 0.22,
+    "paOrdering": "employment_first",
+    "regions": {
+      "england_wales_ni": {
+        "label": "England, Wales and Northern Ireland",
+        "assumed": true,
+        "notes": "Welsh property rates assume the Senedd keeps the Welsh rate at 10p in each band.",
+        "bands": [
+          { "name": "Basic rate", "upTo": 3770000, "rate": 0.20 },
+          { "name": "Higher rate", "upTo": 12514000, "rate": 0.40 },
+          { "name": "Additional rate", "upTo": null, "rate": 0.45 }
+        ],
+        "propertyIncomeBands": [
+          { "name": "Property basic rate", "upTo": 3770000, "rate": 0.22 },
+          { "name": "Property higher rate", "upTo": 12514000, "rate": 0.42 },
+          { "name": "Property additional rate", "upTo": null, "rate": 0.47 }
+        ]
+      },
+      "scotland": {
+        "label": "Scotland",
+        "assumed": true,
+        "notes": "Scottish rates for 2027/28 are set in the Scottish Budget. The 2026/27 bands are assumed until then.",
+        "bands": [
+          { "name": "Starter rate", "upTo": 396700, "rate": 0.19 },
+          { "name": "Basic rate", "upTo": 1695600, "rate": 0.20 },
+          { "name": "Intermediate rate", "upTo": 3109200, "rate": 0.21 },
+          { "name": "Higher rate", "upTo": 6243000, "rate": 0.42 },
+          { "name": "Advanced rate", "upTo": 12514000, "rate": 0.45 },
+          { "name": "Top rate", "upTo": null, "rate": 0.48 }
+        ],
+        "propertyIncomeBands": null
+      }
+    },
+    "sources": [
+      "https://www.legislation.gov.uk/ukpga/2026/11/section/7",
+      "https://www.legislation.gov.uk/ukpga/2026/11/section/10",
+      "https://www.gov.uk/government/publications/changes-to-tax-rates-for-property-savings-and-dividend-income/change-to-tax-rates-for-property-savings-and-dividend-income-technical-note"
+    ]
+  }
+}

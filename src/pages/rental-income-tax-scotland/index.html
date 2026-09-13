@@ -1,0 +1,169 @@
+<!--page
+{
+  "title": "Rental Income Tax in Scotland {{label:current}} | CalculateMyTax",
+  "description": "Rental income tax in Scotland is charged at Scottish rates if your main home is there. See the {{label:current}} bands and how Section 24 relief works for you.",
+  "keyword": "rental income tax scotland",
+  "crumb": "Rental income tax in Scotland",
+  "ogType": "article",
+  "schema": ["FAQPage"],
+  "examples": {
+    "scot": { "taxYear": "current", "region": "scotland", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "eng": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 45000, "properties": [{ "rent": 18000, "expenses": 3200, "financeCosts": 6400 }], "reliefMode": "expenses" },
+    "starter": { "taxYear": "current", "region": "scotland", "otherIncome": 14000, "properties": [{ "rent": 3000, "expenses": 0, "financeCosts": 3000 }], "reliefMode": "expenses" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Rental income tax in Scotland</h1>
+    <p class="intro__lede">If your main home is in Scotland, your rental profit is taxed at Scottish income tax rates, from {{pct:current.regions.scotland.bands.0.rate}} to {{pct:current.regions.scotland.bands.5.rate}}, wherever in the UK the property is. Mortgage interest relief is still a tax credit at the UK rate of {{pct:current.financeReliefRate}}, not at your Scottish rate.</p>
+    <p class="intro__meta">Rates for {{label:current}}, last verified {{verified}} against GOV.UK and gov.scot.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="prose" data-section="Who pays">
+  <div class="prose__wrap">
+    <h2>Rental profit is taxed at Scottish rates if you are a Scottish taxpayer</h2>
+    <p>If you are a Scottish taxpayer, your rental profit is added to your salary, pension and other income and taxed at the rates and bands set by the Scottish Government. The personal allowance and the way you work out your profit are the same as anywhere else in the UK.</p>
+
+    <h2>Who is a Scottish taxpayer</h2>
+    <p>You are a Scottish taxpayer if you live in Scotland, which means your main home is there. Where your rented property is does not decide it. That gives two cross-border cases:</p>
+    <ul>
+      <li>If you live in Scotland and let a flat in England, you pay Scottish rates on the profit.</li>
+      <li>If you live in England and let a flat in Scotland, you pay the rates for England on the profit.</li>
+    </ul>
+    <p>If you are employed or get a pension, a tax code starting with S shows that HMRC treats you as a Scottish taxpayer.</p>
+    <h3>If you have more than one home</h3>
+    <p>Your main home is usually where you live and spend most of your time, whether or not you own it. It can be a home where you spend less time if that is where most of your possessions are, where your family lives, or where you are registered for things such as your bank account, GP or car insurance. If you are still unsure, compare the days you spend in Scotland with the days elsewhere in the UK, counting where you are at midnight. If more days are in Scotland, you are a Scottish taxpayer for the whole tax year.</p>
+    <h3>If you move to or from Scotland</h3>
+    <p>If you move during a tax year, you pay Scottish Income Tax for that year if you lived in Scotland for longer than anywhere else in the UK. The Scottish rates then apply from the start of that tax year. Tell HMRC when your address changes, or you may pay tax at the wrong rates.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Rates">
+  <div class="prose__wrap">
+    <h2>Scottish income tax bands for {{label:current}}</h2>
+    <p>Scotland has six income tax bands. The table shows each band on taxable income, and on total income for someone with the standard personal allowance of {{money:current.personalAllowance}}.</p>
+    {{table:bands:scotland:current}}
+    <h3>Bands for {{label:2025-26}}</h3>
+    <p>Use these bands for your {{label:2025-26}} tax return. The rates were the same, but the starter and basic rate bands stopped at lower incomes, so more income fell into the intermediate band. The higher, advanced and top rate bands started at the same points.</p>
+    {{table:bands:scotland:2025-26}}
+  </div>
+</section>
+
+<section class="prose" data-section="Worked example">
+  <div class="prose__wrap">
+    <h2>How the bands apply to your rental profit</h2>
+    <p>Your other income fills the bands first and your rental profit sits on top of it. The band your salary or pension has already reached sets the rate on the first pound of profit, and any profit that crosses into the next band is taxed at that band's rate. Because the Scottish higher rate starts at a lower income than the higher rate elsewhere in the UK, a landlord with a middle-range salary can pay noticeably more on the same profit in Scotland.</p>
+    <h3>Worked example: the same letting in Scotland and in England</h3>
+    <p>Two landlords each earn £45,000 from a job in {{label:current}}. Each receives £18,000 rent, spends £3,200 on letting fees, repairs and insurance, and pays £6,400 of mortgage interest. One lives in Scotland and the other lives in England.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Rent received</dt><dd class="worked__amount">{{calc:scot.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Less allowable expenses</dt><dd class="worked__amount">{{calc:scot.owner.result.deduction}}</dd></div>
+      <div class="worked__row"><dt>Property profit</dt><dd class="worked__amount">{{calc:scot.owner.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Section 24 credit, both landlords</dt><dd class="worked__amount">{{calc:scot.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent, landlord in England</dt><dd class="worked__amount">{{calc:eng.owner.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Tax caused by the rent, landlord in Scotland</dt><dd class="worked__amount">{{calc:scot.owner.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Extra tax paid in Scotland</dt><dd class="worked__amount">{{calc-diff:scot.owner.result.propertyTax|eng.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>The Scottish landlord's salary already reaches the Scottish higher rate band, so all {{calc:scot.owner.result.propertySlices.0.amount}} of profit is taxed at {{calc-pct:scot.owner.result.propertySlices.0.rate}}. In England, {{calc:eng.owner.result.propertySlices.0.amount}} of the profit falls in the basic rate band at {{calc-pct:eng.owner.result.propertySlices.0.rate}} and {{calc:eng.owner.result.propertySlices.1.amount}} in the higher rate band at {{calc-pct:eng.owner.result.propertySlices.1.rate}}. Both landlords get the same credit, because it is set at the UK rate.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Section 24 in Scotland">
+  <div class="prose__wrap">
+    <h2>Mortgage interest relief is at the UK rate, not a Scottish rate</h2>
+    <p>The Section 24 credit is {{pct:current.financeReliefRate}} of your mortgage interest and other finance costs for every individual landlord in the UK, including Scottish taxpayers. Mortgage interest is not deducted from your rent. Your tax bill is reduced by the credit instead, limited by your property profit and your income. The full rules are in the guide to <a href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief</a>.</p>
+    <h3>At the higher, advanced and top rates</h3>
+    <p>If your profit is taxed at {{pct:current.regions.scotland.bands.3.rate}}, {{pct:current.regions.scotland.bands.4.rate}} or {{pct:current.regions.scotland.bands.5.rate}}, the money you spend on interest is taxed as profit at that rate but relieved at only {{pct:current.financeReliefRate}}. The gap is wider than for a higher rate landlord in England, where the higher rate is {{pct:current.regions.england_wales_ni.bands.1.rate}}.</p>
+    <h3>At the starter rate</h3>
+    <p>At the starter rate the credit can be worth more than the tax on that slice of profit, because the credit rate of {{pct:current.financeReliefRate}} is higher than the starter rate of {{pct:current.regions.scotland.bands.0.rate}}.</p>
+    <p>Take a Scottish taxpayer who earns £14,000 from a job, receives £3,000 rent with no other costs, and pays £3,000 of mortgage interest. The rent only covers the interest, but the profit for tax is {{calc:starter.owner.result.profit}}, because interest is not deducted. Of that profit, {{calc:starter.owner.result.propertySlices.0.amount}} is taxed at the starter rate of {{calc-pct:starter.owner.result.propertySlices.0.rate}} and {{calc:starter.owner.result.propertySlices.1.amount}} at the basic rate of {{calc-pct:starter.owner.result.propertySlices.1.rate}}.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Income tax on the salary alone</dt><dd class="worked__amount">{{calc:starter.owner.result.taxOnOtherIncomeOnly}}</dd></div>
+      <div class="worked__row"><dt>Income tax on salary and profit, before the credit</dt><dd class="worked__amount">{{calc:starter.owner.result.taxBeforeCredit}}</dd></div>
+      <div class="worked__row"><dt>Less the Section 24 credit</dt><dd class="worked__amount">{{calc:starter.owner.result.finance.credit}}</dd></div>
+      <div class="worked__row"><dt>Total income tax</dt><dd class="worked__amount">{{calc:starter.owner.result.totalTax}}</dd></div>
+      <div class="worked__total"><dt>Tax caused by the rental income</dt><dd class="worked__amount">{{calc:starter.owner.result.propertyTax}}</dd></div>
+    </dl>
+    <p>The tax caused by the rent is a negative figure. The credit of {{calc:starter.owner.result.finance.credit}} wipes out all the tax on the rental profit, and the part left over lowers the tax on the salary slightly, so this landlord's total bill is a little lower than it would be with no letting at all. The credit can never reduce your bill below nothing or create a refund on its own.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="From April 2027">
+  <div class="prose__wrap">
+    <h2>What changes in {{label:next}}</h2>
+    <p>From {{date:next.startDate}}, property income in England, Wales and Northern Ireland is taxed at its own separate rates, but Scottish taxpayers' property income stays at the Scottish rates. The law leaves room for separate Scottish property income rates, but none have been introduced. Scottish rates and bands for {{label:next}} have not been set yet, because they are set in the Scottish Budget.</p>
+    <p>The Section 24 credit changes for everyone. From {{label:next}} it is set at the UK property basic rate of {{pct:next.financeReliefRate}}, and the legislation contains no Scottish version of it. If Scottish rates stayed as they are, the credit would be higher than the starter, basic and intermediate rates, and still well below the higher, advanced and top rates.</p>
+    <p>The wider changes are covered in the guide to the <a href="{{root}}property-income-tax-rates-2027/">new property income tax rates</a>.</p>
+
+    <h2>What stays the same as the rest of the UK</h2>
+    <p>Only the rates and bands on earnings, pensions, rental profit and similar income are Scottish. The rest of the system works the same way across the UK.</p>
+    <ul>
+      <li>Savings interest and dividends are taxed at the same rates as in the rest of the UK.</li>
+      <li>The personal allowance of {{money:current.personalAllowance}}, the property allowance of {{money:current.propertyAllowance}} and the Rent a Room limit of {{money:current.rentARoom}} are UK-wide.</li>
+      <li>Making Tax Digital for Income Tax uses the same thresholds for qualifying income from self-employment and property: over {{mtd-money:0.threshold}} from {{mtd-date:0.startDate}}, over {{mtd-money:1.threshold}} from {{mtd-date:1.startDate}} and over {{mtd-money:2.threshold}} from {{mtd-date:2.startDate}}.</li>
+    </ul>
+    <p>What Making Tax Digital asks of you is explained in <a href="{{root}}making-tax-digital-for-landlords/">Making Tax Digital for landlords</a>.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions about rental income tax in Scotland</h2>
+    <details class="faq__item">
+      <summary class="faq__question">I live in England but let a flat in Scotland. Do I pay Scottish rates?</summary>
+      <div class="faq__answer">
+        <p>No. Scottish Income Tax depends on where you live, not where the property is. If your main home is in England, your rental profit is taxed at the rates for England, even though the flat is in Scotland. It works the other way round too: a Scottish resident letting a flat in England pays Scottish rates.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">I moved to Scotland partway through the tax year. Which rates apply to my rent?</summary>
+      <div class="faq__answer">
+        <p>You pay Scottish Income Tax for the whole tax year if you lived in Scotland for longer than anywhere else in the UK during that year. That covers your rental profit as well as your wages or pension. Tell HMRC your new address so you are taxed at the right rates.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do Scottish higher rate landlords get mortgage interest relief at {{pct:current.regions.scotland.bands.3.rate}}?</summary>
+      <div class="faq__answer">
+        <p>No. The Section 24 credit is {{pct:current.financeReliefRate}} of your finance costs for every individual landlord in the UK, whichever Scottish band your profit falls in. From {{label:next}} it becomes {{pct:next.financeReliefRate}}, and there is still no Scottish version of it.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Work out your tax at Scottish rates</h2>
+      <p>Choose Scotland in the calculator to see the tax on your rent, the Section 24 credit and what you keep.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+      <a class="related__link" href="{{root}}property-income-tax-rates-2027/">Property income tax rates from April 2027</a>
+      <a class="related__link" href="{{root}}making-tax-digital-for-landlords/">Making Tax Digital for landlords</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/scottish-income-tax">GOV.UK: Scottish Income Tax</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/scottish-income-tax/if-you-live-in-more-than-one-home">GOV.UK: Scottish Income Tax if you live in more than one home</a></li>
+      <li><a class="sources__link" href="https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/2026-to-2027/">gov.scot: Scottish income tax rates and bands 2026 to 2027</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/changes-to-tax-relief-for-residential-landlords-how-its-worked-out-including-case-studies">GOV.UK: How relief for residential landlords is worked out</a></li>
+    </ul>
+  </div>
+</section>

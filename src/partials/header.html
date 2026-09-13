@@ -1,0 +1,14 @@
+<header class="site-header" data-section="Site header">
+  <div class="site-header__wrap">
+    <a class="site-header__logo" href="{{root}}">
+      <picture>
+        <source srcset="{{root}}{{site:brand.logoWebp}}" type="image/webp">
+        <img class="site-header__logo-image" src="{{root}}{{site:brand.logoPng}}" width="{{site:brand.logoWidth}}" height="{{site:brand.logoHeight}}" alt="{{site:brand.name}} home">
+      </picture>
+    </a>
+    <button class="site-header__menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      {{nav}}
+    </nav>
+  </div>
+</header>

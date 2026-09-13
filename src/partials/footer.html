@@ -1,0 +1,20 @@
+<footer class="site-footer" data-section="Site footer">
+  <div class="site-footer__wrap">
+    <div class="site-footer__brand">
+      <a class="site-footer__logo" href="{{root}}">
+        <picture>
+          <source srcset="{{root}}{{site:brand.logoFullWebp}}" type="image/webp">
+          <img class="site-footer__logo-image" src="{{root}}{{site:brand.logoFullPng}}" width="{{site:brand.logoFullWidth}}" height="{{site:brand.logoFullHeight}}" alt="{{site:brand.name}}: {{site:brand.tagline}}. Home" loading="lazy">
+        </picture>
+      </a>
+      <p class="site-footer__description">{{site:brand.description}}</p>
+      <a class="site-footer__email" href="mailto:{{site:contact.email}}">{{site:contact.email}}</a>
+    </div>
+    <div class="site-footer__columns">
+      {{footer-columns}}
+    </div>
+    <div class="site-footer__legal">
+      {{footer-legal}}
+    </div>
+  </div>
+</footer>

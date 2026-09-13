@@ -1,0 +1,153 @@
+<!--page
+{
+  "title": "Rent a Room Scheme: {{money:current.rentARoom}} Tax-Free Limit | CalculateMyTax",
+  "description": "The Rent a Room Scheme lets you earn {{money:current.rentARoom}} a year tax free from a furnished room in your home. See who qualifies, how methods A and B work, and the deadlines.",
+  "keyword": "rent a room scheme",
+  "crumb": "The Rent a Room Scheme",
+  "ogType": "article",
+  "schema": ["FAQPage"],
+  "examples": {
+    "under": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 30000, "properties": [{ "rent": 7000, "expenses": 1500, "financeCosts": 0 }], "lettingType": "roomInOwnHome", "reliefMode": "auto" },
+    "over": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 30000, "properties": [{ "rent": 10600, "expenses": 9000, "financeCosts": 0 }], "lettingType": "roomInOwnHome", "reliefMode": "auto" },
+    "shared": { "taxYear": "current", "region": "england_wales_ni", "otherIncome": 30000, "properties": [{ "rent": 5000, "expenses": 0, "financeCosts": 0 }], "lettingType": "roomInOwnHome", "rentARoomShared": true, "reliefMode": "auto" }
+  }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">The Rent a Room Scheme explained</h1>
+    <p class="intro__lede">The Rent a Room Scheme lets you receive up to {{money:current.rentARoom}} a year tax free from letting furnished accommodation in your only or main home. The limit is halved to {{money:current.rentARoomShared}} if someone else also receives letting income from the same property. Under the limit the relief is automatic; over it, you are taxed on your actual profit unless you ask HMRC to tax only the receipts above the limit.</p>
+    <p class="intro__meta">Limits for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC helpsheet HS223.</p>
+    {{featured-image}}
+  </div>
+</section>
+
+<section class="prose" data-section="What the scheme is">
+  <div class="prose__wrap">
+    <h2>What the Rent a Room Scheme is</h2>
+    <p>The Rent a Room Scheme is an income tax relief that makes the first {{money:current.rentARoom}} a year you receive from letting furnished accommodation in your home tax free. It is designed for resident landlords who take in a lodger, and it also covers a bed and breakfast or guest house run from the home you live in. The same limit applies across the UK, including Scotland.</p>
+    <p>The limit is measured against your gross receipts, not your profit. Receipts are the rent before any expenses, plus anything you are paid for meals, goods and services such as cleaning or laundry. If your lodger pays rent and a separate charge for meals, both count towards the limit.</p>
+    <p>You can use the scheme whether you own your home or rent it.</p>
+
+    <h2>The shared limit</h2>
+    <p>Your limit is halved to {{money:current.rentARoomShared}} if someone else receives income from letting accommodation in the same property. This usually happens when you own your home jointly with a partner and you both receive part of the lodger's rent.</p>
+    <p>For example, you earn £30,000 from a job, you receive £5,000 from a lodger with no expenses, and your joint owner also receives letting income from the same home. Your receipts are over your {{money:current.rentARoomShared}} limit. Using method B, explained below, you pay tax on the {{calc:shared.owner.routes.rentARoom.result.profit}} above the limit, which comes to {{calc:shared.owner.routes.rentARoom.result.propertyTax}} at the basic rate of {{pct:current.regions.england_wales_ni.bands.0.rate}} in England. With the full {{money:current.rentARoom}} limit, the same £5,000 would be tax free.</p>
+
+    <h2>Who qualifies</h2>
+    <p>You qualify if you let furnished accommodation in your only or main home. That covers a furnished room let to a lodger, and a bed and breakfast or guest house business run from the home you live in.</p>
+    <h3>What does not qualify</h3>
+    <p>The scheme does not apply to accommodation that:</p>
+    <ul>
+      <li>is not part of your main home when you let it, such as a second home or a buy-to-let property</li>
+      <li>is not furnished</li>
+      <li>is used as an office or for any kind of business</li>
+      <li>you let while you live abroad</li>
+    </ul>
+    <p>It also does not apply to a home that has been converted into separate flats. Income from any of these lettings is taxed under the normal rules for a property business, set out in the guide to <a href="{{root}}tax-on-rental-income/">tax on rental income</a>.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Under the limit">
+  <div class="prose__wrap">
+    <h2>If your receipts are under the limit</h2>
+    <p>If your receipts for the tax year are under the limit, the relief is automatic and you pay no tax on them. GOV.UK confirms you do not need to do anything to claim it.</p>
+    <p>Say you earn £30,000 from a job and receive £7,000 a year from a lodger, with £1,500 of costs. The rent is under the {{money:current.rentARoom}} limit, so it is tax free. If you left the scheme and claimed your costs as expenses instead, the rent would add tax.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Receipts from the lodger</dt><dd class="worked__amount">{{calc:under.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Profit if you claimed expenses instead</dt><dd class="worked__amount">{{calc:under.owner.routes.expenses.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Tax if you claimed expenses instead</dt><dd class="worked__amount">{{calc:under.owner.routes.expenses.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Tax with Rent a Room relief</dt><dd class="worked__amount">{{calc:under.owner.routes.rentARoom.result.propertyTax}}</dd></div>
+    </dl>
+    <h3>Opting out when you are under the limit</h3>
+    <p>You can choose not to use the scheme, for example if your costs are more than your receipts and you want to claim a loss. To opt out, you must tell HMRC within one year of 31 January following the end of the tax year.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="Over the limit">
+  <div class="prose__wrap">
+    <h2>If your receipts are over the limit</h2>
+    <p>If your receipts are over the limit, you must complete a tax return and the income is taxed in one of two ways. HMRC uses method A unless you tell it you want method B.</p>
+    <ul>
+      <li>Under method A, you pay tax on your actual profit: your receipts less your expenses and capital allowances.</li>
+      <li>Under method B, you pay tax on your receipts above the limit, and you cannot deduct any expenses or capital allowances.</li>
+    </ul>
+    <p>Method A gives the lower taxable amount when your expenses and capital allowances come to more than your limit of {{money:current.rentARoom}}, or {{money:current.rentARoomShared}} if it is shared. Otherwise method B does.</p>
+    <h3>HMRC's example</h3>
+    <p>HMRC's helpsheet HS223 describes a landlord with receipts of £10,600 and expenses of £9,000. Under method A, the taxable profit is £1,600. Under method B, the taxable amount is £3,100, the receipts above the limit. Method A is better because the expenses are larger than the limit.</p>
+    <p>Here is what that means in tax for someone who also earns £30,000 from a job in England, so the whole amount falls in the basic rate band.</p>
+    <dl class="worked">
+      <div class="worked__row"><dt>Receipts</dt><dd class="worked__amount">{{calc:over.owner.grossRent}}</dd></div>
+      <div class="worked__row"><dt>Method A: taxable profit</dt><dd class="worked__amount">{{calc:over.owner.routes.expenses.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Method A: tax</dt><dd class="worked__amount">{{calc:over.owner.routes.expenses.result.propertyTax}}</dd></div>
+      <div class="worked__row"><dt>Method B: taxable amount</dt><dd class="worked__amount">{{calc:over.owner.routes.rentARoom.result.profit}}</dd></div>
+      <div class="worked__row"><dt>Method B: tax</dt><dd class="worked__amount">{{calc:over.owner.routes.rentARoom.result.propertyTax}}</dd></div>
+      <div class="worked__total"><dt>Tax saved by using method A</dt><dd class="worked__amount">{{calc-diff:over.owner.routes.rentARoom.result.propertyTax|over.owner.routes.expenses.result.propertyTax}}</dd></div>
+    </dl>
+
+    <h2>The deadline for choosing method B</h2>
+    <p>To use method B, you must tell HMRC within one year of 31 January following the end of the tax year. For the {{label:2025-26}} tax year, which ended on {{date:2025-26.endDate}}, the deadline is 31 January 2028.</p>
+    <p>Once you choose method B, it carries on in later years until you tell HMRC you want to go back to method A. It stops automatically in any year your receipts fall below the limit, when the relief applies in full again.</p>
+
+    <h2>Mortgage interest and the property allowance</h2>
+    <p>Rent a Room relief replaces your costs rather than adding to them. If you claim the relief, you cannot deduct mortgage interest, and the {{money:current.propertyAllowance}} property allowance cannot be used on Rent a Room income at all.</p>
+    <p>If your costs are high, work out method A as well before you decide. Method A taxes your letting as a normal property business, and the comparison of <a href="{{root}}property-allowance-vs-expenses/">the property allowance and claiming expenses</a> explains how costs are treated there.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Questions about the Rent a Room Scheme</h2>
+    <details class="faq__item">
+      <summary class="faq__question">Can I use the Rent a Room Scheme if I rent my home?</summary>
+      <div class="faq__answer">
+        <p>Yes. The scheme applies whether or not you own your home. What matters is that you let furnished accommodation in the home that is your only or main home.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do meals and cleaning count towards the {{money:current.rentARoom}} limit?</summary>
+      <div class="faq__answer">
+        <p>Yes. The limit applies to your gross receipts, which include the rent and anything you receive for meals, goods and services such as cleaning or laundry. Add everything together before you compare the total with your limit.</p>
+      </div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Can I claim mortgage interest or the property allowance as well as Rent a Room relief?</summary>
+      <div class="faq__answer">
+        <p>No. If you claim Rent a Room relief, you cannot deduct mortgage interest, and the {{money:current.propertyAllowance}} property allowance cannot be used on Rent a Room income. If your costs are more than the limit, method A, which taxes your actual profit, may give you a lower bill.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="callout" data-section="Calculator link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Compare Rent a Room relief with claiming expenses</h2>
+      <p>The calculator works out your tax under each route and shows which gives the lower bill on your own figures.</p>
+    </div>
+    <a class="button" href="{{root}}rental-income-tax-calculator/">Use the rental income tax calculator</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}tax-on-rental-income/">Tax on rental income: how much you pay</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Allowable expenses landlords can claim</a>
+      <a class="related__link" href="{{root}}property-allowance-vs-expenses/">Property allowance or claiming expenses</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/rent-room-in-your-home/the-rent-a-room-scheme">GOV.UK: Rent a room in your home</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/government/publications/rent-a-room-for-traders-hs223-self-assessment-helpsheet">HMRC: Rent a Room Scheme helpsheet HS223</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income">GOV.UK: Income Tax when you rent out a property: working out your rental income</a></li>
+    </ul>
+  </div>
+</section>

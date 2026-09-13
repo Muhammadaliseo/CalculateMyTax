@@ -1,0 +1,56 @@
+{
+  "lastVerified": "2026-09-13",
+  "source": "https://www.gov.uk/guidance/income-tax-when-you-rent-out-a-property-working-out-your-rental-income",
+  "categories": [
+    {
+      "id": "letting-agent-fees",
+      "label": "Letting agent and management fees",
+      "tooltip": "Fees you pay an agent to find tenants, collect rent or manage the property."
+    },
+    {
+      "id": "repairs-maintenance",
+      "label": "Repairs and maintenance",
+      "tooltip": "Work that puts the property back to how it was, such as fixing a boiler or repainting. Improvements and extensions do not count."
+    },
+    {
+      "id": "landlord-insurance",
+      "label": "Landlord insurance",
+      "tooltip": "Buildings, contents and rent guarantee insurance for the let property."
+    },
+    {
+      "id": "council-tax-utilities",
+      "label": "Council tax and utilities you pay",
+      "tooltip": "Council tax, gas, electricity and water you pay for the let property, not bills your tenant pays."
+    },
+    {
+      "id": "ground-rent-service-charges",
+      "label": "Ground rent and service charges",
+      "tooltip": "Ground rent and service charges on a leasehold property you let out."
+    },
+    {
+      "id": "accountancy-fees",
+      "label": "Accountancy fees",
+      "tooltip": "Fees for preparing your property accounts and the property pages of your tax return."
+    },
+    {
+      "id": "replacement-domestic-items",
+      "label": "Replacing furniture and appliances",
+      "tooltip": "Replacing a sofa, fridge or carpet like for like, minus anything you got for the old one. First purchases do not count."
+    },
+    {
+      "id": "legal-professional-fees",
+      "label": "Legal and professional fees",
+      "tooltip": "Fees for lets of a year or less, renewing a lease under 50 years, or chasing unpaid rent. Buying costs do not count."
+    },
+    {
+      "id": "travel-costs",
+      "label": "Travel to the property",
+      "tooltip": "Journeys you make only to visit, inspect or repair the let property."
+    },
+    {
+      "id": "advertising-tenants",
+      "label": "Advertising for tenants",
+      "tooltip": "Listing fees, adverts and photographs used to find new tenants."
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>CalculateMyTax asset studio</title>
+<style>
+  @font-face {
+    font-family: "Atkinson Hyperlegible Next";
+    src: url("/assets/fonts/atkinson-hyperlegible-next-latin.woff2") format("woff2");
+    font-weight: 400 700;
+  }
+  @font-face {
+    font-family: "Besley";
+    src: url("/assets/fonts/besley-latin.woff2") format("woff2");
+    font-weight: 700 800;
+  }
+  body { margin: 24px; background: #EEEEEE; font: 15px/1.5 system-ui, sans-serif; color: #222222; }
+  canvas { display: block; max-width: 100%; margin: 12px 0; outline: 1px solid #BBBBBB; }
+  li { margin: 2px 0; }
+</style>
+</head>
+<body>
+<h1>Brand asset studio</h1>
+<p>Development tool only. Crops the CalculateMyTax logo upload into the header and footer logos and the favicons, draws the social sharing image and a featured image for each guide, then saves them into assets/img/.</p>
+<ol id="log"></ol>
+<div id="previews"></div>
+<script>
+(async function () {
+  var NAVY = '#03214B';
+  var BLUE = '#016DF8';
+  var BLUE_DEEP = '#0156C4';
+  var PALE = '#B6C9E4';
+  var SKY = '#EAF2FE';
+  var SKY_DEEP = '#C6DBFB';
+  var HAIRLINE = '#D8E1EE';
+  var MUTED = '#56627E';
+  var WHITE = '#FFFFFF';
+  var TEXT = '"Atkinson Hyperlegible Next"';
+
+  // Measured on the 1774 by 887 upload: the logo's ink spans x 80-1696 and y 254-562, the icon ends at x 452,
+  // the wordmark's ink ends at y 450 and the tagline sits between y 467 and 506.
+  var CROP = { x: 70, y: 244, w: 1636, h: 328 };
+  var ICON = { x: 70, y: 244, w: 392, h: 328 };
+  var TAGLINE = { x: 480, y: 458 };
+
+  var logList = document.getElementById('log');
+  var log = function (message) {
+    var item = document.createElement('li');
+    item.textContent = message;
+    logList.appendChild(item);
+  };
+
+  var loadImage = function (src) {
+    return new Promise(function (resolve, reject) {
+      var img = new Image();
+      img.onload = function () { resolve(img); };
+      img.onerror = function () { reject(new Error('Could not load ' + src)); };
+      img.src = src;
+    });
+  };
+
+  var makeCanvas = function (width, height, background, show) {
+    var canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if (background) {
+      ctx.fillStyle = background;
+      ctx.fillRect(0, 0, width, height);
+    }
+    if (show !== false) {
+      document.getElementById('previews').appendChild(canvas);
+    }
+    return { canvas: canvas, ctx: ctx };
+  };
+
+  var save = async function (canvas, target, type, quality) {
+    var blob = await new Promise(function (resolve) { canvas.toBlob(resolve, type, quality); });
+    var response = await fetch('/save?path=' + encodeURIComponent(target), { method: 'POST', body: blob });
+    log((response.ok ? 'Saved ' : 'FAILED ') + target + ' ' + canvas.width + 'x' + canvas.height + ' ' + blob.size + ' bytes');
+    if (!response.ok) {
+      throw new Error('Save failed for ' + target);
+    }
+  };
+
+  // The upload's background is off-white with compression noise; lift near-white pixels to pure white.
+  var whiten = function (ctx, width, height) {
+    var image = ctx.getImageData(0, 0, width, height);
+    var p = image.data;
+    for (var i = 0; i < p.length; i += 4) {
+      if (p[i] > 236 && p[i + 1] > 236 && p[i + 2] > 236) {
+        p[i] = 255;
+        p[i + 1] = 255;
+        p[i + 2] = 255;
+      }
+    }
+    ctx.putImageData(image, 0, 0);
+  };
+
+  /* Drawing helpers */
+
+  var rr = function (ctx, x, y, w, h, r, fill) {
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, r);
+    ctx.fillStyle = fill;
+    ctx.fill();
+  };
+  var circle = function (ctx, x, y, r, fill) {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = fill;
+    ctx.fill();
+  };
+  var line = function (ctx, points, width, colour) {
+    ctx.beginPath();
+    ctx.moveTo(points[0], points[1]);
+    for (var i = 2; i < points.length; i += 2) {
+      ctx.lineTo(points[i], points[i + 1]);
+    }
+    ctx.lineWidth = width;
+    ctx.strokeStyle = colour;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  };
+  var write = function (ctx, value, x, y, font, colour, align) {
+    ctx.font = font;
+    ctx.fillStyle = colour;
+    ctx.textAlign = align || 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(value, x, y);
+  };
+  var tick = function (ctx, x, y, r) {
+    circle(ctx, x, y, r, BLUE);
+    line(ctx, [x - r * 0.42, y + r * 0.02, x - r * 0.1, y + r * 0.34, x + r * 0.45, y - r * 0.32], r * 0.2, WHITE);
+  };
+  var roof = function (ctx, left, apex, right, colour) {
+    ctx.beginPath();
+    ctx.moveTo(left[0], left[1]);
+    ctx.lineTo(apex[0], apex[1]);
+    ctx.lineTo(right[0], right[1]);
+    ctx.closePath();
+    ctx.fillStyle = colour;
+    ctx.fill();
+  };
+  var wrapLines = function (ctx, text, maxWidth) {
+    var lines = [];
+    var current = '';
+    text.split(' ').forEach(function (word) {
+      var test = current ? current + ' ' + word : word;
+      if (ctx.measureText(test).width > maxWidth && current) {
+        lines.push(current);
+        current = word;
+      } else {
+        current = test;
+      }
+    });
+    if (current) {
+      lines.push(current);
+    }
+    return lines;
+  };
+
+  /* One illustration per guide, drawn inside a 350 by 410 card centred on the origin */
+
+  var ILLUSTRATIONS = {
+    'tax-on-rental-income': {
+      label: 'Rent, less expenses, is taxed on top of your income',
+      draw: function (ctx) {
+        write(ctx, 'Rental ledger', -130, -140, '700 24px ' + TEXT, NAVY);
+        line(ctx, [-130, -120, 130, -120], 4, NAVY);
+        [['Rent', '£18,000'], ['Expenses', '−£3,200'], ['Profit', '£14,800']].forEach(function (row, i) {
+          var y = -72 + i * 58;
+          write(ctx, row[0], -130, y, '400 24px ' + TEXT, NAVY);
+          write(ctx, row[1], 130, y, '700 24px ' + TEXT, NAVY, 'right');
+          if (i < 2) {
+            line(ctx, [-130, y + 22, 130, y + 22], 2, HAIRLINE);
+          }
+        });
+        line(ctx, [-130, 66, 130, 66], 3, NAVY);
+        line(ctx, [-130, 74, 130, 74], 3, NAVY);
+        rr(ctx, -130, 110, 260, 52, 26, BLUE);
+        write(ctx, '+ your other income', 0, 144, '700 22px ' + TEXT, WHITE, 'center');
+      }
+    },
+    'allowable-expenses-for-landlords': {
+      label: 'The running costs you can take off your rent',
+      draw: function (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(-110, -170);
+        ctx.lineTo(110, -170);
+        ctx.lineTo(110, 120);
+        for (var i = 1; i <= 8; i += 1) {
+          ctx.lineTo(110 - i * 27.5, i % 2 === 1 ? 138 : 120);
+        }
+        ctx.closePath();
+        ctx.fillStyle = SKY;
+        ctx.fill();
+        ctx.letterSpacing = '3px';
+        write(ctx, 'RECEIPTS', 0, -128, '700 20px ' + TEXT, BLUE_DEEP, 'center');
+        ctx.letterSpacing = '0px';
+        [['Agent fees', '£1,080'], ['Repairs', '£640'], ['Insurance', '£310'], ['Accountant', '£420']].forEach(function (row, i) {
+          var y = -80 + i * 44;
+          write(ctx, row[0], -90, y, '400 21px ' + TEXT, NAVY);
+          write(ctx, row[1], 90, y, '700 21px ' + TEXT, NAVY, 'right');
+        });
+        tick(ctx, 92, 128, 46);
+      }
+    },
+    'section-24-mortgage-interest-relief': {
+      label: 'How the mortgage interest tax credit works',
+      draw: function (ctx) {
+        roof(ctx, [-135, -10], [0, -125], [135, -10], NAVY);
+        rr(ctx, -105, -20, 210, 170, 8, SKY_DEEP);
+        rr(ctx, -80, 5, 44, 40, 6, WHITE);
+        rr(ctx, 36, 5, 44, 40, 6, WHITE);
+        rr(ctx, -30, 60, 60, 90, 6, NAVY);
+        circle(ctx, 100, -120, 52, BLUE);
+        write(ctx, '%', 100, -99, '800 60px Besley', WHITE, 'center');
+        circle(ctx, -112, 140, 40, NAVY);
+        write(ctx, '£', -112, 155, '700 44px ' + TEXT, WHITE, 'center');
+      }
+    },
+    'property-allowance-vs-expenses': {
+      label: 'The £1,000 allowance or your real costs?',
+      draw: function (ctx) {
+        rr(ctx, -8, -140, 16, 260, 8, NAVY);
+        rr(ctx, -80, 112, 160, 22, 11, NAVY);
+        ctx.save();
+        ctx.translate(0, -120);
+        ctx.rotate(0.12);
+        rr(ctx, -120, -6, 240, 12, 6, NAVY);
+        ctx.restore();
+        circle(ctx, 0, -120, 15, BLUE);
+        var sides = [[-110, -133, -40, BLUE], [110, -107, -12, PALE]];
+        sides.forEach(function (side) {
+          var x = side[0];
+          var top = side[1];
+          var rim = side[2];
+          line(ctx, [x, top, x - 48, rim], 3, NAVY);
+          line(ctx, [x, top, x + 48, rim], 3, NAVY);
+          ctx.beginPath();
+          ctx.ellipse(x, rim, 54, 22, 0, 0, Math.PI);
+          ctx.closePath();
+          ctx.fillStyle = side[3];
+          ctx.fill();
+        });
+        rr(ctx, -166, -84, 112, 40, 20, WHITE);
+        write(ctx, '£1,000', -110, -56, '700 22px ' + TEXT, BLUE_DEEP, 'center');
+        [-38, -62, -86].forEach(function (y, i) {
+          rr(ctx, 76 + i * 4, y, 68, 22, 4, WHITE);
+          line(ctx, [86 + i * 4, y + 11, 132 + i * 4, y + 11], 3, PALE);
+        });
+      }
+    },
+    'rent-a-room-scheme': {
+      label: 'Up to £7,500 a year tax-free',
+      draw: function (ctx) {
+        roof(ctx, [-140, -30], [0, -150], [140, -30], NAVY);
+        rr(ctx, -110, -40, 220, 190, 8, SKY_DEEP);
+        rr(ctx, -80, -10, 60, 52, 6, WHITE);
+        rr(ctx, 20, -10, 60, 52, 6, BLUE);
+        rr(ctx, -80, 62, 60, 52, 6, WHITE);
+        rr(ctx, 28, 70, 46, 80, 6, NAVY);
+        line(ctx, [50, -22, 50, -32], 4, BLUE_DEEP);
+        line(ctx, [94, -2, 104, -8], 4, BLUE_DEEP);
+        line(ctx, [6, -2, -4, -8], 4, BLUE_DEEP);
+        ctx.save();
+        ctx.translate(-100, 150);
+        ctx.rotate(-0.6);
+        ctx.beginPath();
+        ctx.arc(0, 0, 24, 0, Math.PI * 2);
+        ctx.lineWidth = 12;
+        ctx.strokeStyle = BLUE_DEEP;
+        ctx.stroke();
+        rr(ctx, 22, -6, 92, 12, 6, BLUE_DEEP);
+        rr(ctx, 84, 4, 12, 22, 3, BLUE_DEEP);
+        rr(ctx, 102, 4, 12, 16, 3, BLUE_DEEP);
+        ctx.restore();
+      }
+    },
+    'rental-income-tax-scotland': {
+      label: 'Scottish income tax bands for landlords',
+      draw: function (ctx) {
+        ctx.beginPath();
+        ctx.ellipse(0, 150, 120, 24, 0, 0, Math.PI * 2);
+        ctx.fillStyle = SKY_DEEP;
+        ctx.fill();
+        var start = 146.3 * Math.PI / 180;
+        var end = 33.7 * Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(0, 140);
+        ctx.arc(0, -40, 100, start, end);
+        ctx.closePath();
+        ctx.fillStyle = BLUE;
+        ctx.fill();
+        circle(ctx, 0, -40, 56, WHITE);
+        roof(ctx, [-34, -38], [0, -70], [34, -38], NAVY);
+        rr(ctx, -24, -42, 48, 38, 3, NAVY);
+        rr(ctx, -7, -24, 14, 20, 2, WHITE);
+      }
+    },
+    'property-income-tax-rates-2027': {
+      label: '22%, 42% and 47% on property income',
+      draw: function (ctx) {
+        rr(ctx, -125, -135, 250, 270, 22, WHITE);
+        ctx.save();
+        ctx.beginPath();
+        ctx.roundRect(-125, -135, 250, 270, 22);
+        ctx.clip();
+        ctx.fillStyle = BLUE;
+        ctx.fillRect(-125, -135, 250, 78);
+        ctx.restore();
+        ctx.beginPath();
+        ctx.roundRect(-125, -135, 250, 270, 22);
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = PALE;
+        ctx.stroke();
+        rr(ctx, -75, -158, 20, 46, 10, NAVY);
+        rr(ctx, 55, -158, 20, 46, 10, NAVY);
+        write(ctx, 'APRIL 2027', 0, -84, '700 28px ' + TEXT, WHITE, 'center');
+        write(ctx, '6', 0, 62, '800 130px Besley', NAVY, 'center');
+        write(ctx, 'New property rates', 0, 108, '700 20px ' + TEXT, MUTED, 'center');
+      }
+    },
+    'making-tax-digital-for-landlords': {
+      label: 'Quarterly updates from April 2026',
+      draw: function (ctx) {
+        rr(ctx, -140, -120, 280, 186, 14, NAVY);
+        rr(ctx, -126, -106, 252, 158, 6, SKY);
+        [[-104, 44], [-50, 74], [4, 58], [58, 100]].forEach(function (bar, i) {
+          rr(ctx, bar[0], 40 - bar[1], 40, bar[1], 6, i === 3 ? BLUE : PALE);
+        });
+        ctx.beginPath();
+        ctx.moveTo(-165, 72);
+        ctx.lineTo(165, 72);
+        ctx.lineTo(145, 98);
+        ctx.lineTo(-145, 98);
+        ctx.closePath();
+        ctx.fillStyle = PALE;
+        ctx.fill();
+        ['Q1', 'Q2', 'Q3', 'Q4'].forEach(function (label, i) {
+          write(ctx, label, -84 + i * 54, 136, '700 20px ' + TEXT, NAVY, 'center');
+        });
+        circle(ctx, 118, -122, 42, BLUE);
+        line(ctx, [118, -104, 118, -140], 7, WHITE);
+        line(ctx, [104, -126, 118, -140, 132, -126], 7, WHITE);
+      }
+    }
+  };
+
+  try {
+    var site = await fetch('/data/site.json').then(function (r) { return r.json(); });
+    await Promise.all([
+      document.fonts.load('800 58px Besley'),
+      document.fonts.load('700 30px ' + TEXT),
+      document.fonts.load('400 22px ' + TEXT)
+    ]);
+    var source = await loadImage('/' + encodeURI(site.brand.logoSource));
+    log('Loaded logo upload ' + source.naturalWidth + 'x' + source.naturalHeight);
+    if (source.naturalWidth !== 1774 || source.naturalHeight !== 887) {
+      throw new Error('The logo upload has changed size, so the crop needs measuring again.');
+    }
+
+    /* Logos: the header version leaves out the tagline, which is unreadable at header size */
+
+    var LOGO_H = 160;
+    var LOGO_W = Math.round(CROP.w * LOGO_H / CROP.h);
+    var scale = LOGO_H / CROP.h;
+    var drawLogo = function (withTagline) {
+      var logo = makeCanvas(LOGO_W, LOGO_H, WHITE);
+      logo.ctx.drawImage(source, CROP.x, CROP.y, CROP.w, CROP.h, 0, 0, LOGO_W, LOGO_H);
+      if (!withTagline) {
+        logo.ctx.fillStyle = WHITE;
+        logo.ctx.fillRect(Math.floor((TAGLINE.x - CROP.x) * scale), Math.floor((TAGLINE.y - CROP.y) * scale), LOGO_W, LOGO_H);
+      }
+      whiten(logo.ctx, LOGO_W, LOGO_H);
+      return logo.canvas;
+    };
+    var headerLogo = drawLogo(false);
+    await save(headerLogo, site.brand.logoPng, 'image/png');
+    await save(headerLogo, site.brand.logoWebp, 'image/webp', 0.95);
+    var fullLogo = drawLogo(true);
+    await save(fullLogo, site.brand.logoFullPng, 'image/png');
+    await save(fullLogo, site.brand.logoFullWebp, 'image/webp', 0.95);
+    log('LOGO_SIZE ' + LOGO_W + 'x' + LOGO_H);
+
+    /* Icons from the calculator mark */
+
+    var iconSquare = function (size, padding) {
+      var square = makeCanvas(size, size, WHITE);
+      var w = size * (1 - padding * 2);
+      var h = w * ICON.h / ICON.w;
+      square.ctx.drawImage(source, ICON.x, ICON.y, ICON.w, ICON.h, (size - w) / 2, (size - h) / 2, w, h);
+      whiten(square.ctx, size, size);
+      return square.canvas;
+    };
+    await save(iconSquare(32, 0.02), 'assets/img/brand/favicon-32.png', 'image/png');
+    await save(iconSquare(180, 0.1), 'assets/img/brand/apple-touch-icon.png', 'image/png');
+    await save(iconSquare(512, 0.1), 'assets/img/brand/icon-512.png', 'image/png');
+
+    /* Social sharing image */
+
+    var social = makeCanvas(1200, 630);
+    var sky = social.ctx.createLinearGradient(0, 0, 1200, 630);
+    sky.addColorStop(0, SKY);
+    sky.addColorStop(1, SKY_DEEP);
+    social.ctx.fillStyle = sky;
+    social.ctx.fillRect(0, 0, 1200, 630);
+    social.ctx.save();
+    social.ctx.shadowColor = 'rgba(3, 33, 75, 0.16)';
+    social.ctx.shadowBlur = 50;
+    social.ctx.shadowOffsetY = 20;
+    rr(social.ctx, 80, 100, 1040, 310, 32, WHITE);
+    social.ctx.restore();
+    var socialW = 940;
+    var socialH = socialW * CROP.h / CROP.w;
+    social.ctx.drawImage(source, CROP.x, CROP.y, CROP.w, CROP.h, 130, 100 + (310 - socialH) / 2, socialW, socialH);
+    write(social.ctx, 'Rental income tax calculator and landlord guides', 600, 505, '700 38px ' + TEXT, NAVY, 'center');
+    await save(social.canvas, site.brand.socialImage, 'image/png');
+    await save(social.canvas, site.brand.socialImage.replace(/\.png$/, '.webp'), 'image/webp', 0.9);
+
+    /* Guide featured images */
+
+    var drawGuide = function (guide, illustration) {
+      var art = makeCanvas(1200, 630);
+      var ctx = art.ctx;
+      var background = ctx.createLinearGradient(0, 0, 1200, 630);
+      background.addColorStop(0, SKY);
+      background.addColorStop(1, SKY_DEEP);
+      ctx.fillStyle = background;
+      ctx.fillRect(0, 0, 1200, 630);
+      circle(ctx, 1090, 60, 250, 'rgba(255, 255, 255, 0.45)');
+      circle(ctx, 60, 660, 190, 'rgba(1, 109, 248, 0.07)');
+
+      ctx.font = '700 18px ' + TEXT;
+      ctx.letterSpacing = '2px';
+      var chip = 'LANDLORD GUIDE';
+      rr(ctx, 72, 72, ctx.measureText(chip).width + 38, 44, 22, WHITE);
+      write(ctx, chip, 92, 101, '700 18px ' + TEXT, BLUE_DEEP);
+
+      ctx.letterSpacing = '-0.5px';
+      ctx.font = '800 58px Besley';
+      var titleLines = wrapLines(ctx, guide.name, 600).slice(0, 3);
+      titleLines.forEach(function (text, i) {
+        write(ctx, text, 72, 196 + i * 68, '800 58px Besley', NAVY);
+      });
+      ctx.letterSpacing = '0px';
+      ctx.font = '700 30px ' + TEXT;
+      var labelTop = 196 + (titleLines.length - 1) * 68 + 62;
+      wrapLines(ctx, illustration.label, 600).slice(0, 2).forEach(function (text, i) {
+        write(ctx, text, 72, labelTop + i * 40, '700 30px ' + TEXT, BLUE_DEEP);
+      });
+
+      rr(ctx, 60, 510, 274, 70, 35, WHITE);
+      ctx.drawImage(headerLogo, 72, 520, 250, 250 * LOGO_H / LOGO_W);
+
+      ctx.save();
+      ctx.translate(935, 318);
+      ctx.rotate(-3.5 * Math.PI / 180);
+      ctx.shadowColor = 'rgba(3, 33, 75, 0.18)';
+      ctx.shadowBlur = 44;
+      ctx.shadowOffsetY = 22;
+      rr(ctx, -175, -205, 350, 410, 28, WHITE);
+      ctx.shadowColor = 'transparent';
+      illustration.draw(ctx);
+      ctx.restore();
+      return art.canvas;
+    };
+
+    var guides = site.guides.filter(function (g) { return g.image; });
+    for (var i = 0; i < guides.length; i += 1) {
+      var guide = guides[i];
+      var slug = guide.image.split('/').pop();
+      var illustration = ILLUSTRATIONS[slug];
+      if (!illustration) {
+        throw new Error('No illustration for ' + slug);
+      }
+      var large = drawGuide(guide, illustration);
+      await save(large, guide.image + '.webp', 'image/webp', 0.86);
+      await save(large, guide.image + '.jpg', 'image/jpeg', 0.84);
+      var small = makeCanvas(600, 315, null, false);
+      small.ctx.drawImage(large, 0, 0, 600, 315);
+      await save(small.canvas, guide.image + '-600.webp', 'image/webp', 0.84);
+    }
+
+    log('DONE');
+  } catch (error) {
+    log('ERROR ' + error.message);
+  }
+}());
+</script>
+</body>
+</html>

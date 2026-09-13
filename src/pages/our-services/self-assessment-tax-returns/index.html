@@ -1,0 +1,113 @@
+<!--page
+{
+  "title": "Landlord Self Assessment Tax Return Service | CalculateMyTax",
+  "description": "We prepare and file landlord Self Assessment tax returns, covering the UK property pages, allowable expenses and the Section 24 credit. Ask for a quote.",
+  "keyword": "landlord self assessment tax return",
+  "crumb": "Self Assessment tax returns",
+  "schema": ["Service"],
+  "service": { "name": "Landlord Self Assessment tax returns", "serviceType": "Self Assessment tax return preparation" }
+}
+-->
+<section class="intro" data-section="Intro">
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Landlord Self Assessment tax returns</h1>
+    <p class="intro__lede">We prepare and file Self Assessment tax returns for landlords with UK rental income. We complete the UK property pages, check which expenses are allowable, apply the Section 24 mortgage interest credit and send the return to HMRC once you have approved it. Contact us for a quote.</p>
+    <p class="intro__meta">Rates for {{label:current}}, last verified {{verified}} against GOV.UK and HMRC.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="What the service covers">
+  <div class="prose__wrap">
+    <h2>What the service covers</h2>
+    <p>The service covers the parts of your Self Assessment tax return that deal with rental income, and filing the finished return with HMRC.</p>
+    <ul>
+      <li>Preparing the UK property pages. We total the rent you received in the tax year and your allowable costs, and enter them on the UK property pages (SA105) of your return.</li>
+      <li>Checking which expenses are allowable. Costs such as letting agent fees, legal fees, repairs, insurance and utility bills you pay can be deducted. We check each cost against HMRC's rules on <a href="{{root}}allowable-expenses-for-landlords/">allowable expenses for landlords</a> before it goes on the return.</li>
+      <li>Applying the Section 24 credit correctly. Mortgage interest is not deducted from your rent. We enter it as residential property finance costs, so you get a tax credit of {{pct:current.financeReliefRate}}, limited by your property profit and your income, with any unused amount carried forward.</li>
+      <li>Comparing the property allowance and Rent a Room relief. Where they apply, we compare the {{money:current.propertyAllowance}} property allowance, or Rent a Room relief of up to {{money:current.rentARoom}} for furnished accommodation in your own home, with claiming your actual expenses, and show you which leaves you with less tax.</li>
+      <li>Filing the return with HMRC. Once you have checked and approved the figures, we file your return online.</li>
+    </ul>
+
+    <h2>Who it suits</h2>
+    <ul>
+      <li>Landlords sending a tax return for rental income for the first time.</li>
+      <li>Landlords with a mortgage who want the Section 24 credit worked out properly.</li>
+      <li>Joint owners who need to report their own share of the rent and costs.</li>
+      <li>People letting a room in their own home who are unsure whether Rent a Room relief applies.</li>
+      <li>Landlords who would rather not prepare the return themselves.</li>
+    </ul>
+    <p>If your main home is in Scotland, you use the same tax return; your profit is taxed at Scottish income tax rates. The service is for individuals. Companies that let property pay Corporation Tax and do not report rental income through Self Assessment, so they are outside this service.</p>
+
+    <h2>What you will need to provide</h2>
+    <p>Gather these for the tax year the return covers, which runs from 6 April to 5 April.</p>
+    <ul>
+      <li>Your Unique Taxpayer Reference (UTR), or confirmation that you have not yet registered for Self Assessment.</li>
+      <li>Your National Insurance number.</li>
+      <li>The address of each property you let, and your share of any property you own jointly.</li>
+      <li>Letting agent statements, or your own record of the rent you received.</li>
+      <li>Receipts and invoices for costs such as repairs, insurance, agent fees, legal fees and utility bills.</li>
+      <li>Your annual mortgage statement showing the interest charged.</li>
+      <li>Details of your other income, such as your P60, pension statements or self-employment figures.</li>
+      <li>Any unused mortgage interest or property losses carried forward from earlier years.</li>
+      <li>Your last tax return and any payments on account you have already made, if you have filed before.</li>
+    </ul>
+
+    <h2>How it works</h2>
+    <ol>
+      <li>Contact us with a short description of your properties, your other income and the tax year you need to file, and we will reply with a quote.</li>
+      <li>Once you accept the quote, send us the records on the checklist above.</li>
+      <li>We prepare the UK property pages and the rest of your return, and ask you about anything that is unclear.</li>
+      <li>We send you the figures to check, including the tax due and any payments on account.</li>
+      <li>When you have approved the return, we file it with HMRC. You pay any tax due to HMRC by the deadline.</li>
+    </ol>
+
+    <h2>The deadlines we work to</h2>
+    <p>Your return and payments follow the Self Assessment calendar. For a tax year ending on 5 April:</p>
+    <ul>
+      <li>5 October: register for Self Assessment if you have not sent a tax return before.</li>
+      <li>31 October: the deadline for paper returns.</li>
+      <li>31 January: the deadline for online returns and for paying the tax you owe, plus your first payment on account if one is due.</li>
+      <li>31 July: your second payment on account, if one is due.</li>
+    </ul>
+    <p>A return filed after the deadline gets an initial £100 penalty from HMRC, with more penalties if it stays outstanding. Contact us well before 31 January so there is time to gather your records and check the figures. If you have not registered yet, do that by 5 October, as it cannot be left until the return is due.</p>
+
+    <h2>How to get started</h2>
+    <p>Contact us and tell us how many properties you let, whether you own them alone or jointly, whether you have a mortgage, and which tax year you need to file for. We will come back to you with a quote for your return. If you want an estimate of your tax first, try the <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a>.</p>
+  </div>
+</section>
+
+<section class="callout" data-section="Contact link">
+  <div class="callout__wrap">
+    <div class="callout__text">
+      <h2 class="callout__title">Get a quote for your tax return</h2>
+      <p>Tell us about your properties and the tax year you need to file, and we will come back to you with a quote.</p>
+    </div>
+    <a class="button" href="{{root}}contact/">Contact us for a quote</a>
+  </div>
+</section>
+
+<section class="related" data-section="Related guides">
+  <div class="related__wrap">
+    <h2 class="related__title">Related guides</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}who-we-can-help/first-time-filers/">Your first landlord tax return</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">Section 24 mortgage interest relief explained</a>
+      <a class="related__link" href="{{root}}property-allowance-vs-expenses/">Property allowance or claiming expenses</a>
+      <a class="related__link" href="{{root}}rent-a-room-scheme/">The Rent a Room Scheme</a>
+    </div>
+  </div>
+</section>
+
+<section class="sources" data-section="Sources">
+  <div class="sources__wrap">
+    <h2 class="sources__title">Sources</h2>
+    <ul class="sources__list">
+      <li><a class="sources__link" href="https://www.gov.uk/self-assessment-tax-returns/deadlines">GOV.UK: Self Assessment deadlines</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/self-assessment-tax-returns/penalties">GOV.UK: Self Assessment penalties</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/register-for-self-assessment">GOV.UK: Register for Self Assessment</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/renting-out-a-property/paying-tax">GOV.UK: Renting out your property, paying tax</a></li>
+      <li><a class="sources__link" href="https://www.gov.uk/government/publications/self-assessment-uk-property-sa105">GOV.UK: Self Assessment UK property (SA105)</a></li>
+    </ul>
+  </div>
+</section>

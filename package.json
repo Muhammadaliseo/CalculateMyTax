@@ -1,0 +1,14 @@
+{
+  "name": "calculatemytax",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CalculateMyTax: a static UK rental income tax calculator site. Node runs the tests and assembles pages during development only; the published site has no dependencies.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "build": "node build/assemble.mjs",
+    "preview": "node build/preview.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
