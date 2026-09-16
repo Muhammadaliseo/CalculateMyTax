@@ -78,12 +78,20 @@
 
 /* Site header */
 
+/* The header keeps one height while the page scrolls. Changing its size on scroll moved the page under the
+   reader, which pushed the scroll position back past the trigger point and made the header flicker. Scrolling
+   only adds a shadow, which does not affect layout. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
   background: var(--colour-sheet);
   border-bottom: var(--border-thin) solid var(--colour-hairline);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.site-header[data-scrolled="true"] {
+  box-shadow: var(--shadow-soft);
 }
 
 .site-header__wrap {
@@ -94,13 +102,7 @@
   gap: var(--space-s) var(--space-l);
   max-width: var(--width-page);
   margin: 0 auto;
-  padding: var(--space-m) var(--space-l);
-  transition: padding var(--duration-medium) var(--ease-out);
-}
-
-.site-header[data-compact="true"] .site-header__wrap {
-  padding-top: var(--space-xs);
-  padding-bottom: var(--space-xs);
+  padding: var(--space-s) var(--space-l);
 }
 
 .site-header__logo {
@@ -110,11 +112,6 @@
 .site-header__logo-image {
   width: auto;
   height: var(--logo-height);
-  transition: height var(--duration-medium) var(--ease-out);
-}
-
-.site-header[data-compact="true"] .site-header__logo-image {
-  height: var(--logo-height-compact);
 }
 
 .site-header__menu-button {
@@ -254,8 +251,7 @@
     display: inline-flex;
   }
 
-  .site-header__logo-image,
-  .site-header[data-compact] .site-header__logo-image {
+  .site-header__logo-image {
     height: var(--logo-height-mobile);
   }
 

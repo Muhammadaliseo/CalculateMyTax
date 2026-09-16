@@ -1,5 +1,5 @@
 /*
- * Site behaviour shared by every page: header shrink on scroll, mobile menu, dropdown menus and footer
+ * Site behaviour shared by every page: header shadow on scroll, mobile menu, dropdown menus and footer
  * accordions. It changes states and attributes only; it never writes page content.
  */
 (function () {
@@ -34,12 +34,13 @@
     });
   }
 
-  /* Header shrinks rather than disappearing */
+  /* Header gains a shadow once the page scrolls. Only the shadow changes, never the header's size, so the
+     page does not move and the header cannot flicker. */
   var header = document.querySelector('.site-header');
   if (header) {
     var ticking = false;
     var update = function () {
-      header.setAttribute('data-compact', window.scrollY > 24 ? 'true' : 'false');
+      header.setAttribute('data-scrolled', window.scrollY > 0 ? 'true' : 'false');
       ticking = false;
     };
     window.addEventListener('scroll', function () {

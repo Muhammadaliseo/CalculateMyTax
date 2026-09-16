@@ -59,7 +59,7 @@ Headings take -0.01em tracking, the figure -0.02em. Body copy is capped at 68 ch
 **Concept: the ledger sheet.** Pages read like a landlord's accounts ledger: pale ruled paper, navy ink, amounts aligned right. The one solid object is the statement panel that shows the tax.
 
 - **Desktop.** Sticky white header with the logo on the left and navigation on the right. Every page opens with a white intro band (breadcrumb, H1, answer-first lede, verified date), then sections on Ledger. The calculator sits in two flex columns: ledger-line inputs on the left, the navy results panel on the right, sticky, with its height reserved.
-- **Mobile.** Header shrinks on scroll and the navigation folds behind a Menu button. The calculator stacks: settings bar, three fields, then the results panel. A slim navy strip showing the annual tax stays pinned to the bottom once the panel scrolls away. The footer columns become accordions.
+- **Mobile.** The header stays pinned at one height, gaining a shadow on scroll, and the navigation folds behind a Menu button. The calculator stacks: settings bar, three fields, then the results panel. A slim navy strip showing the annual tax stays pinned to the bottom once the panel scrolls away. The footer columns become accordions.
 
 ### Principles
 

@@ -141,7 +141,7 @@ Neither depends on page-specific CSS. Source files: `src/partials/header.html` a
   - **Call-to-action button:** "Calculate my tax", linking to the rental income tax calculator and styled as the Primary button. Its label and link are `header.cta` in `data/site.json`. On mobile it sits at the end of the open menu.
   - Who we can help is not in the header; it is listed in the footer only.
   - Dropdown panels: white, 1px Rule border with a 4px Navy top border, 17rem minimum width. Item hover background is Navy wash.
-- **Sticky:** set the section to sticky top. On scroll it should **shrink, not hide**: the logo goes from 51px to 40px and the vertical padding from 16px to 8px. Use Elementor Pro's sticky "Effects offset" with Custom CSS on `.elementor-sticky--effects`.
+- **Sticky:** set the section to sticky top. It should **keep the same height while scrolling**: the logo stays 51px tall, with 12px of vertical padding. Once the page scrolls, add only the soft shadow (`--shadow-soft`) using Custom CSS on `.elementor-sticky--effects`. **Do not shrink the header on scroll.** A sticky header that changes height moves the page under the reader, which pushes the scroll position back past the trigger and makes the header flicker. The static site had this bug and it was fixed on 16 September 2026.
 - **Mobile, below 768px:** the Nav Menu collapses behind a **Menu** button. Sub-menus open inline, with a 2px Navy left border.
 
 ### Footer template: container "Site footer"
@@ -335,7 +335,7 @@ Everything not listed here converts directly into containers and standard widget
 1. **The calculator.** Plugin and shortcode, not containers (section 10). This is deliberate.
 2. **The tools registry.** Header and footer calculator links need the custom post type and dynamic menu or loop described in section 11.
 3. **Header behaviour:**
-   - the shrink on scroll needs sticky effects plus a little Custom CSS;
+   - the shadow on scroll needs sticky effects plus a little Custom CSS; the header must not change size;
    - dropdowns open on hover on desktop, and on tap or keyboard everywhere;
    - Escape closes them.
 4. **Footer accordions** below 768px. Rebuild them with Toggle widgets.

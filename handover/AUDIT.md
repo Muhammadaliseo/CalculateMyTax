@@ -240,3 +240,15 @@ Changed on 13 September 2026 at the client's request, and checked in the browser
   - The privacy policy now describes the form and FormSubmit.
   - Activation and email forwarding steps are in `handover/EMAIL-SETUP.md`.
 - **Build.** 24 pages built, all 55 tests pass, all audit checks pass, and the home page weighs 279 KB.
+## Header flicker on scroll
+
+Fixed on 16 September 2026, after the client reported the header blinking while scrolling up or down.
+
+- **Cause.** Once the page scrolled 24px, the sticky header shrank by about 27px (its padding and logo got smaller). Because a sticky header takes up space in the page, the content jumped up by the same amount. The browser then corrected the scroll position back under 24px, so the header grew again. On pages near the threshold, and at the bottom of shorter pages, this repeated and showed as flicker.
+- **Fix.** The header now keeps one height at all times, and scrolling only adds a soft shadow, which does not affect layout. The size transitions were removed, and the scroll attribute is now `data-scrolled`.
+- **Checked in the browser:**
+  - the header is 78px on desktop and 73px on a 375px phone, both at the top and when scrolled;
+  - the page height is identical in both states;
+  - the scroll position holds exactly at 10, 24, 25, 30, 60 and 200px;
+  - on a phone, the logo and Menu button stay on one row, with no sideways scrolling.
+- **Build.** All 55 tests and all audit checks pass.
