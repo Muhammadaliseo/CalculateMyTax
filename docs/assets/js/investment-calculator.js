@@ -398,6 +398,31 @@
       }
     });
 
+    /*
+     * Printing, whether from the button or the browser's own menu. The form is hidden on paper, so anything
+     * folded away inside the result would be lost: every collapsed section is opened first and put back after.
+     */
+    var foldedSections = function () {
+      return Array.prototype.filter.call(el.querySelectorAll('details'), function (section) {
+        return !form.contains(section);
+      });
+    };
+
+    window.addEventListener('beforeprint', function () {
+      calculate();
+      foldedSections().forEach(function (section) {
+        section.setAttribute('data-was-open', String(section.open));
+        section.open = true;
+      });
+    });
+
+    window.addEventListener('afterprint', function () {
+      foldedSections().forEach(function (section) {
+        section.open = section.getAttribute('data-was-open') === 'true';
+        section.removeAttribute('data-was-open');
+      });
+    });
+
     q('[data-share]').addEventListener('click', function () {
       calculate();
       if (!current) {

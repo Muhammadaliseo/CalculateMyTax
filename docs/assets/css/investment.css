@@ -344,9 +344,38 @@
   }
 
   .appraisal__card {
+    margin-bottom: var(--space-m);
+    padding: var(--space-s) 0;
+    border: 0;
+    border-top: var(--border-rule) solid var(--colour-navy);
     border-radius: 0;
     box-shadow: none;
     break-inside: avoid;
+  }
+
+  .appraisal__metrics {
+    margin-top: var(--space-s);
+  }
+
+  /* On paper every section is already open, so the plus and minus marker would only confuse */
+  .appraisal__summary::after {
+    content: none;
+  }
+
+  .appraisal__figure {
+    font-size: var(--size-700);
+  }
+
+  .appraisal__row,
+  .appraisal__total,
+  .appraisal__table th,
+  .appraisal__table td {
+    padding: var(--space-3xs) 0;
+  }
+
+  .appraisal__table th,
+  .appraisal__table td {
+    padding-right: var(--space-s);
   }
 
   .appraisal__card[data-tone="navy"],
