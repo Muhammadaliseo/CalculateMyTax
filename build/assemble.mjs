@@ -621,6 +621,36 @@ function schemaGraph(meta, route, url, trail, body) {
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2).replace(/</g, '\\u003c');
 }
 
+// A script that requires another engine must be listed after it, or the page silently loses
+// its calculator: the factory is handed undefined and throws before anything is wired up.
+// The dependencies are read from the files themselves, so this can never drift out of date.
+function scriptDependencies(name) {
+  let source;
+  try {
+    source = readText(`assets/js/${name}.js`);
+  } catch {
+    throw new Error(`assets/js/${name}.js does not exist`);
+  }
+  const deps = new Set();
+  for (const match of source.matchAll(/require\('\.\/([a-z-]+)\.js'\)/g)) deps.add(match[1]);
+  return [...deps];
+}
+
+function checkScriptDependencies(route, pageScripts) {
+  pageScripts.forEach((name, index) => {
+    const loadedEarlier = pageScripts.slice(0, index);
+    for (const dep of scriptDependencies(name)) {
+      if (!loadedEarlier.includes(dep)) {
+        const where = pageScripts.includes(dep) ? 'listed after it' : 'not listed';
+        throw new Error(
+          `${route}: "${name}" needs "${dep}", which is ${where}. ` +
+          `Add "${dep}" to this page’s scripts, before "${name}".`
+        );
+      }
+    }
+  });
+}
+
 function checkBody(route, html) {
   const h1s = (html.match(/<h1[\s>]/g) || []).length;
   if (h1s !== 1) {
@@ -654,7 +684,9 @@ function renderPage(page) {
   const footer = fill(readText('src/partials/footer.html'), ctx);
   const styles = ['tokens', 'base', 'layout', ...(meta.styles || [])]
     .map((name) => `<link rel="stylesheet" href="${root}assets/css/${name}.css">`).join('\n  ');
-  const scripts = [...(meta.scripts || []), 'site']
+  const pageScripts = [...(meta.scripts || []), 'site'];
+  checkScriptDependencies(route, pageScripts);
+  const scripts = pageScripts
     .map((name) => `<script src="${root}assets/js/${name}.js" defer></script>`).join('\n');
   const inlineData = (meta.data || [])
     .map((name) => `<script type="application/json" id="cmt-config-${name}">${JSON.stringify(CONFIG[name]).replace(/</g, '\\u003c')}</script>`).join('\n');
