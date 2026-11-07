@@ -6,6 +6,7 @@
 | `/404.html` | `Theme 404 template` | Page Not Found \| CalculateMyTax | Not found → Useful links |
 | `/about/` | `/about/` | About Our Free Landlord Tax Calculator \| CalculateMyTax | Intro → What the site is for → Accuracy → What the calculator covers → Independence → Estimates not advice → Report an error → Related pages |
 | `/allowable-expenses-for-landlords/` | `/allowable-expenses-for-landlords/` | Allowable Expenses for Rental Property UK \| CalculateMyTax | Intro → What counts → Expenses checklist → Repairs and improvements → Replacing domestic items → Mortgage costs → Travel and vehicles → Records → Questions → Calculator link → Related guides |
+| `/buy-to-let-investment-calculator/` | `/buy-to-let-investment-calculator/` | Buy-to-Let Investment Calculator UK \| Cash Flow & ROI | Intro → Buy-to-let investment calculator (investment-calculator partial) → How to use → What the appraisal covers → Investment calculator questions → Related tools |
 | `/contact/` | `/contact/` | Contact Us About Landlord Tax Questions \| CalculateMyTax | Intro → Contact form → What to include → Before you get in touch |
 | `/contact/thank-you/` | `/contact/thank-you/` | Message Sent \| CalculateMyTax | Intro → While you wait |
 | `/cookie-policy/` | `/cookie-policy/` | Cookie Policy \| CalculateMyTax | Intro → What cookies are → Cookies on this site → Calculator and shareable links → Hosting → Changes → Related policies |

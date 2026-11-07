@@ -4,8 +4,8 @@ These notes are for whoever rebuilds calculatemytax.uk in WordPress with Element
 
 ## 1. What you are moving
 
-- **A static website** of 22 pages plus a 404 page, built from plain HTML, CSS and JavaScript. There is no framework and no database.
-- **Two tools**, the rental income tax calculator and the rental yield calculator. Both run entirely in the visitor's browser.
+- **A static website** of 24 pages plus a 404 page, built from plain HTML, CSS and JavaScript. There is no framework and no database.
+- **Three tools**: the rental income tax calculator, the rental yield calculator and the buy-to-let investment calculator. All three run entirely in the visitor's browser.
 - **Where to look:**
   - `docs/` is the finished site exactly as visitors see it. Use it as your visual reference. You can open it with `npm run preview`, or just look at the files on GitHub Pages.
   - `src/pages/` holds each page's content, one folder per page, and `src/partials/` holds the header, footer and calculator markup.
@@ -183,6 +183,7 @@ Each block type is rebuilt like this:
 | `feature` with `data-tone="sheet"` | As `feature`, with a white background and a 1px Hairline top border. Used for the rental yield calculator block on the home page |
 | `Calculator` | **Shortcode widget, not containers.** See section 10 |
 | `Rental yield calculator` | **Shortcode widget, not containers.** See section 10 |
+| `Buy-to-let investment calculator` | **Shortcode widget, not containers.** See section 10 |
 
 Buttons have three styles.
 
@@ -232,6 +233,10 @@ The calculator is a self-contained unit. It is deliberately **not** rebuilt from
 | `assets/js/yield-engine.js` | Enqueued on the rental yield page, with no dependencies of its own. It is pure calculation: gross and net yield, empty weeks, letting fees, the first year of an interest-only or repayment mortgage, cash flow and return on cash. It calls the tax engine for income tax when the tax engine is passed in |
 | `assets/js/yield-calculator.js` | Enqueued on the rental yield page, depends on `tax-engine.js` and `yield-engine.js`. It starts every section marked `data-yield-calculator` and exposes `CalculateMyTaxYieldCalculator.init(element)` |
 | `src/partials/yield-calculator.html` | The output of a third shortcode such as `[cmt_yield_calculator]`. It uses the same `calculator.css` and needs only the rates JSON block. Replace `{{calc-year-options}}`, `{{calc-region-options}}`, `{{root}}` and the `{{ymoney…}}`, `{{ypct…}}` and `{{ycover…}}` example figures before output |
+| `assets/js/investment-engine.js` | Enqueued on the buy-to-let investment page. Pure calculation: purchase tax band by band, the cash needed to buy, the lender-style rent cover check, the break-even rent and the year-by-year illustration. It calls the yield engine, which calls the tax engine, so one property gives the same answer in every tool |
+| `assets/js/investment-calculator.js` | Enqueued on the buy-to-let investment page, depends on `tax-engine.js`, `yield-engine.js` and `investment-engine.js`. It starts every section marked `data-investment` and exposes `CalculateMyTaxInvestmentCalculator.init(element)` |
+| `assets/css/investment.css` | Stylesheet for the appraisal. Enqueue it on that page only |
+| `src/partials/investment-calculator.html` | The output of a fourth shortcode such as `[cmt_investment_calculator]`. It needs both the rates and the purchase rates JSON blocks. Replace `{{calc-year-options}}`, `{{calc-region-options}}`, `{{root}}` and `{{purchase-verified}}` before output |
 | `assets/js/calculator.js` | Enqueued script, depends on `tax-engine.js`. It starts every element with `data-calculator` on the page and exposes `CalculateMyTaxCalculator.init(element)` |
 | `assets/css/calculator.css` | Enqueued stylesheet. Needs the tokens from section 6 |
 | `assets/css/print.css` | Enqueued with `media="print"` on the calculator page, so "Print or save as PDF" gives a clean summary for an accountant |
@@ -257,6 +262,7 @@ All wording, including error messages, alerts and the plain-English summary, liv
 | `data/rates.json` | Option `cmt_rates` | An array keyed by tax year (`"2026-27"`). **Money is in pence, as integers**; rates are decimals. Each year also holds `lastVerified`, its sources and notes. Keep the shape exactly, because the engine reads it as is |
 | `data/expenses.json` | Option `cmt_expenses` | A list of `id`, `label` and `tooltip` |
 | `data/mtd.json` | Option `cmt_mtd` | Thresholds in pence, each with its test year and start date |
+| `data/purchase-rates.json` | Option `cmt_purchase_rates` | Stamp Duty Land Tax, Land and Buildings Transaction Tax with the Additional Dwelling Supplement, and Land Transaction Tax. Band limits are in pence and rates are decimals, with `null` closing the top band. Printed on the investment page as `<script type="application/json" id="cmt-config-purchaseRates">`. **These change in Budgets: check all three sources in the file before each tax year and update `lastVerified`** |
 | `data/site.json` | Several WordPress settings | See below |
 
 What `site.json` becomes:
@@ -278,6 +284,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 | `/` | Home (static front page) | |
 | `/rental-income-tax-calculator/` | Rental income tax calculator | |
 | `/rental-yield-calculator/` | Rental yield calculator | |
+| `/buy-to-let-investment-calculator/` | Buy-to-let investment calculator | |
 | `/tax-on-rental-income/` | Tax on rental income | |
 | `/allowable-expenses-for-landlords/` | Allowable expenses for landlords | |
 | `/section-24-mortgage-interest-relief/` | Section 24 mortgage interest relief | |

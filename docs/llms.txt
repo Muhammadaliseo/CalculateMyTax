@@ -23,6 +23,14 @@ Every figure comes from published GOV.UK, HMRC and gov.scot rates, last verified
   - Shows monthly and annual cash flow and the return on the cash you put in, including buying costs
   - Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland
   - Runs in the browser with no sign-up; results can be shared as a link or printed
+- [Buy-to-let investment calculator](https://muhammadaliseo.github.io/CalculateMyTax/buy-to-let-investment-calculator/): Free UK buy-to-let investment calculator: stamp duty, the cash you need to buy, a rent-cover check, and monthly cash flow after income tax.
+  - Works out stamp duty, LBTT with the Additional Dwelling Supplement, or LTT, band by band
+  - Adds up the cash needed to buy, including the deposit, fees and refurbishment
+  - Runs a lender-style rent-cover check at your own stress rate, cover and loan limit
+  - Shows the rent needed to break even, before income tax
+  - Estimates first-year cash flow after running costs, the mortgage and income tax
+  - Illustrates cash flow, equity and sale proceeds year by year over the period you choose
+  - Compares two options side by side, and runs in the browser with no sign-up
 
 ## Guides
 

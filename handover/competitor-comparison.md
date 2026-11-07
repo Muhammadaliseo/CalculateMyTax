@@ -78,3 +78,13 @@ These are topics checkmytax.uk covers that are not on CalculateMyTax's page list
 - Accidental landlords, HMO landlords and non-resident landlords, as audience pages under Who we can help.
 - The Let Property Campaign, for landlords who have not declared past rental income.
 - Owning property through a limited company, which the calculator deliberately leaves out.
+
+---
+
+# Buy-to-let investment calculators compared
+
+Checked on 8 November 2026 for the third tool. Competitors' own published figures were run through this site's engines; all matched. The full table, including which tool calculates what, is in `handover/AUDIT.md` under "Checked against competitors".
+
+In short: Private Finance ranks first and is the closest, but excludes income tax and treats only the deposit and stamp duty as the cash invested. Landlord Studio covers return on cash but sends visitors elsewhere for tax. PropertyData returns a gross yield from two inputs. None works out income tax, Section 24 or a year-by-year illustration.
+
+Two tools named in the keyword sheet have gone: Mortgages for Business and Provestor both return "page not found".

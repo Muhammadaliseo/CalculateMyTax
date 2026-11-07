@@ -24,9 +24,10 @@ const site = process.env.SITE_FILE ? JSON.parse(fs.readFileSync(process.env.SITE
 const rates = readJson('data/rates.json');
 const expenses = readJson('data/expenses.json');
 const mtd = readJson('data/mtd.json');
+const purchaseRates = readJson('data/purchase-rates.json');
 const engine = require(path.join(ROOT, 'assets', 'js', 'tax-engine.js'));
 const yieldEngine = require(path.join(ROOT, 'assets', 'js', 'yield-engine.js'));
-const CONFIG = { rates, expenses, mtd, site };
+const CONFIG = { rates, expenses, mtd, purchaseRates, site };
 
 const BUILD_DATE = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
 // CHECK_ONLY=1 renders and validates every page without touching docs/, so several people can check at once.
@@ -335,6 +336,8 @@ function renderToken(name, arg, ctx) {
     }
     case 'verified':
       return longDate(rates[CURRENT].lastVerified);
+    case 'purchase-verified':
+      return longDate(purchaseRates.lastVerified);
     case 'label':
       return rates[yearKey(arg)] ? rates[yearKey(arg)].label : undefined;
     case 'money':

@@ -306,3 +306,15 @@ Researched on 13 September 2026. The starting point was the client's keyword she
   - What this property yield calculator does not cover
 - **Questions block with FAQ markup:** six questions, none repeated elsewhere on the site.
 - **Home page:** the tool cards now include the rental yield calculator, which replaced the April 2027 rates card so the grid stays at six. Because the tools registry has two live tools, the header's Calculators link becomes a dropdown and the footer lists both tools.
+
+---
+
+# Third tool: buy-to-let investment calculator
+
+Added on 8 November 2026 at `/buy-to-let-investment-calculator/`.
+
+- **Primary keyword: buy to let investment calculator.** 880 searches a month, KD 24, transactional intent. It was already flagged as the best next tool in the rental yield research above, and was left out of the yield page deliberately so it could have its own page.
+- **Secondary keywords on the page:** property investment calculator (110, KD 16), buy to let calculator uk, btl investment calculator, buy to let profit calculator, rental property investment calculator, buy to let appraisal calculator, stamp duty buy to let calculator.
+- **Why it is a separate page from the yield calculator.** The yield page answers "what does this property earn?". This one answers "can I buy it, and what will it leave me?", which brings in purchase tax, the cash needed and the lender's rent cover test. Different questions, different searches, no overlapping primary keyword.
+- **Questions answered on the page**, each marked up for search results: how much cash you need, what a good return is, stamp duty on a buy-to-let, how lenders decide what to lend, whether income tax is included, and cash against a mortgage.
+- **Still reserved for later:** rental profit calculator (210 a month), which the client asked to keep back for its own tool.

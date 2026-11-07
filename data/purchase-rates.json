@@ -1,0 +1,39 @@
+{
+  "lastVerified": "2026-11-08",
+  "effectiveNote": "Residential purchase tax rates for a new purchase by a UK-resident individual. No transitional contracts, linked transactions, new lease rent, mixed use, company purchases, non-resident surcharges or special reliefs.",
+  "maintenanceNote": "Money is in pence as integers and rates are decimals, matching rates.json. Each nation lists band upper limits, with null for the top band, and the rate charged on the part of the price inside that band. 'higherLimits' and 'higherRates' replace the standard tables when the additional-property basis applies; 'supplement' is a flat percentage of the whole price charged on top instead. Check every figure against the source links before changing them, then run npm test.",
+  "additionalMinimum": 4000000,
+  "additionalMinimumNote": "The additional-property charge applies only when the price is £40,000 or more, in all three nations.",
+  "nations": {
+    "england_ni": {
+      "name": "SDLT",
+      "label": "Stamp Duty Land Tax",
+      "limits": [12500000, 25000000, 92500000, 150000000, null],
+      "rates": [0, 0.02, 0.05, 0.1, 0.12],
+      "higherRates": [0.05, 0.07, 0.1, 0.15, 0.17],
+      "higherNote": "The additional-property rates are the standard rates plus the 5% surcharge.",
+      "source": "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates"
+    },
+    "scotland": {
+      "name": "LBTT and ADS",
+      "label": "Land and Buildings Transaction Tax",
+      "limits": [14500000, 25000000, 32500000, 75000000, null],
+      "rates": [0, 0.02, 0.05, 0.1, 0.12],
+      "supplement": 0.08,
+      "supplementName": "Additional Dwelling Supplement",
+      "supplementNote": "8% of the whole price for transactions on or after 5 December 2024, charged on top of LBTT.",
+      "source": "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property",
+      "supplementSource": "https://revenue.scot/taxes/land-buildings-transaction-tax/additional-dwelling-supplement-ads"
+    },
+    "wales": {
+      "name": "LTT",
+      "label": "Land Transaction Tax",
+      "limits": [22500000, 40000000, 75000000, 150000000, null],
+      "rates": [0, 0.06, 0.075, 0.1, 0.12],
+      "higherLimits": [18000000, 25000000, 40000000, 75000000, 150000000, null],
+      "higherRates": [0.05, 0.085, 0.1, 0.125, 0.15, 0.17],
+      "higherNote": "Wales has its own higher residential table rather than a surcharge, with an extra band below £180,000.",
+      "source": "https://www.gov.wales/land-transaction-tax-rates-and-bands"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+<!--page
+{
+  "title": "Buy-to-Let Investment Calculator UK | Cash Flow & ROI",
+  "description": "Free UK buy-to-let investment calculator: stamp duty, the cash you need to buy, a rent-cover check, and monthly cash flow after income tax.",
+  "keyword": "buy to let investment calculator",
+  "secondaryKeywords": ["property investment calculator", "buy to let calculator uk", "btl investment calculator", "buy to let profit calculator", "rental property investment calculator", "buy to let appraisal calculator", "stamp duty buy to let calculator"],
+  "crumb": "Buy-to-let investment calculator",
+  "schema": ["WebApplication", "FAQPage"],
+  "styles": ["investment"],
+  "scripts": ["tax-engine", "yield-engine", "investment-engine", "investment-calculator"],
+  "data": ["rates", "purchaseRates"]
+}
+-->
+<section class="intro" data-section="Intro" data-print-hide>
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Buy-to-let investment calculator</h1>
+    <p class="intro__lede">Appraise a UK buy-to-let before you commit. See the cash you need to buy, whether the rent covers a lender's test, and what you would keep each month after running costs, the mortgage and income tax.</p>
+    <p class="intro__meta">Purchase taxes last checked {{purchase-verified}}; income tax uses {{label:current}} HMRC rates, last verified {{verified}}. Estimates for planning, not financial or tax advice.</p>
+  </div>
+</section>
+
+{{include:investment-calculator}}
+
+<section class="prose" data-section="How to use">
+  <div class="prose__wrap">
+    <h2>How to use the buy-to-let investment calculator</h2>
+    <ol>
+      <li><strong>Start with the property and mortgage.</strong> Choose where the property is, because that sets the purchase tax, then enter the price, the rent and your deposit. Most landlords pay the higher rates of purchase tax, because the property is an extra one.</li>
+      <li><strong>Add the buying costs.</strong> Legal and survey fees, mortgage fees and anything you will spend doing the place up before a tenant moves in.</li>
+      <li><strong>Open the running costs.</strong> The letting agent fee is a percentage of the rent you collect, and empty weeks are weeks with no rent but the same bills.</li>
+      <li><strong>Enter your income tax details.</strong> Rental profit is taxed on top of your other income, so your salary or pension changes the answer.</li>
+      <li><strong>Adjust the rent-cover and longer-term assumptions</strong> if you want to test a lender's limits or a different view of the market.</li>
+    </ol>
+    <p>The headline is the monthly cash flow after income tax, because that is the money that actually reaches you. Save an option as A, change your figures, and the calculator compares the two side by side.</p>
+  </div>
+</section>
+
+<section class="prose" data-section="What the appraisal covers">
+  <div class="prose__wrap">
+    <h2>What the cash needed to buy includes</h2>
+    <p>The deposit is only part of it. You also need the purchase tax, legal and survey fees, mortgage fees and any refurbishment before letting. These are paid once, at the start, so the calculator counts them as the cash you put in rather than taking them off your yearly cash flow as well. No emergency savings are included, and most landlords keep some aside for an unexpected boiler or a long empty period.</p>
+
+    <h2>How purchase tax is worked out</h2>
+    <p>Where the property is decides which tax you pay: Stamp Duty Land Tax in England and Northern Ireland, Land and Buildings Transaction Tax in Scotland, or Land Transaction Tax in Wales. Each is charged in slices, so a rate applies only to the part of the price inside its band.</p>
+    <p>Buying a property you will own alongside another usually costs more. England and Northern Ireland add a surcharge to every band. Scotland adds the Additional Dwelling Supplement, charged on the whole price. Wales has a separate table of higher rates. All three leave the extra charge off when the price is under £40,000. The band breakdown in the result shows each slice and what it costs.</p>
+    <p>This covers a straightforward purchase by someone living in the UK, buying in their own name. It does not work out first-time buyer relief, purchases through a company, the surcharge for buyers living abroad, linked transactions, mixed-use property or any other special relief. Your conveyancer confirms the final amount.</p>
+
+    <h2>What the rent-cover check does</h2>
+    <p>Buy-to-let lenders rarely lend on your salary. They test whether the rent covers the mortgage interest at a rate higher than the one you will actually pay, usually requiring the rent to be about 125% to 145% of that stressed interest. The calculator applies the stress rate, rent cover and loan limit you choose, then shows the biggest loan those limits allow and the cash you would need at that loan.</p>
+    <p>These are your assumptions, not a lender's offer. Rates and rules differ between lenders, and they check your income, credit history and the property itself as well.</p>
+
+    <h2>Yield, cash flow and return on cash</h2>
+    <p>Gross yield is a year's rent divided by the price. Net yield takes off empty weeks and running costs, but neither counts the mortgage or income tax. Cash flow is what is left each month once everything is paid, and the return on cash compares a year of that cash flow with the money you put in. A property can show a healthy yield and still leave you short each month once the mortgage is paid, which is why the calculator shows all of them together. The <a href="{{root}}rental-yield-calculator/">rental yield calculator</a> goes further into yield on its own.</p>
+
+    <h2>What the longer-term illustration assumes</h2>
+    <p>The table runs your figures forward year by year, using the growth rates you choose. Those start at zero, because nobody knows what prices or rents will do. It is deliberately before income tax and Capital Gains Tax: tax rates years ahead are unknowable, so a single-year tax estimate is the honest limit.</p>
+    <p>The interest rate stays the same throughout, and remortgaging, early repayment charges and inflation are left out. A repayment mortgage reduces the loan month by month, so capital repayments lower your cash flow while building your equity. Refurbishment does not automatically raise the property's value.</p>
+
+    <h2>What this calculator leaves out</h2>
+    <ul>
+      <li>Property held through a limited company, which pays Corporation Tax instead of income tax.</li>
+      <li>Joint owners, and landlords living outside the UK.</li>
+      <li>Capital Gains Tax when you sell, and tax relief on mortgage arrangement fees.</li>
+      <li>Property losses or unused mortgage interest brought forward from earlier years, which the <a href="{{root}}rental-income-tax-calculator/">rental income tax calculator</a> handles.</li>
+      <li>Savings and dividend income, pension contributions and Gift Aid, which can change your tax.</li>
+    </ul>
+    <p>Purchase tax rates come from HMRC, Revenue Scotland and the Welsh Government, and were last checked on {{purchase-verified}}. Income tax follows the same rates file as the rest of the site, verified {{verified}}, and HMRC's published method for the Section 24 credit.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Investment calculator questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Buy-to-let investment questions</h2>
+    <details class="faq__item">
+      <summary class="faq__question">How much cash do I need to buy a buy-to-let?</summary>
+      <div class="faq__answer"><p>Usually the deposit, which is commonly 20% to 25% of the price, plus purchase tax, legal and survey fees, mortgage fees and anything you spend getting the property ready. On a £250,000 property with a 25% deposit bought as an additional home in England, the deposit alone is £62,500, and the purchase tax, fees and refurbishment can easily add £20,000 more. Enter your own figures above to see the total.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">What is a good return on a buy-to-let?</summary>
+      <div class="faq__answer"><p>There is no single number. Compare the return on your cash with what the same money could earn elsewhere, and look at the monthly cash flow as well: a property that leaves you short every month is a different proposition from one that pays its way, even at the same yield. Remember that the illustration here is before Capital Gains Tax, and that rents, rates and repair bills all move.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How much stamp duty do I pay on a buy-to-let?</summary>
+      <div class="faq__answer"><p>In England and Northern Ireland you pay the standard Stamp Duty Land Tax rates plus a surcharge on every band, because the property is an additional one. Scotland charges Land and Buildings Transaction Tax plus the Additional Dwelling Supplement on the whole price, and Wales has its own higher rate table. The extra charge does not apply below £40,000. Choose the property's location above and the result shows the tax band by band.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">How do lenders decide how much I can borrow on a buy-to-let?</summary>
+      <div class="faq__answer"><p>Most work from the rent rather than your salary. They check the rent against the mortgage interest at a stressed rate above the one you will pay, and want the rent to cover it with room to spare, often around 125% to 145%. They also cap the loan as a share of the property's value, commonly 75%. The calculator applies both limits and shows which one holds you back.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Does this calculator include income tax on the rent?</summary>
+      <div class="faq__answer"><p>Yes, for the first year. It uses the same tested engine as the rental income tax calculator, so mortgage interest earns the Section 24 tax credit rather than coming off the rent, and the figure reflects your other income and where you live. The longer-term table is deliberately before income tax, because nobody can know future rates.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is it better to buy a buy-to-let with cash or a mortgage?</summary>
+      <div class="faq__answer"><p>They answer different questions. A cash purchase gives a higher monthly cash flow and no lender test to pass, but ties up far more money, so the return on that cash is usually lower. A mortgage spreads your money across a larger asset and can lift the return on the cash you put in, while adding interest costs and risk if rates rise or the property sits empty. Set the deposit to 100% to model a cash purchase, save it as option A, then set it back and compare.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="related" data-section="Related tools">
+  <div class="related__wrap">
+    <h2 class="related__title">Work through the detail</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}rental-income-tax-calculator/">Work out the tax on your rental income</a>
+      <a class="related__link" href="{{root}}rental-yield-calculator/">Work out the rental yield on a property</a>
+      <a class="related__link" href="{{root}}section-24-mortgage-interest-relief/">How Section 24 mortgage interest relief works</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Which running costs landlords can claim</a>
+    </div>
+  </div>
+</section>

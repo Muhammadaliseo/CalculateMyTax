@@ -69,6 +69,22 @@
         "Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland",
         "Runs in the browser with no sign-up; results can be shared as a link or printed"
       ]
+    },
+    {
+      "id": "buy-to-let-investment-calculator",
+      "name": "Buy-to-let investment calculator",
+      "path": "buy-to-let-investment-calculator/",
+      "status": "live",
+      "summary": "Appraise a buy-to-let: purchase tax, the cash you need, a rent-cover check and cash flow after income tax.",
+      "capabilities": [
+        "Works out stamp duty, LBTT with the Additional Dwelling Supplement, or LTT, band by band",
+        "Adds up the cash needed to buy, including the deposit, fees and refurbishment",
+        "Runs a lender-style rent-cover check at your own stress rate, cover and loan limit",
+        "Shows the rent needed to break even, before income tax",
+        "Estimates first-year cash flow after running costs, the mortgage and income tax",
+        "Illustrates cash flow, equity and sale proceeds year by year over the period you choose",
+        "Compares two options side by side, and runs in the browser with no sign-up"
+      ]
     }
   ],
   "guides": [

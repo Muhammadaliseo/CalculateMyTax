@@ -1,0 +1,365 @@
+/*
+ * Buy-to-let investment appraisal. Portable with investment-calculator.js and the appraisal section markup.
+ * Reads tokens only, flexbox throughout, with the site's single 48em breakpoint.
+ */
+
+.appraisal {
+  background: var(--colour-ledger);
+}
+
+.appraisal__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  max-width: var(--width-page);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-l) var(--space-3xl);
+}
+
+.appraisal__layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+
+.appraisal__form {
+  flex: 1.15 1 var(--basis-m);
+  min-width: 0;
+}
+
+.appraisal__results {
+  flex: 1 1 var(--basis-m);
+  min-width: 0;
+}
+
+.appraisal__eyebrow {
+  color: var(--colour-brand-deep);
+  font-size: var(--size-300);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.appraisal__note {
+  color: var(--colour-muted);
+  font-size: var(--size-300);
+}
+
+/* Cards */
+
+.appraisal__card {
+  margin-bottom: var(--space-l);
+  padding: var(--space-l);
+  border: var(--border-thin) solid var(--colour-hairline);
+  border-radius: var(--radius-l);
+  background: var(--colour-sheet);
+  box-shadow: var(--shadow-soft);
+}
+
+.appraisal__card-title {
+  margin-top: 0;
+  font-size: var(--size-500);
+}
+
+.appraisal__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding: var(--space-xs) 0;
+  font-weight: var(--weight-bold);
+  list-style: none;
+  cursor: pointer;
+}
+
+.appraisal__summary::-webkit-details-marker {
+  display: none;
+}
+
+.appraisal__summary::after {
+  content: "+";
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: var(--weight-figure);
+}
+
+.appraisal__card[open] > .appraisal__summary {
+  margin-bottom: var(--space-m);
+}
+
+.appraisal__card[open] > .appraisal__summary::after {
+  content: "\2212";
+}
+
+/* Form fields */
+
+.appraisal__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.appraisal__field {
+  flex: 1 1 var(--basis-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  min-width: 0;
+  font-weight: var(--weight-semibold);
+}
+
+.appraisal__field[data-width="full"] {
+  flex-basis: 100%;
+}
+
+/* Side by side, a label that wraps onto a second line would push its own box below its neighbour's, so every
+   label reserves two lines and the boxes in a row start level. Stacked on a phone, they take what they need. */
+.appraisal__label {
+  display: block;
+  min-height: var(--height-label-two-lines);
+  line-height: var(--leading-snug);
+}
+
+.appraisal__hint {
+  color: var(--colour-muted);
+  font-size: var(--size-300);
+  font-weight: var(--weight-regular);
+}
+
+.appraisal__input,
+.appraisal__select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--control-height);
+  padding: var(--space-xs) var(--space-s);
+  border: var(--border-thin) solid var(--colour-rule);
+  border-radius: var(--radius-m);
+  background: var(--colour-sheet);
+  color: var(--colour-navy);
+  font: inherit;
+}
+
+.appraisal__input:focus-visible,
+.appraisal__select:focus-visible {
+  outline: var(--focus-width) solid var(--colour-brand);
+  outline-offset: var(--focus-offset);
+}
+
+.appraisal__input[aria-invalid="true"],
+.appraisal__select[aria-invalid="true"] {
+  border: var(--border-rule) solid var(--colour-navy);
+  background: var(--colour-navy-wash);
+}
+
+.appraisal__error {
+  font-size: var(--size-300);
+  font-weight: var(--weight-bold);
+}
+
+.appraisal__error:empty {
+  display: none;
+}
+
+/* The headline result */
+
+.appraisal__card[data-tone="navy"] {
+  border-color: var(--colour-navy);
+  background: var(--colour-navy);
+  color: var(--colour-sheet);
+}
+
+.appraisal__card[data-tone="navy"] .appraisal__note {
+  color: var(--colour-navy-soft);
+}
+
+.appraisal__figure {
+  display: block;
+  margin: var(--space-xs) 0;
+  font-family: var(--font-display);
+  font-size: var(--size-h1);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  font-variant-numeric: tabular-nums lining-nums;
+  overflow-wrap: anywhere;
+}
+
+.appraisal__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+.appraisal__metric {
+  flex: 1 1 var(--basis-2xs);
+  padding-top: var(--space-s);
+  border-top: var(--border-thin) solid var(--colour-navy-soft);
+}
+
+.appraisal__metric-value {
+  display: block;
+  font-size: var(--size-600);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.appraisal__metric-name {
+  font-size: var(--size-300);
+}
+
+/* Ledgers */
+
+.appraisal__ledger {
+  margin: 0;
+}
+
+.appraisal__row,
+.appraisal__total {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-m);
+  padding: var(--space-xs) 0;
+  border-bottom: var(--border-thin) solid var(--colour-hairline);
+}
+
+.appraisal__total {
+  border-bottom: var(--border-rule) solid var(--colour-navy);
+  font-weight: var(--weight-bold);
+}
+
+.appraisal__amount {
+  margin: 0;
+  font-weight: var(--weight-bold);
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.appraisal__status {
+  padding: var(--space-s);
+  border-left: var(--border-heavy) solid var(--colour-brand);
+  background: var(--colour-sky);
+}
+
+.appraisal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin: var(--space-m) 0;
+}
+
+/* Tables */
+
+.appraisal__overflow {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.appraisal__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-300);
+}
+
+.appraisal__caption {
+  padding-bottom: var(--space-s);
+  text-align: left;
+  font-weight: var(--weight-bold);
+}
+
+.appraisal__table th,
+.appraisal__table td {
+  padding: var(--space-s);
+  border-bottom: var(--border-thin) solid var(--colour-hairline);
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.appraisal__table th:first-child,
+.appraisal__table td:first-child {
+  text-align: left;
+}
+
+/* Equity chart: one bar per year, heights set as percentages by the script */
+
+.appraisal__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-xs);
+  height: var(--height-message);
+  margin: var(--space-m) 0;
+}
+
+.appraisal__bar {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: var(--radius-s) var(--radius-s) 0 0;
+  background: var(--colour-brand);
+}
+
+.appraisal__bar-label {
+  color: var(--colour-muted);
+  font-size: var(--size-300);
+}
+
+.appraisal__print-inputs {
+  display: none;
+}
+
+@media (max-width: 47.99em) {
+  .appraisal__wrap {
+    padding: var(--space-l) var(--space-s) var(--space-2xl);
+  }
+
+  .appraisal__card {
+    padding: var(--space-m);
+  }
+
+  .appraisal__field {
+    flex-basis: 100%;
+  }
+
+  .appraisal__label {
+    min-height: 0;
+  }
+}
+
+@media print {
+  .appraisal {
+    background: var(--colour-sheet);
+  }
+
+  .appraisal__wrap {
+    padding: 0;
+  }
+
+  .appraisal__form,
+  .appraisal__actions,
+  .appraisal__bars,
+  .appraisal ~ section {
+    display: none !important;
+  }
+
+  .appraisal__layout {
+    display: block;
+  }
+
+  .appraisal__card {
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .appraisal__card[data-tone="navy"],
+  .appraisal__card[data-tone="navy"] .appraisal__note {
+    background: var(--colour-sheet);
+    color: var(--colour-navy);
+  }
+
+  .appraisal__print-inputs {
+    display: block;
+  }
+
+  .appraisal__overflow {
+    overflow: visible;
+  }
+}
