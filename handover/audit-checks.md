@@ -3,17 +3,18 @@
 - PASS: CSS Grid used 0 time(s)
 - PASS: no :has(), container queries, clip-path or scroll-driven animation
 
-## Built pages (25)
+## Built pages (26)
 - PASS: one class per element (no class soup)
 - PASS: no utility classes
 - PASS: every section is named and holds exactly one __wrap div
-- PASS: container nesting inside wraps: 4 section(s) deeper than two levels (listed for the migration notes)
+- PASS: container nesting inside wraps: 5 section(s) deeper than two levels (listed for the migration notes)
   - Buy-to-let investment calculator: 6 levels
   - Contact form: 3 levels
   - Calculator: 5 levels
   - Rental yield calculator: 6 levels
+  - Stamp duty calculator: 4 levels
 - PASS: no third-party scripts or stylesheets
-- PASS: every page under 300 KB excluding fonts (largest index.html at 279 KB)
+- PASS: every page under 300 KB excluding fonts (largest index.html at 280 KB)
 - PASS: no skipped heading levels
 - PASS: no placeholder text
 - PASS: every image has width and height
@@ -30,21 +31,22 @@
 - cookie-policy/index.html: 92
 - disclaimer/index.html: 92
 - faq/index.html: 108
-- index.html: 279
+- index.html: 280
 - making-tax-digital-for-landlords/index.html: 138
 - our-services/index.html: 92
 - our-services/self-assessment-tax-returns/index.html: 97
 - privacy-policy/index.html: 94
-- property-allowance-vs-expenses/index.html: 137
+- property-allowance-vs-expenses/index.html: 138
 - property-income-tax-rates-2027/index.html: 141
 - rent-a-room-scheme/index.html: 130
 - rental-income-tax-calculator/index.html: 210
 - rental-income-tax-scotland/index.html: 138
-- rental-yield-calculator/index.html: 203
+- rental-yield-calculator/index.html: 204
 - section-24-mortgage-interest-relief/index.html: 140
-- tax-on-rental-income/index.html: 141
+- stamp-duty-calculator/index.html: 156
+- tax-on-rental-income/index.html: 142
 - terms-of-use/index.html: 92
-- who-we-can-help/first-time-filers/index.html: 101
+- who-we-can-help/first-time-filers/index.html: 102
 - who-we-can-help/index.html: 94
 
 ## Contrast (WCAG 2.1, computed from tokens.css)

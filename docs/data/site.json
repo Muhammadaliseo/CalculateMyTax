@@ -71,6 +71,21 @@
       ]
     },
     {
+      "id": "stamp-duty-calculator",
+      "name": "Stamp duty calculator",
+      "path": "stamp-duty-calculator/",
+      "status": "live",
+      "summary": "Work out stamp duty, LBTT or LTT on a second home, a buy-to-let or your first home, band by band.",
+      "capabilities": [
+        "Covers Stamp Duty Land Tax, Land and Buildings Transaction Tax and Land Transaction Tax",
+        "Handles an extra property, your only home, and first-time buyer relief where it exists",
+        "Adds Scotland's Additional Dwelling Supplement and Wales's separate higher rates",
+        "Shows every band, the rate on each slice and the rate the whole price really bears",
+        "Compares what the same purchase would cost on another basis",
+        "Runs in the browser with no sign-up; results can be shared as a link or printed"
+      ]
+    },
+    {
       "id": "buy-to-let-investment-calculator",
       "name": "Buy-to-let investment calculator",
       "path": "buy-to-let-investment-calculator/",

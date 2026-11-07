@@ -318,3 +318,29 @@ Added on 8 November 2026 at `/buy-to-let-investment-calculator/`.
 - **Why it is a separate page from the yield calculator.** The yield page answers "what does this property earn?". This one answers "can I buy it, and what will it leave me?", which brings in purchase tax, the cash needed and the lender's rent cover test. Different questions, different searches, no overlapping primary keyword.
 - **Questions answered on the page**, each marked up for search results: how much cash you need, what a good return is, stamp duty on a buy-to-let, how lenders decide what to lend, whether income tax is included, and cash against a mortgage.
 - **Still reserved for later:** rental profit calculator (210 a month), which the client asked to keep back for its own tool.
+---
+
+# Fourth tool: stamp duty calculator
+
+Added on 8 November 2026 at `/stamp-duty-calculator/`.
+
+**Why this one next.** The engine already existed inside the buy-to-let tool, so it was the cheapest tool to build by a wide margin, and it targets one of the largest calculator searches in the UK.
+
+**Research, 8 November 2026.** Semrush was unavailable (the shared login had expired), so demand was read from Google's own suggestions and from what competitors actually build:
+- Google suggests "stamp duty calculator uk", "stamp duty calculator scotland", "stamp duty calculator wales" and "second home stamp duty calculator", so the nation-specific and second-home angles are searched in their own right.
+- Among landlord sites, both Landlord Studio and Provestor build a stamp duty calculator. A tool two competitors bother to build has proven demand.
+
+**Be realistic about the head term.** "stamp duty calculator" on its own is held by Rightmove, Zoopla, HMRC and the banks, and a new site will not take it soon. The page is therefore written for the winnable long tail, which is also the audience this site already serves:
+- second home stamp duty calculator
+- buy to let stamp duty calculator
+- stamp duty calculator scotland / wales
+- additional property stamp duty calculator
+- first time buyer stamp duty calculator
+
+**Page targeting.**
+- Title: "Stamp Duty Calculator UK | Second Home & Buy-to-Let"
+- H1: "Stamp duty calculator"
+- The H2s carry the long tail: how stamp duty is worked out, stamp duty on a second home or buy-to-let, first-time buyers, when you pay it, what it does not cover.
+- Six questions with FAQ markup, none repeated from another page.
+
+**Still to come, in the order recommended:** capital gains tax on property, then a limited company against personal ownership comparison. Exact volumes for both should be pulled from Semrush once the login works.

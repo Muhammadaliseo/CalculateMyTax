@@ -738,6 +738,13 @@
   .calc-results {
     position: static;
   }
+
+  /* Side by side there is room to share a row; on a phone each setting takes the full width, so a long
+     label cannot squeeze its own menu into a sliver. */
+  .calc-settings > .calc-setting:first-child,
+  .calc-settings > .calc-setting:last-child {
+    flex: 1 1 100%;
+  }
 }
 
 @media print {

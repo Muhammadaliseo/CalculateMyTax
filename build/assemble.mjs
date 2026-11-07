@@ -27,6 +27,7 @@ const mtd = readJson('data/mtd.json');
 const purchaseRates = readJson('data/purchase-rates.json');
 const engine = require(path.join(ROOT, 'assets', 'js', 'tax-engine.js'));
 const yieldEngine = require(path.join(ROOT, 'assets', 'js', 'yield-engine.js'));
+const purchaseTaxEngine = require(path.join(ROOT, 'assets', 'js', 'purchase-tax-engine.js'));
 const CONFIG = { rates, expenses, mtd, purchaseRates, site };
 
 const BUILD_DATE = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
@@ -113,6 +114,13 @@ function computeYieldExamples(examples = {}, route) {
 }
 
 const yieldPercent = (rate) => `${(Math.round(rate * 10000) / 100).toFixed(2)}%`;
+
+// The stamp duty page opens showing a worked example, the same £250,000 additional property its form starts on.
+const stampDutyExample = (() => {
+  const price = 25000000;
+  const result = purchaseTaxEngine.purchaseTax(price, 'england_ni', 'additional', purchaseRates);
+  return { ...result, price, withTax: price + result.total };
+})();
 
 /* Tables and lists rendered from config */
 
@@ -446,6 +454,26 @@ function renderToken(name, arg, ctx) {
         return `${raw < 0 && pounds > 0 ? '-' : ''}£${pounds.toLocaleString('en-GB')}`;
       }
       return name === 'ypct' ? yieldPercent(raw) : `${Math.round(raw * 100)}%`;
+    }
+    case 'sdlt':
+    case 'sdlt-pct': {
+      const [id, ...rest] = arg.split('.');
+      if (id !== 'example') {
+        return undefined;
+      }
+      const raw = lookup(stampDutyExample, rest.join('.'));
+      if (typeof raw !== 'number') {
+        return undefined;
+      }
+      return name === 'sdlt' ? money(raw) : yieldPercent(raw);
+    }
+    case 'sdlt-band': {
+      const rule = purchaseRates.nations[arg];
+      return rule ? money(rule.limits[0]) : undefined;
+    }
+    case 'sdlt-money': {
+      const raw = lookup(purchaseRates, arg);
+      return typeof raw === 'number' ? money(raw) : undefined;
     }
     case 'year-key':
       return rates[yearKey(arg)] ? yearKey(arg) : undefined;

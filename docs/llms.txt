@@ -23,6 +23,13 @@ Every figure comes from published GOV.UK, HMRC and gov.scot rates, last verified
   - Shows monthly and annual cash flow and the return on the cash you put in, including buying costs
   - Estimates income tax on the rental profit with Section 24, for England, Wales, Northern Ireland and Scotland
   - Runs in the browser with no sign-up; results can be shared as a link or printed
+- [Stamp duty calculator](https://muhammadaliseo.github.io/CalculateMyTax/stamp-duty-calculator/): Free UK stamp duty calculator for England, Scotland and Wales. Work out SDLT, LBTT or LTT on a second home, a buy-to-let or your first home, band by band.
+  - Covers Stamp Duty Land Tax, Land and Buildings Transaction Tax and Land Transaction Tax
+  - Handles an extra property, your only home, and first-time buyer relief where it exists
+  - Adds Scotland's Additional Dwelling Supplement and Wales's separate higher rates
+  - Shows every band, the rate on each slice and the rate the whole price really bears
+  - Compares what the same purchase would cost on another basis
+  - Runs in the browser with no sign-up; results can be shared as a link or printed
 - [Buy-to-let investment calculator](https://muhammadaliseo.github.io/CalculateMyTax/buy-to-let-investment-calculator/): Free UK buy-to-let investment calculator: stamp duty, the cash you need to buy, a rent-cover check, and monthly cash flow after income tax.
   - Works out stamp duty, LBTT with the Additional Dwelling Supplement, or LTT, band by band
   - Adds up the cash needed to buy, including the deposit, fees and refurbishment

@@ -327,7 +327,8 @@
         item.appendChild(document.createTextNode(label));
         key.appendChild(item);
       });
-      bar.setAttribute('aria-label', fill(text('barLabel'), { rent: formatMoney(r.annualRent), parts: labels.join(text('separator')) }));
+      // The separator is trimmed out of its template, so the space after the comma goes back here.
+      bar.setAttribute('aria-label', fill(text('barLabel'), { rent: formatMoney(r.annualRent), parts: labels.join(text('separator') + ' ') }));
     }
 
     function renderEmpty() {

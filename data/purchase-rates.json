@@ -12,6 +12,12 @@
       "rates": [0, 0.02, 0.05, 0.1, 0.12],
       "higherRates": [0.05, 0.07, 0.1, 0.15, 0.17],
       "higherNote": "The additional-property rates are the standard rates plus the 5% surcharge.",
+      "firstTimeBuyer": {
+        "limits": [30000000, 50000000],
+        "rates": [0, 0.05],
+        "maxPrice": 50000000,
+        "note": "Nothing up to £300,000 and 5% from £300,001 to £500,000. Above £500,000 the relief is lost completely and the standard rates apply, so this table never needs an open top band."
+      },
       "source": "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates"
     },
     "scotland": {
@@ -22,6 +28,12 @@
       "supplement": 0.08,
       "supplementName": "Additional Dwelling Supplement",
       "supplementNote": "8% of the whole price for transactions on or after 5 December 2024, charged on top of LBTT.",
+      "firstTimeBuyer": {
+        "limits": [17500000, 25000000, 32500000, 75000000, null],
+        "rates": [0, 0.02, 0.05, 0.1, 0.12],
+        "maxPrice": null,
+        "note": "Relief raises the nil rate band from £145,000 to £175,000; every band above is unchanged. There is no upper price limit, so the most it can save is £600, the 2% that would otherwise fall on that £30,000."
+      },
       "source": "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property",
       "supplementSource": "https://revenue.scot/taxes/land-buildings-transaction-tax/additional-dwelling-supplement-ads"
     },
@@ -33,6 +45,7 @@
       "higherLimits": [18000000, 25000000, 40000000, 75000000, 150000000, null],
       "higherRates": [0.05, 0.085, 0.1, 0.125, 0.15, 0.17],
       "higherNote": "Wales has its own higher residential table rather than a surcharge, with an extra band below £180,000.",
+      "firstTimeBuyerNote": "Wales offers no first-time buyer relief. Its nil rate band of £225,000 is already the highest of the three, so there is no 'firstTimeBuyer' table here and first-time buyers pay the standard rates.",
       "source": "https://www.gov.wales/land-transaction-tax-rates-and-bands"
     }
   }

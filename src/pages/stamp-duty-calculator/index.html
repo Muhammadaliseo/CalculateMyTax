@@ -1,0 +1,110 @@
+<!--page
+{
+  "title": "Stamp Duty Calculator UK | Second Home & Buy-to-Let",
+  "description": "Free UK stamp duty calculator for England, Scotland and Wales. Work out SDLT, LBTT or LTT on a second home, a buy-to-let or your first home, band by band.",
+  "keyword": "stamp duty calculator",
+  "secondaryKeywords": ["second home stamp duty calculator", "buy to let stamp duty calculator", "stamp duty calculator uk", "stamp duty calculator scotland", "stamp duty calculator wales", "lbtt calculator", "ltt calculator", "additional property stamp duty calculator", "first time buyer stamp duty calculator", "stamp duty on second home"],
+  "crumb": "Stamp duty calculator",
+  "schema": ["WebApplication", "FAQPage"],
+  "styles": ["calculator"],
+  "scripts": ["purchase-tax-engine", "stamp-duty-calculator"],
+  "data": ["purchaseRates"]
+}
+-->
+<section class="intro" data-section="Intro" data-print-hide>
+  <div class="intro__wrap">
+    {{breadcrumb}}
+    <h1 class="intro__title">Stamp duty calculator</h1>
+    <p class="intro__lede">Work out the tax you pay when you buy a home anywhere in the UK, whether it is a buy-to-let, a second home or your first. The result shows each band, so you can see exactly where the money goes.</p>
+    <p class="intro__meta">Covers Stamp Duty Land Tax in England and Northern Ireland, Land and Buildings Transaction Tax in Scotland, and Land Transaction Tax in Wales. Rates last checked {{purchase-verified}}.</p>
+  </div>
+</section>
+
+{{include:stamp-duty-calculator}}
+
+<section class="prose" data-section="How stamp duty works">
+  <div class="prose__wrap">
+    <h2>How stamp duty is worked out</h2>
+    <p>Stamp duty is charged in slices, like income tax. Each rate applies only to the part of the price inside its band, not to the whole price. So a buyer whose price creeps into a higher band pays the higher rate on that slice alone, not on everything.</p>
+    <p>The example in the calculator shows this: a {{sdlt:example.price}} purchase as an extra property pays {{sdlt:example.total}}, which is {{sdlt-pct:example.effectiveRate}} of the price, even though the top band it reaches is charged at a higher rate than that.</p>
+    <p>Three different taxes are in use across the UK, and which one you pay depends on where the property is, not where you live:</p>
+    <ul>
+      <li><strong>England and Northern Ireland:</strong> Stamp Duty Land Tax, with nothing to pay up to {{sdlt-band:england_ni}}.</li>
+      <li><strong>Scotland:</strong> Land and Buildings Transaction Tax, with nothing to pay up to {{sdlt-band:scotland}}.</li>
+      <li><strong>Wales:</strong> Land Transaction Tax, with nothing to pay up to {{sdlt-band:wales}}, the highest starting point of the three.</li>
+    </ul>
+
+    <h2>Stamp duty on a second home or buy-to-let</h2>
+    <p>Buying a property when you will still own another one costs more, and this catches most landlords. The three nations add the extra charge in different ways:</p>
+    <ul>
+      <li><strong>England and Northern Ireland</strong> add a surcharge to every band, so even the part of the price that would normally be tax-free is charged.</li>
+      <li><strong>Scotland</strong> charges the Additional Dwelling Supplement on the whole price, on top of the ordinary bands.</li>
+      <li><strong>Wales</strong> has a separate table of higher rates, starting lower than the standard one.</li>
+    </ul>
+    <p>The extra charge does not apply at all when the price is under {{sdlt-money:additionalMinimum}}. You pay it if you will own more than one property at the end of the day you buy, so it can catch you when you are moving house and your own sale has not completed. If you replace your main home within the time limit, you can usually claim the extra back.</p>
+    <p>Choose "What it would cost on another basis" in the result to see the difference between buying as an extra property and as your only home. On the example figures that gap is the single biggest number on the page.</p>
+
+    <h2>First-time buyers</h2>
+    <p>First-time buyer relief exists in two of the three nations, and never applies to a property you are buying to let out.</p>
+    <ul>
+      <li><strong>England and Northern Ireland:</strong> nothing to pay up to £300,000, then 5% up to £500,000. Above £500,000 the relief disappears completely rather than tapering, so a purchase a pound over that limit pays the ordinary rates on the whole price.</li>
+      <li><strong>Scotland:</strong> the tax-free band rises from £145,000 to £175,000, which is worth up to £600 however much the property costs.</li>
+      <li><strong>Wales:</strong> there is no first-time buyer relief, because the starting band of {{sdlt-band:wales}} is already the highest in the UK.</li>
+    </ul>
+
+    <h2>When you pay it</h2>
+    <p>Stamp duty is due on completion, not when your offer is accepted, and it cannot be added to most mortgages, so it has to come out of your savings alongside the deposit. Your conveyancer normally files the return and pays it for you, within 14 days of completion in England and Northern Ireland and 30 days in Scotland and Wales.</p>
+
+    <h2>What this calculator does not cover</h2>
+    <ul>
+      <li>The extra charge for buyers who live outside the UK.</li>
+      <li>Companies buying residential property, and purchases over £500,000 by a company, which have their own rules.</li>
+      <li>Linked purchases, buying several properties at once, and mixed residential and commercial property.</li>
+      <li>New leases, where the rent itself can be taxed, and shared ownership schemes.</li>
+      <li>Reliefs such as multiple dwellings, charities or a replacement main home refund.</li>
+    </ul>
+    <p>Rates come from HMRC, Revenue Scotland and the Welsh Government, and were last checked on {{purchase-verified}}. They change at Budgets, so check the figure with your conveyancer before you commit to a purchase.</p>
+  </div>
+</section>
+
+<section class="faq" data-section="Stamp duty questions">
+  <div class="faq__wrap">
+    <h2 class="faq__title">Stamp duty questions</h2>
+    <details class="faq__item">
+      <summary class="faq__question">How much stamp duty do I pay on a second home?</summary>
+      <div class="faq__answer"><p>More than on a home you will live in. In England and Northern Ireland a surcharge is added to every band, including the part that would otherwise be tax-free. Scotland charges the Additional Dwelling Supplement on the whole price, and Wales uses a separate higher table. Choose "I will own another property too" above and the result shows the tax band by band, and what the same purchase would cost as your only home.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do I pay the higher rates if I am replacing my main home?</summary>
+      <div class="faq__answer"><p>Not if your old home sells on the same day or earlier. If your purchase completes first and you briefly own two properties, you pay the higher rates and then claim the extra back once the old home sells, within the time limit your nation sets. Keep the money aside until the refund arrives.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is stamp duty different in Scotland and Wales?</summary>
+      <div class="faq__answer"><p>Yes. Scotland charges Land and Buildings Transaction Tax, Wales charges Land Transaction Tax, and both set their own bands and starting points. Only England and Northern Ireland charge Stamp Duty Land Tax. What matters is where the property is, not where you live. Choose the nation above and the calculator uses the right tax and names it in the result.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Can I add stamp duty to my mortgage?</summary>
+      <div class="faq__answer"><p>Usually not. It is due on completion and most lenders will not lend against it, so it has to come from your own money alongside the deposit, legal fees and survey. Lenders also size the loan against the property's value, which the tax does not change.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Do first-time buyers pay stamp duty?</summary>
+      <div class="faq__answer"><p>Often nothing at all. In England and Northern Ireland a first-time buyer pays nothing up to £300,000 and 5% between £300,001 and £500,000, with the relief lost entirely above £500,000. Scotland raises the tax-free band to £175,000, worth up to £600. Wales has no first-time buyer relief. The relief never applies to a property bought to let out.</p></div>
+    </details>
+    <details class="faq__item">
+      <summary class="faq__question">Is stamp duty tax deductible for landlords?</summary>
+      <div class="faq__answer"><p>Not against your rental income. It is a capital cost, so it cannot come off your rent as an expense. It is added to what the property cost you, which reduces the gain if you sell later. The <a href="{{root}}allowable-expenses-for-landlords/">guide to allowable expenses</a> sets out what you can claim against rent, and the <a href="{{root}}buy-to-let-investment-calculator/">buy-to-let investment calculator</a> counts stamp duty as part of the cash you need to buy.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="related" data-section="Related tools">
+  <div class="related__wrap">
+    <h2 class="related__title">Work out the rest of the deal</h2>
+    <div class="related__list">
+      <a class="related__link" href="{{root}}buy-to-let-investment-calculator/">Appraise a whole buy-to-let purchase</a>
+      <a class="related__link" href="{{root}}rental-yield-calculator/">Work out the rental yield on a property</a>
+      <a class="related__link" href="{{root}}rental-income-tax-calculator/">Work out the tax on your rental income</a>
+      <a class="related__link" href="{{root}}allowable-expenses-for-landlords/">Which running costs landlords can claim</a>
+    </div>
+  </div>
+</section>

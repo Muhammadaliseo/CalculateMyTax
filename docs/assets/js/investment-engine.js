@@ -8,15 +8,16 @@
  *
  * The first year's letting figures, mortgage and income tax are not recalculated here: this engine calls the
  * rental yield engine, which in turn calls the tax engine, so one property gives the same answer in every tool.
+ * Purchase tax comes from the shared purchase tax engine, the same one the stamp duty calculator uses.
  * It holds no page code, so the browser and the tests run the same file.
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
+    module.exports = factory(require('./purchase-tax-engine.js'));
   } else {
-    root.CalculateMyTaxInvestmentEngine = factory();
+    root.CalculateMyTaxInvestmentEngine = factory(root.CalculateMyTaxPurchaseTaxEngine);
   }
-}(typeof self !== 'undefined' ? self : this, function () {
+}(typeof self !== 'undefined' ? self : this, function (purchaseTaxEngine) {
   'use strict';
 
   var MAX_PENCE = 10000000000;
@@ -24,52 +25,7 @@
   var MONEY_FIELDS = ['price', 'monthlyRent', 'legalFees', 'refurbishment', 'mortgageFees',
     'repairs', 'insurance', 'serviceCharge', 'otherCosts', 'otherIncome'];
 
-  // Purchase tax is charged in slices: each band's rate applies only to the part of the price inside it.
-  function bandRows(price, limits, rates) {
-    var lower = 0;
-    return limits.map(function (upper, i) {
-      var top = upper === null ? price : Math.min(price, upper);
-      var portion = Math.max(0, top - lower);
-      var row = { lower: lower, upper: upper, portion: portion, rate: rates[i], tax: Math.round(portion * rates[i]) };
-      lower = upper;
-      return row;
-    });
-  }
-
-  /*
-   * Purchase tax on a new residential purchase. England and Northern Ireland charge SDLT, where the
-   * additional-property basis adds a surcharge to every band. Scotland charges LBTT plus the Additional
-   * Dwelling Supplement, a flat percentage of the whole price. Wales charges LTT, which has its own separate
-   * table of higher rates. The additional-property charge applies only at or above the configured minimum.
-   */
-  function purchaseTax(price, nation, additional, config) {
-    var rule = config.nations[nation];
-    if (!rule) {
-      throw new Error('Unknown property location: ' + nation);
-    }
-    if (!Number.isSafeInteger(price) || price < 0 || price > MAX_PENCE) {
-      throw new Error('Purchase price must be whole pence between 0 and ' + MAX_PENCE);
-    }
-    var higher = Boolean(additional) && price >= config.additionalMinimum;
-    var limits = higher && rule.higherLimits ? rule.higherLimits : rule.limits;
-    var rates = higher && rule.higherRates ? rule.higherRates : rule.rates;
-    var rows = bandRows(price, limits, rates);
-    var supplementRate = higher && rule.supplement ? rule.supplement : 0;
-    var supplement = Math.round(price * supplementRate);
-    var total = rows.reduce(function (sum, row) {
-      return sum + row.tax;
-    }, supplement);
-    return {
-      name: rule.name,
-      label: rule.label || rule.name,
-      rows: rows,
-      higher: higher,
-      supplement: supplement,
-      supplementRate: supplementRate,
-      supplementName: rule.supplementName || null,
-      total: total
-    };
-  }
+  var purchaseTax = purchaseTaxEngine.purchaseTax;
 
   function validate(input, config) {
     var errors = [];

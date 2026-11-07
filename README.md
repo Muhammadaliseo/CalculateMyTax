@@ -31,7 +31,7 @@ You need Node.js 20 or newer for these commands. The published site does not use
 
 | Command | What it does |
 |---|---|
-| `npm test` | Runs the tax, rental yield and buy-to-let engine tests (83 cases, including worked examples published by HMRC, Revenue Scotland and the Welsh Government). |
+| `npm test` | Runs the tax, rental yield, purchase tax and buy-to-let engine tests (100 cases, including worked examples published by HMRC, Revenue Scotland and the Welsh Government). |
 | `npm run build` | Rebuilds every page into `docs/` and checks for broken links, missing headings and unfilled figures. |
 | `npm run preview` | Serves `docs/` at http://localhost:8080 so you can click around as visitors will. |
 
@@ -52,7 +52,9 @@ You can also open `docs/index.html` straight from your computer by double-clicki
 | `assets/js/quick-estimate.js` | The quick estimate form in the home page hero. |
 | `assets/js/yield-engine.js` | The rental yield engine: yield, empty weeks, first-year mortgage, cash flow and return on cash. |
 | `assets/js/yield-calculator.js` | The rental yield calculator interface. |
-| `assets/js/investment-engine.js` | The buy-to-let engine: purchase tax, cash needed, rent cover and the year-by-year illustration. |
+| `assets/js/purchase-tax-engine.js` | The purchase tax engine: stamp duty across England, Northern Ireland, Scotland and Wales, the extra-property supplement and first-time buyer relief. Shared by the stamp duty calculator and the buy-to-let calculator, so the two always agree. |
+| `assets/js/stamp-duty-calculator.js` | The stamp duty calculator interface. |
+| `assets/js/investment-engine.js` | The buy-to-let engine: cash needed, rent cover and the year-by-year illustration. |
 | `assets/js/investment-calculator.js` | The buy-to-let investment calculator interface. |
 | `data/purchase-rates.json` | Stamp duty, LBTT with the Additional Dwelling Supplement, and LTT, with a source link for each. |
 | `assets/js/contact-form.js` | Checks the contact form and sends it without leaving the page. |
@@ -68,7 +70,7 @@ You can also open `docs/index.html` straight from your computer by double-clicki
 ## Common updates
 
 - **New tax year.** Add a year object to `data/rates.json` with its verified figures and `lastVerified` date, add a regression snapshot for it in `tests/tax-engine.test.mjs`, run `npm test`, then `npm run build`. Tables, guide figures and the calculator all update from the file.
-- **Stamp duty and the other purchase taxes.** These change in Budgets. Check the source link beside each nation in `data/purchase-rates.json`, update the bands and `lastVerified`, run `npm test`, then `npm run build`. The buy-to-let calculator and the date shown beside its band table both follow the file.
+- **Stamp duty and the other purchase taxes.** These change in Budgets. Check the source link beside each nation in `data/purchase-rates.json`, update the bands and `lastVerified`, run `npm test`, then `npm run build`. The stamp duty calculator, the buy-to-let calculator and the dates shown beside their band tables all follow the file.
 - **Add a calculator to the menus.** Add an entry to `tools` in `data/site.json` with `"status": "live"` and run `npm run build`. It appears in the header and footer automatically.
 - **Social links.** Fill in a `url` and set `"enabled": true` in `data/site.json`, then rebuild. Disabled or empty links are never shown.
 - **Guide cards.** Each guide's `summary` and `imageAlt` in `data/site.json` feed the home page cards and the featured image.

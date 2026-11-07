@@ -233,7 +233,10 @@ The calculator is a self-contained unit. It is deliberately **not** rebuilt from
 | `assets/js/yield-engine.js` | Enqueued on the rental yield page, with no dependencies of its own. It is pure calculation: gross and net yield, empty weeks, letting fees, the first year of an interest-only or repayment mortgage, cash flow and return on cash. It calls the tax engine for income tax when the tax engine is passed in |
 | `assets/js/yield-calculator.js` | Enqueued on the rental yield page, depends on `tax-engine.js` and `yield-engine.js`. It starts every section marked `data-yield-calculator` and exposes `CalculateMyTaxYieldCalculator.init(element)` |
 | `src/partials/yield-calculator.html` | The output of a third shortcode such as `[cmt_yield_calculator]`. It uses the same `calculator.css` and needs only the rates JSON block. Replace `{{calc-year-options}}`, `{{calc-region-options}}`, `{{root}}` and the `{{ymoney…}}`, `{{ypct…}}` and `{{ycover…}}` example figures before output |
-| `assets/js/investment-engine.js` | Enqueued on the buy-to-let investment page. Pure calculation: purchase tax band by band, the cash needed to buy, the lender-style rent cover check, the break-even rent and the year-by-year illustration. It calls the yield engine, which calls the tax engine, so one property gives the same answer in every tool |
+| `assets/js/purchase-tax-engine.js` | Enqueued on both the stamp duty page and the buy-to-let investment page, with no dependencies of its own. Pure calculation of Stamp Duty Land Tax, Land and Buildings Transaction Tax and Land Transaction Tax, band by band, including the extra-property supplement and first-time buyer relief. **Both tools share this one file, so they can never disagree about a purchase tax figure. Keep it that way.** It exposes `CalculateMyTaxPurchaseTaxEngine` |
+| `assets/js/stamp-duty-calculator.js` | Enqueued on the stamp duty page, depends on `purchase-tax-engine.js`. It starts every section marked `data-stamp-duty` and exposes `CalculateMyTaxStampDutyCalculator.init(element)` |
+| `src/partials/stamp-duty-calculator.html` | The output of a fifth shortcode such as `[cmt_stamp_duty_calculator]`. It uses the same `calculator.css` and `print.css` as the other tools and needs only the purchase rates JSON block. Replace `{{root}}`, `{{purchase-verified}}` and the `{{sdlt…}}` example figures before output |
+| `assets/js/investment-engine.js` | Enqueued on the buy-to-let investment page, depends on `purchase-tax-engine.js`. Pure calculation: the cash needed to buy, the cash needed to buy, the lender-style rent cover check, the break-even rent and the year-by-year illustration. It calls the yield engine, which calls the tax engine, so one property gives the same answer in every tool |
 | `assets/js/investment-calculator.js` | Enqueued on the buy-to-let investment page, depends on `tax-engine.js`, `yield-engine.js` and `investment-engine.js`. It starts every section marked `data-investment` and exposes `CalculateMyTaxInvestmentCalculator.init(element)` |
 | `assets/css/investment.css` | Stylesheet for the appraisal. Enqueue it on that page only |
 | `src/partials/investment-calculator.html` | The output of a fourth shortcode such as `[cmt_investment_calculator]`. It needs both the rates and the purchase rates JSON blocks. Replace `{{calc-year-options}}`, `{{calc-region-options}}`, `{{root}}` and `{{purchase-verified}}` before output |
@@ -262,7 +265,7 @@ All wording, including error messages, alerts and the plain-English summary, liv
 | `data/rates.json` | Option `cmt_rates` | An array keyed by tax year (`"2026-27"`). **Money is in pence, as integers**; rates are decimals. Each year also holds `lastVerified`, its sources and notes. Keep the shape exactly, because the engine reads it as is |
 | `data/expenses.json` | Option `cmt_expenses` | A list of `id`, `label` and `tooltip` |
 | `data/mtd.json` | Option `cmt_mtd` | Thresholds in pence, each with its test year and start date |
-| `data/purchase-rates.json` | Option `cmt_purchase_rates` | Stamp Duty Land Tax, Land and Buildings Transaction Tax with the Additional Dwelling Supplement, and Land Transaction Tax. Band limits are in pence and rates are decimals, with `null` closing the top band. Printed on the investment page as `<script type="application/json" id="cmt-config-purchaseRates">`. **These change in Budgets: check all three sources in the file before each tax year and update `lastVerified`** |
+| `data/purchase-rates.json` | Option `cmt_purchase_rates` | Stamp Duty Land Tax, Land and Buildings Transaction Tax with the Additional Dwelling Supplement, and Land Transaction Tax. Band limits are in pence and rates are decimals, with `null` closing the top band. Each nation also carries its `firstTimeBuyer` band table where one exists (England and Northern Ireland, and Scotland), with `maxPrice` set where the relief is lost outright above a price; Wales carries a note instead, because it offers no such relief. Printed on both the stamp duty page and the investment page as `<script type="application/json" id="cmt-config-purchaseRates">`. **These change in Budgets: check all three sources in the file before each tax year and update `lastVerified`** |
 | `data/site.json` | Several WordPress settings | See below |
 
 What `site.json` becomes:
@@ -284,6 +287,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 | `/` | Home (static front page) | |
 | `/rental-income-tax-calculator/` | Rental income tax calculator | |
 | `/rental-yield-calculator/` | Rental yield calculator | |
+| `/stamp-duty-calculator/` | Stamp duty calculator | |
 | `/buy-to-let-investment-calculator/` | Buy-to-let investment calculator | |
 | `/tax-on-rental-income/` | Tax on rental income | |
 | `/allowable-expenses-for-landlords/` | Allowable expenses for landlords | |
@@ -313,7 +317,7 @@ Set **Settings, Permalinks** to "Post name". Every address stays exactly the sam
 - **Social sharing image:** set `assets/img/brand/calculatemytax-social.png` (1200 by 630) as the default Open Graph and Twitter image. Each guide uses its own featured image (`assets/img/guides/<page>.jpg`) instead. Set it as the page's Featured Image and the SEO plugin will use it.
 - **Structured data.** Copy each JSON-LD block from the built pages where the plugin cannot produce it:
   - Organization, WebSite and BreadcrumbList on every page, via the SEO plugin settings. The Organization includes the address: region Merseyside, country GB.
-  - WebApplication on the calculator page (FinanceApplication, price 0). Add it as custom schema.
+  - WebApplication on each of the four calculator pages (FinanceApplication, price 0). Add it as custom schema.
   - FAQPage on the home page, the FAQ page and every guide with a questions block. Use the Accordion widget's FAQ schema switch. The home page questions are different from the FAQ page's, so no question is marked up twice.
   - HowTo on "Tax on rental income". Use custom schema.
   - Service on "Self Assessment tax returns". Use custom schema.

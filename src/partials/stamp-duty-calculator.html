@@ -1,0 +1,151 @@
+<section class="calculator" data-section="Stamp duty calculator" data-stamp-duty>
+  <div class="calculator__wrap">
+    <form class="calculator__form" data-form novalidate autocomplete="off">
+      <div class="calc-settings">
+        <label class="calc-setting">
+          <span class="calc-setting__label">Where is the property?</span>
+          <select class="calc-setting__control" name="nation">
+            <option value="england_ni">England or Northern Ireland</option>
+            <option value="scotland">Scotland</option>
+            <option value="wales">Wales</option>
+          </select>
+        </label>
+        <label class="calc-setting">
+          <span class="calc-setting__label">Who is buying?</span>
+          <select class="calc-setting__control" name="basis">
+            <option value="additional">I will own another property too</option>
+            <option value="standard">This will be my only home</option>
+            <option value="firstTimeBuyer">I am a first-time buyer</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="calc-example" data-example-note>This is an example figure. Type over it with your own.</p>
+
+      <div class="calc-ledger">
+        <div class="calc-line" data-line="price">
+          <label class="calc-line__label">
+            <span class="calc-line__name">Purchase price</span>
+            <span class="calc-line__field"><span class="calc-line__unit" aria-hidden="true">£</span><input class="calc-line__input" name="price" type="text" inputmode="decimal" value="250,000"></span>
+          </label>
+          <p class="calc-line__hint" data-hint>What you are paying for the property, as agreed with the seller.</p>
+          <p class="calc-line__error" data-error hidden></p>
+        </div>
+      </div>
+
+      <p class="calc-line__hint">Buying an extra property, such as a buy-to-let or a second home, costs more. Choose "my only home" if you are replacing the one you live in.</p>
+    </form>
+
+    <aside class="calc-results" data-results aria-label="Your result">
+      <div class="calc-results__panel" data-panel>
+        <p class="calc-results__label" data-out="taxLabel">Stamp Duty Land Tax to pay</p>
+        <p class="calc-results__figure" data-out="total">{{sdlt:example.total}}</p>
+        <p class="calc-results__monthly"><span data-out="effectiveRate">{{sdlt-pct:example.effectiveRate}}</span> of the price</p>
+        <p class="calc-results__keep" data-out="summary">On a {{sdlt:example.price}} purchase in England or Northern Ireland, as an extra property.</p>
+        <dl class="calc-results__rates">
+          <div class="calc-results__rate"><dt class="calc-results__rate-name">Price</dt><dd class="calc-results__rate-value" data-out="price">{{sdlt:example.price}}</dd></div>
+          <div class="calc-results__rate"><dt class="calc-results__rate-name">Total cost with the tax</dt><dd class="calc-results__rate-value" data-out="withTax">{{sdlt:example.withTax}}</dd></div>
+        </dl>
+        <p class="calc-results__invalid" data-invalid-note hidden>Check the highlighted box to update your result.</p>
+      </div>
+
+      <div class="calc-alerts">
+        <p class="calc-alert" data-alert="noReliefHere" hidden><strong>Wales has no first-time buyer relief.</strong> Its starting band of {{sdlt-band:wales}} is the highest of the three nations, so first-time buyers pay the standard rates.</p>
+        <p class="calc-alert" data-alert="reliefLost" hidden><strong>First-time buyer relief stops above <span data-slot="limit"></span>.</strong> It is lost completely rather than reduced, so this purchase pays the standard rates.</p>
+        <p class="calc-alert" data-alert="belowMinimum" hidden><strong>No extra charge under <span data-slot="minimum"></span>.</strong> The additional-property charge does not apply to a purchase this small, so the standard rates are used.</p>
+        <p class="calc-alert" data-alert="noTax" hidden><strong>There is nothing to pay.</strong> This price sits inside the starting band, where the rate is nothing.</p>
+      </div>
+
+      <details class="calc-detail" open>
+        <summary class="calc-detail__summary">How the tax is worked out</summary>
+        <div class="calc-detail__body">
+          <dl class="calc-sums" data-bands></dl>
+          <p class="calc-detail__text">Each rate applies only to the slice of the price inside its band, not to the whole price.</p>
+        </div>
+      </details>
+
+      <details class="calc-detail">
+        <summary class="calc-detail__summary">What it would cost on another basis</summary>
+        <div class="calc-detail__body">
+          <div class="calc-routes" data-compare></div>
+          <p class="calc-detail__text" data-out="compareNote"></p>
+        </div>
+      </details>
+
+      <details class="calc-detail" data-print-hide open>
+        <summary class="calc-detail__summary">Your result in plain English</summary>
+        <div class="calc-detail__body">
+          <p class="calc-detail__text" data-narration></p>
+        </div>
+      </details>
+
+      <div class="calc-actions">
+        <button class="button" type="button" data-action="copy">Copy shareable link</button>
+        <button class="button-quiet" type="button" data-action="print">Print or save as PDF</button>
+        <button class="button-quiet" type="button" data-action="reset">Reset</button>
+      </div>
+      <p class="calc-actions__status" data-action-status role="status"></p>
+      <p class="visually-hidden" data-live aria-live="polite"></p>
+
+      <div class="calc-print" data-print-summary>
+        <p class="calc-print__title">Stamp duty estimate from CalculateMyTax</p>
+        <dl class="calc-sums">
+          <div class="calc-sums__row"><dt class="calc-sums__name">Prepared on</dt><dd class="calc-sums__value" data-out="printDate"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Property location</dt><dd class="calc-sums__value" data-out="printNation"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Purchase price</dt><dd class="calc-sums__value" data-out="printPrice"></dd></div>
+          <div class="calc-sums__row"><dt class="calc-sums__name">Buyer</dt><dd class="calc-sums__value" data-out="printBasis"></dd></div>
+          <div class="calc-sums__total"><dt class="calc-sums__name" data-out="printTaxName">Tax to pay</dt><dd class="calc-sums__value" data-out="printTotal"></dd></div>
+        </dl>
+        <p class="calc-print__note">An estimate using the rates last checked {{purchase-verified}}, for a straightforward purchase by someone living in the UK. Your conveyancer confirms the amount due.</p>
+      </div>
+    </aside>
+
+    <div class="calc-strip" data-strip hidden>
+      <p class="calc-strip__label" data-out="stripLabel">Stamp duty</p>
+      <p class="calc-strip__figure" data-out="stripTotal">{{sdlt:example.total}}</p>
+      <button class="calc-strip__button" type="button" data-show-results>See breakdown</button>
+    </div>
+
+    <template data-text="bandRange">{from} to {to} at {rate}</template>
+    <template data-text="bandOpen">Over {from} at {rate}</template>
+    <template data-text="bandNil">{from} to {to}, nothing to pay</template>
+    <template data-text="bandNilOpen">Over {from}, nothing to pay</template>
+    <template data-text="supplementRow">{name}, {rate} of the whole price</template>
+    <template data-text="totalRow">Total to pay</template>
+    <template data-text="basis-additional">An extra property</template>
+    <template data-text="basis-standard">My only home</template>
+    <template data-text="basis-firstTimeBuyer">A first-time buyer</template>
+    <template data-text="inUse">What you chose</template>
+    <template data-text="cheaper">{amount} less</template>
+    <template data-text="dearer">{amount} more</template>
+    <template data-text="same">The same</template>
+    <template data-text="notAvailableHere">Not offered in {nation}</template>
+    <template data-text="reliefGoneHere">Not available above {limit}</template>
+    <template data-text="compareNote">Choosing the wrong basis is one of the commonest mistakes. You pay the extra-property rates if you will own more than one home at the end of the day you buy, even if you are moving house and the sale falls through.</template>
+    <template data-text="label-additional">{name} to pay</template>
+    <template data-text="summary">On a {price} purchase in {nation}, {basis}.</template>
+    <template data-text="summary-additional">as an extra property</template>
+    <template data-text="summary-standard">as your only home</template>
+    <template data-text="summary-firstTimeBuyer">as a first-time buyer</template>
+    <template data-text="narrTotal">Buying at {price} in {nation} {basis}, the {name} comes to {total}.</template>
+    <template data-text="narrNil">Buying at {price} in {nation} {basis}, there is no {name} to pay.</template>
+    <template data-text="narrRate">That is {rate} of the price, and brings the total you need to {withTax}.</template>
+    <template data-text="narrBands">It is made up of {parts}.</template>
+    <template data-text="narrPart">{amount} on the slice from {from} to {to}</template>
+    <template data-text="narrPartOpen">{amount} on everything above {from}</template>
+    <template data-text="narrSupplement">{amount} as the {name}</template>
+    <template data-text="narrSaving">First-time buyer relief saves you {amount}.</template>
+    <template data-text="narrCompare">If it were your only home instead, you would pay {amount}.</template>
+    <template data-text="separator">,</template>
+    <template data-text="and">and</template>
+    <template data-text="liveSummary">{name} is {total}, {rate} of the price.</template>
+    <template data-text="copied">Link copied. Anyone who opens it sees these figures.</template>
+    <template data-text="copyFailed">Your browser blocked copying. The link is now in the address bar, ready to copy.</template>
+    <template data-text="resetDone">Calculator cleared.</template>
+    <template data-text="emptyPrompt">Enter a purchase price to see the tax.</template>
+    <template data-text="error-notANumber">Use numbers only, for example 250,000.</template>
+    <template data-text="error-tooLarge">That price is too large. Check for extra digits.</template>
+    <template data-text="error-negative">Enter £0 or more.</template>
+    <template data-text="error-notWholePence">Use no more than two decimal places.</template>
+  </div>
+</section>
